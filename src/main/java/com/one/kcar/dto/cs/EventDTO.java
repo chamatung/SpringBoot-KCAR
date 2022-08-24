@@ -1,12 +1,22 @@
 package com.one.kcar.dto.cs;
 
 public class EventDTO {
+	/*create table KCAR_EVENT(
+			e_no number,
+			e_title varchar2(100) not null,
+			e_content varchar2(1500) not null,
+			e_startDate varchar2(20) not null,
+			e_endDate varchar2(20) not null,
+			e_date varchar2(20) not null,
+			primary key(e_no)
+			);*/
 	private int e_no;
 	private String e_title;
 	private String e_content;
-	private String e_startdate;
-	private String e_enddate;
+	private String e_startDate;
+	private String e_endDate;
 	private String e_date;
+	
 	public int getE_no() {
 		return e_no;
 	}
@@ -25,17 +35,17 @@ public class EventDTO {
 	public void setE_content(String e_content) {
 		this.e_content = e_content;
 	}
-	public String getE_startdate() {
-		return e_startdate;
+	public String getE_startDate() {
+		return e_startDate;
 	}
-	public void setE_startdate(String e_startdate) {
-		this.e_startdate = e_startdate;
+	public void setE_startDate(String e_startDate) {
+		this.e_startDate = e_startDate;
 	}
-	public String getE_enddate() {
-		return e_enddate;
+	public String getE_endDate() {
+		return e_endDate;
 	}
-	public void setE_enddate(String e_enddate) {
-		this.e_enddate = e_enddate;
+	public void setE_endDate(String e_endDate) {
+		this.e_endDate = e_endDate;
 	}
 	public String getE_date() {
 		return e_date;
@@ -44,7 +54,4 @@ public class EventDTO {
 		this.e_date = e_date;
 	}
 	
-	
-	
-
 }

@@ -2,15 +2,15 @@ package com.one.kcar.dto.rent;
 /*
  * CREATE TABLE kcarCarRentOption(
 crNumber varchar2(10) not null,
-croSunRoof varchar2(1) null,
-croHiPass varchar2(1) null,
-croBackSensor varchar2(1) null,
-croCamera varchar2(1) null,
-croNavigation varchar2(1) null,
-croHandleHot varchar2(1) null,
-croAirBag varchar2(1) null,
-croSmartKey varchar2(1) null,
-croBlackBox varchar2(1) null,
+croSunRoof varchar2(20) null,
+croHiPass varchar2(20) null,
+croBackSensor varchar2(20) null,
+croCamera varchar2(20) null,
+croNavigation varchar2(20) null,
+croHandleHot varchar2(20) null,
+croAirBag varchar2(20) null,
+croSmartKey varchar2(20) null,
+croBlackBox varchar2(20) null,
 constraint fkCr foreign key (crNumber) references kcarCarRent(crNumber) on delete cascade
 );
  */

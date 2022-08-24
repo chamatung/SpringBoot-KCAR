@@ -134,6 +134,66 @@
 	src="https://www.googleadservices.com/pagead/conversion/938190343/?random=1659426350235&amp;cv=9&amp;fst=1659426350235&amp;num=1&amp;value=0&amp;label=07NXCJrT4bcDEIfMrr8D&amp;bg=ffffff&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=376635470&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1040&amp;u_aw=1920&amp;u_cd=24&amp;u_his=11&amp;u_tz=540&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;gtm=2wg7r0&amp;sendb=1&amp;ig=1&amp;gclaw=EAIaIQobChMI7eHHq8Sn-QIV49pMAh2PxABHEAAYASAAEgKhqfD_BwE&amp;gac=UA-23566107-15%3AEAIaIQobChMI7eHHq8Sn-QIV49pMAh2PxABHEAAYASAAEgKhqfD_BwE&amp;frm=0&amp;url=https%3A%2F%2Fwww.kcar.com%2Fbd%2FNotcMatrList&amp;ref=https%3A%2F%2Fwww.google.com%2F&amp;tiba=K%20Car%20-%20%EC%A7%81%EC%A0%91%20%EB%A7%A4%EC%9E%85%20%EC%A7%81%EC%A0%91%20%ED%8C%90%EB%A7%A4%ED%95%98%EB%8A%94%20%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20No.1%20%EC%A7%81%EC%98%81%20%EC%A4%91%EA%B3%A0%EC%B0%A8%20%EC%BC%80%EC%9D%B4%EC%B9%B4&amp;auid=1444975468.1659081980&amp;hn=www.googleadservices.com&amp;bttype=purchase&amp;async=1&amp;rfmt=3&amp;fmt=4"></script>
 <meta data-n-head="ssr" data-hid="title" name="title"
 	content="공지사항 및 이벤트">
+	
+	<script type = "text/JavaScript" src = " https://MomentJS.com/downloads/moment.js"></script>
+	
+<style>
+.pagingul {
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-right: 0;
+}
+
+.pagingul li {
+    text-align: center;
+    float: left;
+}
+
+.pagingul li a {
+    display: block;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-right: solid 1px #ccc;
+    box-sizing: border-box;
+}
+
+.pagingul li.on {
+    background: #b70f28;
+}
+
+.pagingul li.on a {
+    color: #fff;
+}
+
+.pagingulEvent {
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-right: 0;
+}
+
+.pagingulEvent li {
+    text-align: center;
+    float: left;
+}
+
+.pagingulEvent li a {
+    display: block;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-right: solid 1px #ccc;
+    box-sizing: border-box;
+}
+
+.pagingulEvent li.on {
+    background: #b70f28;
+}
+
+.pagingulEvent li.on a {
+    color: #fff;
+}
+</style>
 </head>
 <body class="" style="">
 	<noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true">
@@ -198,14 +258,17 @@
 									<div role="tabpanel" id="pane-innertab01" style="display: block;"
 										aria-labelledby="tab-innertab01" class="el-tab-pane">
 										<div class="boardList">
+										<form action="" method="post" id="notice_form_Search">
+										<input type="hidden" name="no" value="notice">
+										
 											<div class="boardSearch">
 												<p>
-													<span>총 0 건</span>의 글이 있습니다.
+													총 <span id="totalNotice"></span> 건의 글이 있습니다.
 												</p>
 												<ul class="boardSearchForm">
 													<li class="searchSelect"><div class="el-select">
 															<!---->
-															<div class="el-input el-input--suffix" onclick="searchDrop()">
+															<div class="el-input el-input--suffix" onclick="searchDrop()" id="drop">
 																<!---->
 																<input type="text" readonly="readonly"
 																	autocomplete="off" placeholder="전체" id="selectValue"
@@ -258,7 +321,7 @@
 															<!---->
 															<!---->
 														</div></li>
-													<li><button type="button"
+													<li><button type="button" id="notice_btn_Search"
 															class="el-button btn10 el-button--default">
 															<!---->
 															<!---->
@@ -266,7 +329,7 @@
 														</button></li>
 												</ul>
 											</div>
-											
+											</form><input type="hidden" value="${msg }" id="msg">
 						<!-- form -->		<form action="" id="f" method="post">
 											<input type="hidden" name="no" id="no" />
 											<div class="boardListTable">
@@ -312,24 +375,8 @@
 																<col name="el-table_3_column_10" width="980">
 																<col name="el-table_3_column_11" width="140">
 															</colgroup>
-															<tbody>
-															<c:forEach var="list" items="${noticeList }">
-																<tr class="el-table__row">
-																	<td rowspan="1" colspan="1"
-																		class="el-table_3_column_9   el-table__cell"><div
-																			class="cell">${list.n_no }</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_3_column_10   el-table__cell"><div
-																			class="cell">
-																				<!---->
-																				<span class="el-link--inner"><span class="title" id="${list.n_no }">${list.n_title }</span></span>
-																			<!---->
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_3_column_11   el-table__cell"><div
-																			class="cell">${list.n_date }</div></td>
-																</tr>
-															</c:forEach>
+															<tbody id="noticetblresult">
+																
 															</tbody>
 														</table>
 														<!---->
@@ -344,38 +391,38 @@
 												</div>
 												<div class="mT40 pagination -sm">
 													<!---->
-													<div class="pagingNum">
-														<span class="textRed">1</span> / 26
+													<div class="pagingNum" id="pagingNum">
+															<ul id="pagingul" class="pagingul">
+
+															</ul>
 													</div>
-													<button type="button"
-														class="el-button pageNext el-button--default">
-														<!---->
-														<!---->
-														<span><img
-															src="/images/common/pagenation-btn-right.svg" alt="다음"></span>
-													</button>
-													<button type="button" style="width: 100px;" onclick="location.href='writeForm'">글쓰기</button>
+													
+												</div>
+												<div>
+														<button type="button" style="width: 100px;" onclick="location.href='noticeWriteForm'">글쓰기</button>
 												</div>
 											</div>
 											</form>
 										</div>
 									</div>
-									<div role="tabpanel" aria-hidden="true" id="pane-innertab02"
+	<!-- event -->					<div role="tabpanel" aria-hidden="true" id="pane-innertab02"
 										aria-labelledby="tab-innertab02" class="el-tab-pane"
 										style="display: none;">
 										<div class="boardList">
+										<form action="" method="post" id="event_form_Search">
+										<input type="hidden" name="no" value="event">
 											<div class="boardSearch">
 												<p>
-													<span>총 4 건</span>의 글이 있습니다.
+													총 <span id="totalEvent"></span> 건의 글이 있습니다.
 												</p>
 												<ul class="boardSearchForm">
 													<li class="searchSelect"><div class="el-select">
 															<!---->
-															<div class="el-input el-input--suffix" >
+															<div class="el-input el-input--suffix" onclick="searchDropE()">
 																<!---->
-																<input type="text" readonly="readonly"
-																	autocomplete="off" placeholder="전체"
-																	class="el-input__inner">
+																<input type="text" readonly="readonly" id="selectValueE"
+																	autocomplete="off" placeholder="전체" name="select"
+																	class="el-input__inner" >
 																<!---->
 																<span class="el-input__suffix"><span
 																	class="el-input__suffix-inner"><i
@@ -390,17 +437,17 @@
 																<!---->
 															</div>
 															<div class="el-select-dropdown el-popper"
-																style="display: none;">
+																style="display: none; min-width: 246px;" id="dropdownE">
 																<div class="el-scrollbar" style="">
 																	<div
 																		class="el-select-dropdown__wrap el-scrollbar__wrap"
 																		style="margin-bottom: -17px; margin-right: -17px;">
 																		<ul
-																			class="el-scrollbar__view el-select-dropdown__list">
+																			class="el-scrollbar__view el-select-dropdown__list" >
 																			<!---->
-																			<li class="el-select-dropdown__item selected"><span>전체</span></li>
-																			<li class="el-select-dropdown__item"><span>제목</span></li>
-																			<li class="el-select-dropdown__item"><span>내용</span></li>
+																			<li class="el-select-dropdown__item selected" onclick="item1E()"><span>전체</span></li>
+																			<li class="el-select-dropdown__item" onclick="item2E()"><span>제목</span></li>
+																			<li class="el-select-dropdown__item" onclick="item3E()"><span>내용</span></li>
 																		</ul>
 																	</div>
 																	<div class="el-scrollbar__bar is-horizontal">
@@ -417,14 +464,14 @@
 														</div></li>
 													<li class="searchInput"><div class="el-input">
 															<!---->
-															<input type="text" autocomplete="off"
+															<input type="text" autocomplete="off" name="search"
 																placeholder="검색어를 입력해 주세요." class="el-input__inner">
 															<!---->
 															<!---->
 															<!---->
 															<!---->
 														</div></li>
-													<li><button type="button"
+													<li><button type="button" id="event_btn_Search"
 															class="el-button btn10 el-button--default">
 															<!---->
 															<!---->
@@ -432,6 +479,9 @@
 														</button></li>
 												</ul>
 											</div>
+		<!-- view -->					</form><input type="hidden" value="${view }" id="view">
+										<form action="" id="eventForm" method="post">
+												<input type="hidden" name="no" id="no" />
 											<div class="boardListTable">
 												<div
 													class="el-table el-table--fit el-table--scrollable-x el-table--enable-row-hover el-table--enable-row-transition"
@@ -442,6 +492,7 @@
 														<div></div>
 														<div></div>
 														<div></div>
+														
 													</div>
 													<div class="el-table__header-wrapper">
 														<table cellspacing="0" cellpadding="0" border="0"
@@ -487,141 +538,9 @@
 																<col name="el-table_4_column_15" width="160">
 																<col name="el-table_4_column_16" width="140">
 															</colgroup>
-															<tbody>
-																<tr class="el-table__row">
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_12   el-table__cell"><div
-																			class="cell">4</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_13   el-table__cell"><div
-																			class="cell">
-																			<a class="el-link el-link--default is-underline">
-																				<!---->
-																				<span class="el-link--inner"><span>[EVENT]
-																						리뉴얼 기념! 케이카 APP 리뷰 이벤트 - 총 210명에게 백화점 상품권/스타벅스
-																						아메리카노 지급</span> <span
-																					class="el-tag el-tag--none el-tag--light">
-																						NEW </span></span>
-																			<!---->
-																			</a>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_14   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.29~2022.08.31</span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_15   el-table__cell"><div
-																			class="cell">
-																			<span class="el-tag el-tag--ing el-tag--light">
-																				진행중 </span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_16   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.29</span>
-																		</div></td>
-																</tr>
-																<tr class="el-table__row">
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_12   el-table__cell"><div
-																			class="cell">3</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_13   el-table__cell"><div
-																			class="cell">
-																			<a class="el-link el-link--default is-underline">
-																				<!---->
-																				<span class="el-link--inner"><span>[EVENT]
-																						22년 8월 고객후기 이벤트 - 후기만 작성해도 100% 당첨!</span> <span
-																					class="el-tag el-tag--NEW el-tag--light">
-																						NEW </span></span>
-																			<!---->
-																			</a>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_14   el-table__cell"><div
-																			class="cell">
-																			<span>2022.08.01~2022.08.31</span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_15   el-table__cell"><div
-																			class="cell">
-																			<span class="el-tag el-tag--ing el-tag--light">
-																				진행중 </span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_16   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.28</span>
-																		</div></td>
-																</tr>
-																<tr class="el-table__row">
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_12   el-table__cell"><div
-																			class="cell">2</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_13   el-table__cell"><div
-																			class="cell">
-																			<a class="el-link el-link--default is-underline">
-																				<!---->
-																				<span class="el-link--inner"><span>[EVENT]
-																						22년 7월 고객후기 이벤트 - 후기만 작성해도 100% 당첨!</span> <span
-																					class="el-tag el-tag--none el-tag--light">
-																						NEW </span></span>
-																			<!---->
-																			</a>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_14   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.17~2022.07.31</span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_15   el-table__cell"><div
-																			class="cell">
-																			<span class="el-tag el-tag--end el-tag--light">
-																				마감 </span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_16   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.18</span>
-																		</div></td>
-																</tr>
-																<tr class="el-table__row">
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_12   el-table__cell"><div
-																			class="cell">1</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_13   el-table__cell"><div
-																			class="cell">
-																			<a class="el-link el-link--default is-underline">
-																				<!---->
-																				<span class="el-link--inner"><span>[당첨자
-																						발표] 22년 6월 고객후기 이벤트 우수작</span> <span
-																					class="el-tag el-tag--none el-tag--light">
-																						NEW </span></span>
-																			<!---->
-																			</a>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_14   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.18~2022.07.31</span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_15   el-table__cell"><div
-																			class="cell">
-																			<span class="el-tag el-tag--end el-tag--light">
-																				마감 </span>
-																		</div></td>
-																	<td rowspan="1" colspan="1"
-																		class="el-table_4_column_16   el-table__cell"><div
-																			class="cell">
-																			<span>2022.07.18</span>
-																		</div></td>
-																</tr>
-																<!---->
+															<tbody id="eventtblresult">
+												
+																
 															</tbody>
 														</table>
 														<!---->
@@ -638,13 +557,18 @@
 													<div class="pagination -sm">
 														<!---->
 														<div class="pagingNum">
-															<span class="textRed">1</span> / 1
+															<ul class="pagingulEvent" id="pagingulEvent">
+															
+															</ul>
 														</div>
 														<!---->
 													</div>
 												</div>
-												
+												<div>
+														<button type="button" style="width: 100px;" onclick="location.href='eventWriteForm'">글쓰기</button>
+												</div>
 											</div>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -657,11 +581,6 @@
 		</div>
 	</div>
 	<script>window.__NUXT__=(function(a,b,c,d,e){return {layout:"LayoutMain",data:[{metaData:{META_KEYWORD:"중고차, 중고차 시세, K Car 직영차, 중고차팔기, 보험, 보증, 진단, 대출, 중고차 매매, 국산차, 수입차",TITLE:"K Car - 직접 매입 직접 판매하는 대한민국 No.1 직영 중고차 케이카",META_DESC:"대한민국 No.1 직영 중고차. 중고차 매입, 중고차 판매, 중고차 최초 환불 서비스, 중고차 온라인 구매 홈서비스, 중고차 매매, 중고차 사이트 "}}],fetch:{},error:c,state:{guest:{guest:{id:a,name:a,phone:a}},page:{name:b},session:{member:{membId:a,membNm:a,mbpno:a,email:a,regDttm:a},token:d},sample:{id:b,name:b},cmnCd:{cmnCd:{},other:{}},cmmCd:{cmnCd:{},other:{}},sc:{homeSvc:{formData:{}}}},serverRendered:d,routePath:e,config:{_app:{basePath:e,assetsPath:"\u002F_nuxt\u002F",cdnURL:c}}}}(void 0,"",null,true,"\u002F"));</script>
-	<script src="/_nuxt/f5f07d3.js" defer=""></script>
-	<script src="/_nuxt/52e5c68.js" defer=""></script>
-	<script src="/_nuxt/89fbbcc.js" defer=""></script>
-	<script src="/_nuxt/38f7038.js" defer=""></script>
-	<script src="/_nuxt/ec7bfe3.js" defer=""></script>
 
 
 	<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe>
@@ -681,24 +600,7 @@
 	<div id="criteo-tags-div" style="display: none;"></div>
 	<iframe src="//tpc.googlesyndication.com/sodar/Beq5YUTp.html" width="0"
 		height="0" style="display: none;"></iframe>
-	<div class="el-menu--horizontal gnbSubMenu typeCenter1"
-		style="position: absolute; top: 106px; left: 209px; z-index: 2045; display: none;"
-		x-placement="bottom-start">
-		<ul role="menu"
-			class="el-menu el-menu--popup el-menu--popup-bottom-start">
-			<div class="menuTitArea">
-				<strong class="menuTit">내차팔기</strong>
-			</div>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				내차팔기 홈서비스</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				법인차매각신청</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				폐차신청</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				내차팔기 고객후기</li>
-		</ul>
-	</div>
+	
 	<iframe height="0" width="0" title="Criteo DIS iframe"
 		style="display: none;"></iframe>
 	<script type="text/javascript" id=""
@@ -729,70 +631,8 @@
 	<script type="text/javascript" id="">kakaoPixel("8101473052006960319").pageView();</script>
 	<iframe height="0" width="0" title="Criteo DIS iframe"
 		style="display: none;"></iframe>
-	<div class="el-menu--horizontal gnbSubMenu typeCenter1"
-		style="position: absolute; top: 106px; left: 305px; z-index: 2029; display: none;"
-		x-placement="bottom-start">
-		<ul role="menu"
-			class="el-menu el-menu--popup el-menu--popup-bottom-start">
-			<div class="menuTitArea">
-				<strong class="menuTit">내차사기</strong>
-			</div>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				차량검색</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				내차사기 홈서비스</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				판매준비차량</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				3D 라이브 뷰</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				최근 본 차량</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				내차사기 고객후기</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				리스차량</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				브랜드 인증관</li>
-		</ul>
-	</div>
-	<div class="el-menu--horizontal gnbSubMenu typeCenter1"
-		style="position: absolute; top: 106px; left: 465px; z-index: 2020; display: none;"
-		x-placement="bottom-start">
-		<ul role="menu"
-			class="el-menu el-menu--popup el-menu--popup-bottom-start">
-			<div class="menuTitArea">
-				<strong class="menuTit">금융</strong>
-			</div>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				할부</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				리스</li>
-		</ul>
-	</div>
-	<div class="el-menu--horizontal gnbSubMenu typeCenter1"
-		style="position: absolute; top: 106px; left: 401px; z-index: 2031; display: none;"
-		x-placement="bottom-start">
-		<ul role="menu"
-			class="el-menu el-menu--popup el-menu--popup-bottom-start">
-			<div class="menuTitArea">
-				<strong class="menuTit">렌트</strong>
-			</div>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				중고차렌트</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				렌트특가</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				신차렌트</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				기사포함렌트</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				렌트지점</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				렌트일반정비소</li>
-			<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-				렌트사고정비소</li>
-		</ul>
-	</div>
+	
+	
 	<script type="text/javascript" id=""
 		src="//static.criteo.net/js/ld/ld.js"></script>
 	<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","771045850193577");fbq("track","PageView");</script>
@@ -820,7 +660,6 @@
 		src="//t1.daumcdn.net/kas/static/kp.js"></script>
 	<script type="text/javascript" id="">window.criteo_q=window.criteo_q||[];var deviceType=/iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";window.criteo_q.push({event:"setAccount",account:73896},{event:"setSiteType",type:deviceType},{event:"viewHome"});</script>
 
-	<script type="text/javascript" id="">var getCnt=$("#kcarSearchList .btn_compare").length,items=[];if(0<getCnt)for(var i=0;i<getCnt&&3!=i;i++)items.push($("#kcarSearchList .btn_compare").eq(i).data("carCd"));window.criteo_q=window.criteo_q||[];var deviceType=/iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";window.criteo_q.push({event:"setAccount",account:73896},{event:"setSiteType",type:deviceType},{event:"viewList",item:items});</script>
 
 	<script type="text/javascript" id="">kakaoPixel("8101473052006960319").pageView();</script>
 	<iframe height="0" width="0" title="Criteo DIS iframe"
@@ -881,6 +720,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 		
+	
 	var navBar = document.getElementById("navBar");
 	var navNotice = document.getElementById("navNotice");
 	var navEvent = document.getElementById("navEvent");
@@ -928,14 +768,310 @@
 			$("#dropdown").hide();
 		}
 		
+		
+		var msg = $("#msg").val();
 		$("document").ready(function(){
-			$("span.title").css("cursor", "pointer").click(function(){
-				let WriteNo = $(this).attr("id");
-				$("#no").val(WriteNo);
-				$("#f").attr("action", "noticeViewProc");
-				$("#f").submit();
-			})
+			
+			if(msg != ""){
+				alert("${msg}");
+			}
+			
+			//글 목록 표시 호출 (테이블 생성)
+			 //getNoticeList(1, dataPerPage, totalData);
+			
+		        $("#notice_btn_Search").click(function() {
+		        	getNoticeList(1, dataPerPage, totalData);
+		        });
+		        
+		        $("#event_btn_Search").click(function() {
+		        	getEventList(1, dataPerPage, totalData);
+		        });
+		        
+		        $("#tab-innertab02").click(function() {
+		        	getEventList(1, dataPerPage, totalData);
+		        });
+		        
+		        var view = $("#view").val();
+		        if(view == "notice" || view == null || view == ""){
+		        	noticeClick();
+		        	getNoticeList(1, dataPerPage, totalData);
+		        }else if(view == "event"){
+		        	eventClick();
+		        	getEventList(1, dataPerPage, totalData);
+		        }
+		        
 		});
+		
+		let totalData; //총 데이터 수
+		let dataPerPage = 10; //한 페이지에 나타낼 글 수
+		let pageCount = 10; //페이징에 나타낼 페이지 수
+		let globalCurrentPage= 1; //현재 페이지
+		
+		function paging(totalData, dataPerPage, pageCount, currentPage) {
+			  console.log("currentPage : " + currentPage);
+			  console.log("totalData : " + totalData);
+			  totalPage = Math.ceil(totalData / dataPerPage); //총 페이지 수
+			  
+			  if(totalPage<pageCount){
+			    pageCount=totalPage;
+			  }
+			  
+			  let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+			  let last = pageGroup * pageCount; //화면에 보여질 마지막 페이지 번호
+			  
+			  if (last > totalPage) {
+			    last = totalPage;
+			  }
+
+			  let first = last - (pageCount - 1); //화면에 보여질 첫번째 페이지 번호
+			  let next = last + 1;
+			  let prev = first - 1;
+
+			  let pageHtml = "";
+			  if (prev > 0) {
+			    pageHtml += "<li><a href='#' id='prev'> 이전 </a></li>";
+			  }
+
+			 //페이징 번호 표시 
+			  for (var i = first; i <= last; i++) {
+			    if (currentPage == i) {
+			      pageHtml +=
+			        "<li class='on'><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    } else {
+			      pageHtml += "<li><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    }
+			  }
+
+			  if (last < totalPage) {
+			    pageHtml += "<li><a href='#' id='next'> 다음 </a></li>";
+			  }
+
+			  $("#pagingul").html(pageHtml);
+
+			//페이징 번호 클릭 이벤트 
+			  $("#pagingul li a").click(function () {
+			    let $id = $(this).attr("id");
+			    selectedPage = $(this).text();
+				
+			    if ($id == "next") selectedPage = next;
+			    if ($id == "prev") selectedPage = prev;
+			    
+			    //전역변수에 선택한 페이지 번호를 담는다...
+			    globalCurrentPage = selectedPage;
+			    //글 목록 표시 재호출
+			    getNoticeList(selectedPage, dataPerPage, totalData);
+			    
+			  });
+			}
+		
+		function getNoticeList(currentPage, dataPerPage, totalData){
+			$.ajax({
+		          url : 'GetNotcMatrList',
+		          type : 'POST',
+		          data : $("#notice_form_Search").serialize(),
+		          success : function(obj) {
+			          console.log(obj);
+			          console.log(obj.noticeList);
+			          var htmlString = "";
+			          var total = "";
+ 			          currentPage = Number(currentPage);
+			          dataPerPage = Number(dataPerPage);
+			          totalData = Number(obj.noticeList.length);
+			          for ( var i = (currentPage - 1) * dataPerPage;
+			          i < (currentPage - 1) * dataPerPage + dataPerPage;
+			          i++) { 
+			        	  if(obj.noticeList[i] == null) {
+			        		  break;
+			        	  }
+			        	  htmlString += "<tr class='el-table__row'>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_3_column_9   el-table__cell'>";
+						  htmlString += "		<div class='cell'>" + obj.noticeList[i].n_no + "</div>";
+						  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_3_column_10   el-table__cell'>";
+			        	  htmlString += "		<div class='cell'>";
+			        	  htmlString += "			<span class='el-link--inner'>";		
+			        	  htmlString += "				<a href='noticeViewProc?no=" + obj.noticeList[i].n_no + "'>" + obj.noticeList[i].n_title + "</a>";
+			        	  htmlString += "			</span>";
+			        	  htmlString += "		</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_3_column_11   el-table__cell'>";
+			        	  htmlString += "		<div class='cell'>" + obj.noticeList[i].n_date + "</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "</tr>";
+			          }
+			          
+			          total += obj.noticeList.length;
+			          $("#totalNotice").html(total);
+			          $("#noticetblresult").html(htmlString);
+			        	//페이징 표시 호출
+						 paging(totalData, dataPerPage, pageCount, globalCurrentPage);
+			          
+		          },
+		           error : function(e) {
+		         	 console.log(e);
+		          }
+		        });
+		}
+		
+		
+		/* event */
+		function getEventList(currentPage, dataPerPage, totalData){
+			$.ajax({
+		          url : 'GetEvent',
+		          type : 'POST',
+		          data : $("#event_form_Search").serialize(),
+		          success : function(obj) {
+			          console.log(obj);
+			          //var data = JSON.parse(obj);
+			          console.log(obj.eventList);
+			          var htmlString = "";
+			          var total = "";
+					  var date = new Date();
+			          var now = dateFormat(date);
+			          var eventStatus = "";
+			          currentPage = Number(currentPage);
+			          dataPerPage = Number(dataPerPage);
+			          totalData = Number(obj.eventList.length);
+			          for ( var i = (currentPage - 1) * dataPerPage;
+			          i < (currentPage - 1) * dataPerPage + dataPerPage;
+			          i++) { 
+			        	  if(obj.eventList[i] == null) {
+			        		  break;
+			        	  }
+			        	  var startD = new Date(obj.eventList[i].e_startDate);
+			        	  var endD = new Date(obj.eventList[i].e_endDate);
+			        	  var startDate = dateFormat(startD);
+			        	  var endDate = dateFormat(endD);
+			        	  
+			        	  if((now < startDate) == true){
+			        		  eventStatus = "진행 예정";
+			        	  }else if((endDate < now) == true){
+			        		  eventStatus = "마감";
+			        	  }else {
+			        		  eventStatus = "진행중";
+			        	  }
+			        	  
+			        	  htmlString += "<tr class='el-table__row'>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_12   el-table__cell'>";
+						  htmlString += "		<div class='cell'>" + obj.eventList[i].e_no + "</div>";
+						  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_13   el-table__cell'>";
+			        	  htmlString += "		<div class='cell'>";
+			        	  htmlString += "			<span class='el-link--inner'>";		
+			        	  htmlString += "				<a href='eventViewProc?no=" + obj.eventList[i].e_no + "'>" + obj.eventList[i].e_title + "</a>";
+			        	  htmlString += "			</span>";
+			        	  htmlString += "		</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_14   el-table__cell'>";
+			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_startDate + " ~ " + obj.eventList[i].e_endDate + "</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_15   el-table__cell'>";
+			        	  htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_16   el-table__cell'>";
+			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_date + "</div>";
+			        	  htmlString += "	</td>";
+			        	  htmlString += "</tr>";
+			        	  
+			          }
+			          total += obj.eventList.length;
+			          $("#totalEvent").html(total);
+			          $("#eventtblresult").html(htmlString);
+			          pagingEvent(totalData, dataPerPage, pageCount, globalCurrentPage);
+		          
+		          },
+		          error : function(e) {
+		         	 console.log(e);
+		          }
+		        });
+		}
+		
+		function pagingEvent(totalData, dataPerPage, pageCount, currentPage) {
+			  console.log("currentPage : " + currentPage);
+			  console.log("totalData : " + totalData);
+			  totalPage = Math.ceil(totalData / dataPerPage); //총 페이지 수
+			  
+			  if(totalPage<pageCount){
+			    pageCount=totalPage;
+			  }
+			  
+			  let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+			  let last = pageGroup * pageCount; //화면에 보여질 마지막 페이지 번호
+			  
+			  if (last > totalPage) {
+			    last = totalPage;
+			  }
+
+			  let first = last - (pageCount - 1); //화면에 보여질 첫번째 페이지 번호
+			  let next = last + 1;
+			  let prev = first - 1;
+
+			  let pageHtml = "";
+			  if (prev > 0) {
+			    pageHtml += "<li><a href='#' id='prevEvent'> 이전 </a></li>";
+			  }
+
+			 //페이징 번호 표시 
+			  for (var i = first; i <= last; i++) {
+			    if (currentPage == i) {
+			      pageHtml +=
+			        "<li class='on'><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    } else {
+			      pageHtml += "<li><a href='#' id='" + i + "'>" + i + "</a></li>";
+			    }
+			  }
+
+			  if (last < totalPage) {
+			    pageHtml += "<li><a href='#' id='nextEvent'> 다음 </a></li>";
+			  }
+
+			  $("#pagingulEvent").html(pageHtml);
+
+			//페이징 번호 클릭 이벤트 
+			  $("#pagingulEvent li a").click(function () {
+			    let $id = $(this).attr("id");
+			    selectedPage = $(this).text();
+				
+			    if ($id == "nextEvent") selectedPage = next;
+			    if ($id == "prevEvent") selectedPage = prev;
+			    
+			    //전역변수에 선택한 페이지 번호를 담는다...
+			    globalCurrentPage = selectedPage;
+			    //글 목록 표시 재호출
+			    getEventList(selectedPage, dataPerPage, totalData);
+			    
+			  });
+			}
+		
+		function dateFormat(date) {
+	        let month = date.getMonth() + 1;
+	        let day = date.getDate();
+
+	        month = month >= 10 ? month : '0' + month;
+	        day = day >= 10 ? day : '0' + day;
+
+	        return date.getFullYear() + '-' + month + '-' + day;
+		}
+		
+		function searchDropE() {
+			$("#dropdownE").show();
+		}
+		
+		function item1E(){
+			$("#selectValueE").val("");
+			$("#dropdownE").hide();
+		}
+		
+		function item2E(){
+			$("#selectValueE").val("제목");
+			$("#dropdownE").hide();
+		}
+		
+		function item3E(){
+			$("#selectValueE").val("내용");
+			$("#dropdownE").hide();
+		}	
+		
 		
 	</script>
 </body>

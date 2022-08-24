@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.one.kcar.dao.buy.IBrandDAO">
+
 	<select id="brandList" resultType="com.one.kcar.dto.buy.BrandDTO">
 		SELECT cbc.cb_brand, cbcb.cb_domestic,cbcb.cb_englishlan,cbcb.cb_korealan,cbcb.cb_photo,cbc.count FROM
 			(SELECT cb.cb_brand,  COUNT(c.c_num) count FROM
@@ -29,18 +30,18 @@
             			KCAR_CAR c 
             			LEFT JOIN KCAR_CARBRAND cb 
             			on c.cb_brand = cb.cb_brand 
-            			WHERE cb.cb_domestic = '해외'
+            			WHERE cb.cb_domestic = '해외' and c.c_saleStatus = 0
         			) a 
        			FULL OUTER JOIN KCAR_CAR_TAG b on a.c_num = b.c_num
        			<if test="brand != null and brandModel != null">
-					WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel}
+					join WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel}
 				</if>
 				<if test="brand != null and brandModel == null">
 					WHERE cb_brand = #{brand}
 				</if>
 				<if test="alignment == '기본정렬' or alignment == null">
 					ORDER BY DBMS_RANDOM.RANDOM
-				</if>
+				</if>C_T_SPECIALOPTION
 				<if test="alignment == '최근연식순'">
 					ORDER BY c_year desc,c_distance asc
 				</if>
@@ -68,46 +69,21 @@
 	    FROM KCAR_CARBRAND_MODEL cb 
 	    LEFT JOIN  KCAR_CAR c
 	    on cb.cb_m_model = c.cb_m_model
-	    WHERE cb.cb_brand = #{brand}
+	    WHERE cb.cb_brand = #{brand} AND c.c_saleStatus = 0
 	    GROUP BY cb.cb_m_model
 	    ORDER BY  cb.cb_m_model
 	</select>
 	<select id="brandCarAllCnt" parameterType="String" resultType="String">
 		SELECT SUM(COUNT(c_num)) AS COUNT FROM KCAR_CAR 
 		<if test="brand != null and brandModel != null ">
-			WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel}
+			WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel} AND c_saleStatus = 0
 		</if>
 		<if test="brand != null and brandModel == null">
-			WHERE cb_brand = #{brand}
+			WHERE cb_brand = #{brand} AND c_saleStatus = 0
 		</if>
 		group by cb_brand
 	</select>
 	<select id="questionList" resultType="com.one.kcar.dto.buy.QuestionDTO">
 		SELECT * FROM KCAR_QUESTION
 	</select>
-	
-	
-	
-	<!-- db에 insert하기 com.one.kcar.dto.buy.CarDTO-->
-	<!-- <insert id="insertCarBrand" parameterType="String">
-		INSERT INTO KCAR_CARBRAND VALUES(#{cb_brand},#{cb_koreaLan},#{cb_EnglishLan},#{cb_photo},#{cb_domestic})
-		INSERT INTO KCAR_CARBRAND(cb_brand) VALUES(#{cb_brand})
-	</insert>
-	<insert id="insertCarBrandModel" parameterType="String">
-		INSERT INTO KCAR_CARBRAND_MODEL VALUES(#{cb_brand},#{cb_m_model})
-	</insert>
-
-	<insert id="insertCarTag" parameterType="String">
-		INSERT INTO KCAR_CAR_TAG(c_num, c_t_distance, c_t_newCar, c_t_fourWheel,c_t_oneOwner) VALUES(#{c_num},#{c_t_distance},#{c_t_newCar},#{c_t_fourWheel},#{c_t_oneOwner})
-	</insert>
-	<insert id="insertContract" parameterType="String">
-		INSERT INTO KCAR_CAR_CONTRACT VALUES(contractIndex_seq.NEXTVAL, #{c_num},#{c_c_b_email},#{c_c_s_email})
-	</insert>
-	<insert id="insertReview" parameterType="String">
-		INSERT INTO KCAR_BUY_REVIEW VALUES(#{c_c_index}, #{m_r_title},#{m_r_review},#{m_r_registDate},#{m_r_image})
-	</insert>
-	<insert id="insertCar" parameterType="String">
-		INSERT INTO KCAR_CAR VALUES(#{c_num},#{c_model},#{cb_brand},#{cb_m_model},#{c_year},#{c_distance},#{c_price},#{c_color},#{c_fuel},#{c_change},#{c_acident},#{c_seat},#{c_rent},#{st_name},#{c_photo})
-	</insert>
-	 -->
 </mapper>

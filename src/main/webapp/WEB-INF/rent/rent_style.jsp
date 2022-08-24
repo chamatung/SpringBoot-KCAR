@@ -26,6 +26,95 @@
 	-moz-osx-font-smoothing: grayscale
 }
 
+#reviewModalBack {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 2010;
+}
+
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow{
+  width: 1100px;
+  height: 600px;
+  position: relative;
+  margin: 50px auto;
+  overflow: hidden;   
+  /*리스트 형식으로 이미지를 일렬로 
+  정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
+  hidden으로 숨겨줘야됨*/
+}
+
+
+.slides{
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 800px; /* 슬라이드할 사진과 마진 총 넓이 */
+  height : 550px;
+  transition: left 0.5s ease-out; 
+  /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해
+첫번째 슬라이드만 margin-left조정 */
+.slides li:first-child{
+  margin-left: 50px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child){
+  float: left;
+  margin-right: 50px;
+}
+
+.slides li{
+  float: left;
+}
+
+.controller span{
+  position:absolute;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 50%;
+  padding: 10px 20px;
+  top: 50%;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover{
+  background-color: rgba(128, 128, 128, 0.11);
+}
+
+.prev{
+  left: 15px;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover{
+  transform: translateX(-10px);
+}
+
+.next{
+  right: 15px;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover{
+  transform: translateX(10px);
+}
+
+/* 이미지슬라이드 */
+
 .repairSearch {
 	margin : auto;
 	width : 900px;
@@ -6673,7 +6762,8 @@ to {
 
 }
 .el-row {
-	box-sizing: border-box
+	box-sizing: border-box;
+	
 }
 
 .el-row:after, .el-row:before {

@@ -3,7 +3,7 @@ package com.one.kcar.dto.cs;
 public class NoticeDTO {
 	/*
 	 * create table KCAR_NOTICE( n_no number, n_title varchar2(100) not null,
-	 * n_content varchar2(1500) not null, n_date varchar2(20) not null );
+	 * n_content varchar2(1500) not null, n_date varchar2(20) not null, primary key(n_no) );
 	 */
 	private int n_no;
 	private String n_title;

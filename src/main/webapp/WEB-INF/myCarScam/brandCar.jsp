@@ -112,7 +112,7 @@
 						<input type="hidden" id="filterCarAllCount"value="${filterCarAllCount }">
 						<input type="hidden" id="brandHidden">
 						<input type="hidden" id="modelHidden">
-						<input type="hidden" id="alignmentHidden" value="basic">
+						<input type="hidden" id="alignmentHidden" value="기본정렬">
 						<div class="listLine">
 							<ul>
 								<li class="carTotal">총 <span class="textRed">${filterCarAllCount }</span>대
@@ -145,7 +145,7 @@
 														<li class="el-select-dropdown__item" value="기본정렬" onclick="alignmentMethodCheck('기본정렬')"><span>기본정렬</span></li>
 														<li class="el-select-dropdown__item" value="최근연식순" onclick="alignmentMethodCheck('최근연식순')"><span>최근연식순</span></li>
 														<li class="el-select-dropdown__item" value="낮은연식순" onclick="alignmentMethodCheck('낮은연식순')"><span>낮은연식순</span></li>
-														<li class="el-select-dropdown__item" value="적은주행거리순" onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
+								0						<li class="el-select-dropdown__item" value="적은주행거리순" onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
 														<li class="el-select-dropdown__item" value="많은주행거리순" onclick="alignmentMethodCheck('많은주행거리순')"><span>많은주행거리순</span></li>
 														<li class="el-select-dropdown__item" value="낮은가격순" onclick="alignmentMethodCheck('낮은가격순')"><span>낮은가격순</span></li>
 														<li class="el-select-dropdown__item" value="높은가격순" onclick="alignmentMethodCheck('높은가격순')"><span>높은가격순</span></li>
@@ -171,10 +171,11 @@
 						<div>
 							<div class="carListWrap mT20">
 
-								<c:forEach var="brandCar" items="${brandCarAllList }">
+								<c:forEach var="brandCar" items="${brandCarAllList }" varStatus="status">
+									<input type="hidden" value="${brandCar.c_num }" class="carNumHidden">
 									<div class="carListBox" style="cursor: pointer;">
 										<!---->
-										<div class="carListImg" style="cursor: pointer;">
+										<div class="carListImg" style="cursor: pointer;" onclick="detailPage('${status.index}')">
 											<!---->
 											<div>
 												<img src="${brandCar.c_photo }" alt="챠량이미지"
@@ -191,15 +192,16 @@
 													</button></li>
 											</ul>
 										</div>
-										<ul class="listViewLabel">
+										<ul class="listViewLabel" onclick="detailPage('${status.index}')">
 											<!---->
 											<!---->
 										</ul>
 										<div class="detailInfo">
-											<div class="carName">
+											<div class="carName" onclick="detailPage('${status.index}')">
 												<h3>${brandCar.cb_brand }&nbsp;${brandCar.cb_m_model }&nbsp;${brandCar.c_fuel }
 												</h3>
 											</div>
+										
 											<div class="carListFlex">
 												<div class="carExpIn">
 													<p class="carExp">${brandCar.c_price }만원</p>
@@ -229,7 +231,17 @@
 										</div>
 									</div>
 								</c:forEach>
-
+								<script>
+									var carListImg = document.querySelectorAll('.carListImg');
+									var ListViewLabel = document.querySelectorAll('.ListViewLabel');
+									var carName = document.querySelectorAll('.carName');
+									var carNumHidden = document.querySelectorAll('.carNumHidden');
+									
+									var detailPage = function(index){
+										var carNum = carNumHidden[index].value;
+										window.open('detail/carInfo?c_num='+carNum);
+									}
+								</script>
 							</div>
 						</div>
 
@@ -437,226 +449,7 @@
 	</div>
 	<iframe id="groobeeBox" name="groobeeBox" style="display: none;"></iframe>
 	<div id="criteo-tags-div" style="display: none;"></div>
-	<script type="text/javascript">
-		//paging 스크립트
-		var chorme = document.querySelector('.chrome');
-		var req;
-		let brandHidden = document.getElementById('brandHidden');
-		let modelHidden = document.getElementById('modelHidden');
-		let alignmentHidden = document.getElementById('alignmentHidden');
-		function send(data, currentPage) {
-			req = new XMLHttpRequest();
-			req.onreadystatechange = pageChange;
-			req.open('post', 'brandCarPaging');
-			var result = {
-				data : data,
-				currentPage : currentPage,
-				brand : brandHidden.value,
-				model : modelHidden.value, 
-				alignment : alignmentHidden.value //정렬
-				//alignmentMethod : modelHidden.value
-			}
-			result = JSON.stringify(result);
-			req.setRequestHeader('Content-Type',
-					'application/json; charset=UTF-8');
-			req.send(result);
-		}
-
-		function pageChange() {
-			if (req.readyState == 4 & req.status == 200) {
-				var ajaxBrandAllListPage = document.getElementById('ajaxBrandAllListPage');
-				ajaxBrandAllListPage.innerHTML = req.responseText;
-				ajaxBrandAllListPage.scrollIntoView({
-					behavior : "smooth",
-					block : "start",
-					inline : "nearest"
-				}); // ajaxBrandAllListPage div태그 위치로 이동
-			}
-		}
-
-		//modal창 태그
-		var modalMenu = document.getElementById('modalMenu');
-		var modalMenuBack = document.getElementById('modalMenuBack');
-		
-		//modal창 brandTag, 각 브랜드, 모델 라디오 그룹
-		var searchBrandTag = document.getElementById('searchBrandTag');
-		var radioBrandGroup = document.getElementById('radioBrandGroup');
-		var radioBrandModelGroup = document.getElementById('radioBrandModelGroup');
-		var searchBrandModelTagSpan = document.getElementById('searchBrandModelTagSpan');
-		
-		//modal창 open radioBrandGroup을 보여줌
-		function modalMenuOpen() {
-			document.body.classList.add('el-popup-parent--hidden');
-			
-			radioBrandGroup.style.display = "flex";
-			radioBrandModelGroup.style.display = "none";
-			
-			modalMenu.style.display = "flex";
-			modalMenuBack.style.display = "flex";
-			
-			brandHidden.value = null;
-			modelHidden.value = null;
-			
-			var brandCarAllCount = document.getElementById('brandCarAllCount');
-			applyBtn.innerHTML = "차량보기( "+ brandCarAllCount.value +" 대)";
-			applyBtn.value = brandCarAllCount.value;
-		}
-		//modal창 close
-		function modalMenuClose() {
-			document.body.classList.remove('el-popup-parent--hidden');
-			radioBrandGroup.style.display = "none";
-			radioBrandModelGroup.style.display = "none";
-			
-			modalMenu.style.display = "none";
-			modalMenuBack.style.display = "none";
-			
-			searchBrandTag.style.display = "none";
-			searchBrandModelTagSpan.style.display = "none";
-			
-			brandHidden.value="";
-			modelHidden.value="";
-			
-			var filterCarAllCount = document.getElementById('filterCarAllCount');
-			applyBtn.innerHTML = "차량보기( "+ filterCarAllCount.value +" 대)";
-			applyBtn.value = filterCarAllCount.value;
-			
-		}
-
-		//modal창 radioBrandGroup에서 radioBrandModelGroup로 변경
-		var cnt = 0;
-		function modalModelMenu(brand,count) {
-			//버블링현상 방지 코드 시작
-			if (cnt == 1) {
-				cnt = 0;
-				return;
-			}
-			cnt++;
-			//버블링 현상 방지코드 끝
-			brandHidden.value=brand;
-			
-			searchBrandTag.style.display = "flex";
-			
-			var searchBrandTagSpan = document.getElementById('searchBrandTagSpan');
-			searchBrandTagSpan.innerHTML = brand;			
-			searchBrandTagSpan.value = brand;
-			
-			radioBrandGroup.style.display = "none";
-			radioBrandModelGroup.style.display = "flex";
-			
-			applyBtn.innerHTML = "차량보기( "+ count +" 대)";
-			
-			sendModal(brand);
-		}
-		function sendModal(brand) {
-			if (req == null) {
-				req = new XMLHttpRequest();
-			}
-			req.onreadystatechange = modelMenu;
-			req.open('post', 'modal');
-			req.send(brand);
-			/* 여기서 brand값을 applyBtn에 줄 수 있게 중간 함수 호출해놓기 */
-		}
-
-		function modelMenu() {
-			if (req.readyState == 4 & req.status == 200) {
-				radioBrandModelGroup.innerHTML = req.responseText;
-			}
-		}
-		
-		function modalModelAdd(brand,model,count){
-			searchBrandModelTagSpan.innerHTML = model;
-			searchBrandModelTagSpan.value= model;
-			searchBrandModelTagSpan.style.display = "flex";
-			
-			applyBtn.innerHTML = "차량보기( "+ count +" 대)";
-			
-			brandHidden.value=brand;
-			modelHidden.value=model;
-			/* 여기서 brand,model값을 applyBtn에 줄 수 있게 중간 함수 호출해놓기 */
-		}
-		
-		function applyBtnClick(data, currentPage){
-			document.body.classList.remove('el-popup-parent--hidden');
-			radioBrandGroup.style.display = "none";
-			radioBrandModelGroup.style.display = "none";
-			
-			modalMenu.style.display = "none";
-			modalMenuBack.style.display = "none";
-			
-			searchBrandTag.style.display = "none";
-			searchBrandModelTagSpan.style.display = "none";
-			
-			brand = brandHidden.value;
-			model = modelHidden.value;
-			
-			send(data, currentPage);
-		}
-		
-		//정렬기능
-		var dropdownAlignment;
-		var alignment;
-		var alignmentMethod;
-		var alignCnt = 0;
-		var alignmentClick = function(){
-			dropdownAlignment = document.querySelector('.el-select-dropdown.el-popper');
-			alignment = document.getElementById('alignment');
-			alignmentMethod = document.getElementById('alignmentMethod');
-			alignCnt ++;
-			
-			if(alignCnt % 2 != 0){
-				dropdownAlignment.style.display = "block"
-				alignmentMethod.style.display = "flex";
-				alignmentMethod.style.alignContent = "flex-start";
-				alignmentMethod.style.flexDirection = "column";
-				alignmentMethod.style.flexWrap = "wrap";
-				alignmentMethod.style.overFlow = "auto";
-			}else{
-				alignmentMethod.style.remove = "display"
-				alignmentMethod.style.remove = "alignContent"
-				alignmentMethod.style.remove = "flexDirection"
-				alignmentMethod.style.remove = "flexWrap"
-				alignmentMethod.style.remove = "overFlow"
-				dropdownAlignment.style.display = "none"
-			}
-		}
-		
-		var alignmentMethodCheck = function(alignMethod){
-			dropdownAlignment = document.querySelector('.el-select-dropdown.el-popper');
-			alignment = document.getElementById('alignment');
-			alignmentMethod = document.getElementById('alignmentMethod');
-			
-			alignCnt ++;
-			alignmentMethod.style.remove = "display"
-			alignmentMethod.style.remove = "alignContent"
-			alignmentMethod.style.remove = "flexDirection"
-			alignmentMethod.style.remove = "flexWrap"
-			alignmentMethod.style.remove = "overFlow"
-			dropdownAlignment.style.display = "none"
-			if(alignMethod != alignmentHidden.value){
-				alignmentHidden.value=alignMethod;
-				send('','1');
-			}
-		}
-		var questionContent = document.querySelectorAll('.el-collapse-item__wrap'); // content클래스들
-		var questionCnt = 0; // 클릭시마다 cnt 세기 열기 닫기 구분용
-		var questionIndex = -1; // content열고 다시 다른 content 열때 기존 content닫기 위한 index
-		var question = function(index){ // title 클릭 함수
-			console.log(index);
-			console.log(questionCnt);
-			console.log(questionIndex);
-			if(questionIndex != index & questionIndex != -1){
-				questionContent[questionIndex].style.display = "none";
-				questionCnt = 0;
-			}
-			questionCnt++;
-			if(questionCnt % 2 != 0){
-				questionContent[index].style.display = "block";
-				questionIndex = index;
-			}else{
-				questionContent[index].style.display = "none";
-				questionIndex = -1;
-			}
-		}
-	</script>
+	<script src="js/question.js"></script>
+	<script src="js/brandCar.js"></script>
 </body>
 </html>

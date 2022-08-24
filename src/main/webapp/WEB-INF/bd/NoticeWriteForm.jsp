@@ -129,45 +129,22 @@
 							<div>
 								<div class="boardView">
 									<div class="boardViewTitle">
-										<h5>
-											<input type="text" autocomplete="off" maxlength="30" placeholder="제목 입력" class="el-input__inner" id="title" name="title">
-											<!---->
-										</h5>
-										<!-- <p>
-											<span>관리자</span> <span>2022.08.01 11:00:51</span>
-										</p> -->
-									</div>
-									<div class="borderViewCon">
-										<textarea autocomplete="off" rows="2" placeholder="내용 입력" class="el-textarea__inner" id="content" name="content" style="resize: none; min-height: 173px; height: 350px;"></textarea>
+										<table style="width: 100%;">
+											<tr>
+												<td style="width: 150px; text-align: center;">제목</td>
+												<td><input type="text" autocomplete="off" maxlength="30" placeholder="제목 입력" class="el-input__inner" id="title" name="title"></td>
+											</tr>
+											<tr style="height: 20px;"></tr>
+											<tr>
+												<td style="width: 150px; text-align: center;">내용</td>
+												<td><textarea autocomplete="off" rows="2" placeholder="내용 입력" class="el-textarea__inner" id="content" name="content" style="resize: none; min-height: 173px; height: 350px;"></textarea></td>
+											</tr>
+										</table>
 									</div>
 								</div>
 								<div class="searchTrigger box Large maxW97 el-row">
-									<button class="button apply" type="submit">작성 완료</button>
+									<button class="button apply" id="submitButton">작성 완료</button>
 								</div>
-								<!-- <div class="boardViewPaging">
-									<ul>
-										<li class="bvPN">이전글</li>
-										<li class="bvPT"><a
-											class="el-link el-link--default is-underline">
-												
-												<span class="el-link--inner"> [공지] K Car 사이트 개편에 따른 이용
-													가이드 안내 </span>
-											
-										</a></li>
-										<li class="bvPD">2022.07.18</li>
-									</ul>
-									<ul>
-										<li class="bvPN">다음글</li>
-										<li class="bvPT"><a
-											class="el-link el-link--default is-underline">
-												
-												<span class="el-link--inner"> [공지] K Car 전국 직영점 8월 휴점
-													안내 </span>
-											
-										</a></li>
-										<li class="bvPD">2022.08.11</li>
-									</ul>
-								</div> -->
 							</div>
 						</form>
 					</div>
@@ -231,5 +208,26 @@
 		style="display: none;"></iframe>
 	<iframe height="0" width="0" title="Criteo DIS iframe"
 		style="display: none;"></iframe>
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		
+		$("#submitButton").click(function(){
+			var title = $("#title").val();
+			var content = $("#content").val();
+			if(title == null || title == ""){
+				alert("제목을 입력해주세요");
+				return false;
+			}else if(content = null || content == ""){
+				alert("내용을 입력해주세요");
+				return false;
+			}else {
+				$("#submitButton").setAttribute('type', 'submit');
+			}
+		});
+			
+		
+		
+	</script>
 </body>
 </html>

@@ -4,7 +4,11 @@
 <head>
 <title>K Car - 직접 매입 직접 판매하는 대한민국 No.1 직영 중고차 케이카</title>
 <%@ include file="member/home_style.jsp" %>
-
+<c:if test="${not empty msg }">
+	<script>
+		alert("${msg}");
+	</script>
+</c:if>
 </head>
 <body>
 <c:if test="${not empty msg }">
@@ -1455,29 +1459,34 @@
 												</div>
 											</div>
 											<div class="el-tabs__content">
+											<form action="" method="post" id="notice_form">
+											<input type="hidden" name="no" value="notice">
 												<div role="tabpanel" id="pane-notice"
 													aria-labelledby="tab-notice" class="el-tab-pane">
-													<p class="notiTxt">
+													<!-- <p class="notiTxt">
 														<a>[공지] K Car 시스템 점검에 따른 서비스 일시 중단 안내</a><i
 															class="icnNew2">NEW</i>
 													</p>
 													<p class="notiTxt">
 														<a>[공지] K Car 사이트 개편에 따른 이용 가이드 안내</a>
-														<!---->
+														
 													</p>
 													<p class="notiTxt">
 														<a>[공지] 침수차 안심 보상 서비스 </a>
-														<!---->
+														
 													</p>
 													<p class="notiTxt">
 														<a>[공지] K Car 시스템 점검에 따른 서비스 일시 중단 안내</a>
-														<!---->
-													</p>
+														
+													</p> -->
 												</div>
+											</form>
+											<form action="" method="post" id="event_form">
+											<input type="hidden" name="no" value="event">
 												<div role="tabpanel" aria-hidden="true" id="pane-event"
 													aria-labelledby="tab-event" class="el-tab-pane"
 													style="display: none;">
-													<p class="notiTxt">
+													<!-- <p class="notiTxt">
 														<a>[EVENT] 리뉴얼 기념! 케이카 APP 리뷰 이벤트 - 총 210명에게 백화점
 															상품권/스타벅스 아메리카노 지급</a><i class="icnNew2">NEW</i>
 													</p>
@@ -1487,20 +1496,24 @@
 													</p>
 													<p class="notiTxt">
 														<a>[EVENT] 22년 7월 고객후기 이벤트 - 후기만 작성해도 100% 당첨!</a>
-														<!---->
+														
 													</p>
 													<p class="notiTxt">
 														<a>[당첨자 발표] 22년 6월 고객후기 이벤트 우수작</a>
-														<!---->
-													</p>
+														
+													</p> -->
 												</div>
+											</form>
 											</div>
 										</div>
-										<a class="notiMore el-link el-link--default is-underline">
+										<form action="NotcMatrList" method="post" id="form"> 
+										<input type="hidden" name="listViewno" id="listViewno" value="">
+										<a class="notiMore el-link el-link--default is-underline" id="noticeEvent">
 											<!---->
 											<span class="el-link--inner"> 더보기 </span>
 										<!---->
 										</a>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -1621,7 +1634,9 @@
 				브랜드 인증관</li>
 		</ul>
 	</div>
-
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/homeNotice.js" type="text/javascript"></script>
 	
 </body>
 </html>

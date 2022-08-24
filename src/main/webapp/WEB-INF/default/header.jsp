@@ -34,13 +34,17 @@
 						</div>
 
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href ="/sc/HomeSvcMain">내차팔기 홈서비스</a></li>
+							<a href="/sc/HomeSvcMain">내차팔기 홈서비스</a>
+						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href ="/sc/CorpCarDispslApl">법인차매각신청</a></li>
+							<a href="/sc/CorpCarDispslApl">법인차매각신청</a>
+						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href= "/sc/ScrpcaApl">폐차신청</a></li>
+							<a href="/sc/ScrpcaApl">폐차신청</a>
+						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href="/sc/SellCustReview">내차팔기 고객후기</a></li>
+							<a href="/sc/SellCustReview">내차팔기 고객후기</a>
+						</li>
 					</ul>
 				</div>
 				<li role="menuitem" aria-haspopup="true" class="el-submenu"><div
@@ -58,16 +62,18 @@
 						<div class="menuTitArea">
 							<strong class="menuTit">내차사기</strong>
 						</div>
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href ="/vehicleSearch">차량검색</a></li>
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href= "/homeSvc">내차사기
-							홈서비스</a></li>
-					
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href ="/latelyViewedCar">최근
-							본 차량</a></li>
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href ="/BuyCustReview">내차사기
-							고객후기</a></li>
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href ="/brandCar">브랜드
-							인증관</a></li>
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a
+							href="/carbuy">차량검색</a></li>
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a
+							href="/homeSvc">내차사기 홈서비스</a></li>
+
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a
+							href="/latelyViewedCar">최근 본 차량</a></li>
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a
+							href="/BuyCustReview">내차사기 고객후기</a></li>
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a
+							href="/brandCar">브랜드 인증관</a></li>
+
 					</ul>
 				</div>
 
@@ -85,26 +91,33 @@
 						<div class="menuTitArea">
 							<strong class="menuTit">렌트</strong>
 						</div>
-						<li role="menuitem" tabindex="-1" 
-						class="el-menu-item menuItem"><a href="#">
-							중고차렌트</a></li>
-						
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
+							<a href="http://localhost/rentUsed">중고차렌트</a>
+						</li>
+
 						<li role="menuitem" tabindex="-1"
-							class="el-menu-item menuItem is-active"><a href="/rentNewCar">신차렌트</a></li>
-						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem"><a href="/rentDriver">
-							기사포함렌트</a></li>
+							class="el-menu-item menuItem is-active"><a
+							href="http://localhost/rentNewCar">신차렌트</a></li>
+
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href="/restShop">렌트지점</a></li>
+							<a href="http://localhost/rentDriver">기사포함렌트</a>
+						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href="/rentNormalRepair">렌트일반정비소</a></li>
+							<a href="http://localhost/rentShop">렌트지점</a>
+						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href="/rentAccidentRepair">렌트사고정비소</a></li>
+							<a href="http://localhost/rentNormalRepair">렌트일반정비소</a>
+						</li>
+						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
+							<a href="http://localhost/rentAccidentRepair">렌트사고정비소</a>
+						</li>
 					</ul>
 				</div>
 
 			</ul>
 			<div class="navLink">
-				<a href="//brandCar"><span>브랜드 인증관</span></a> <a><span>전국 직영점</span></a> 
+				<a href="/brandCar"><span>브랜드 인증관</span></a> <a href="/db/drCntr"><span>전국
+						직영점</span></a>
 			</div>
 		</div>
 		<div class="utilArea">
@@ -123,13 +136,15 @@
 				</c:choose>
 			</div>
 			<div class="searchArea">
-				<div class="el-input topinput">
-					<input type="text" autocomplete="off" placeholder="차량을 검색하세요."
-						value="" class="el-input__inner">
-				</div>
-				<button class="searchBtn">
-					<span>차량검색</span>
-				</button>
+				<form action="/search/IntgSearchList">
+					<div class="el-input topinput">
+						<input type="text" autocomplete="off" placeholder="차량을 검색하세요." name="searchWord"
+							value="" class="el-input__inner">
+					</div>
+					<button class="searchBtn">
+						<span>차량검색</span>
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -152,70 +167,72 @@
 				<div class="gnbMenu">
 
 
-				<c:choose>
-				
-					<c:when test="${empty sessionScope.id }">
-						<div class="leftMenu">
-						<div class="firstMember">
-							<div class="subTitle">
-								<strong>안녕하세요! K Car 입니다.</strong>
-							</div>
-							<ul class="gnbEtc">
-								<li><a href="logins"><i class="el-login el-icon-undefined"></i>로그인</a></li>
-								<li><a><i class="el-event el-icon-undefined"></i>이벤트</a></li>
-								<li><a><i class="el-history el-icon-undefined"></i>최근 본차량</a></li>
-										
-								<li class="menuWhy"><a>왜 K Car를 선택할까요?</a></li>
-							</ul>
-						</div>
-						<div class="bannerWrap el-row">
-							<div></div>
-						</div>
-					</div>
-					</c:when>
-					
-					<c:otherwise>
-					
-					<div class="leftMenu">
-						<div class="kcarMember">
-							<div class="subTitle">
-								<strong>${sessionScope.name } 고객님</strong>
-								
-								<div class="btnLogout">
-									<button type="button"
-										class="el-button logout el-button--default"
-										onclick="location.href='logout'">
-										<!---->
-										<!---->
-										<span> 로그아웃 </span>
-									</button>
+					<c:choose>
+
+						<c:when test="${empty sessionScope.id }">
+							<div class="leftMenu">
+								<div class="firstMember">
+									<div class="subTitle">
+										<strong>안녕하세요! K Car 입니다.</strong>
+									</div>
+									<ul class="gnbEtc">
+										<li><a href="logins"><i
+												class="el-login el-icon-undefined"></i>로그인</a></li>
+										<li><a  href="/NotcMatrList?listViewno=event"><i class="el-event el-icon-undefined"></i>이벤트</a></li>
+										<li><a><i class="el-history el-icon-undefined"></i>최근
+												본차량</a></li>
+
+										<li class="menuWhy"><a>왜 K Car를 선택할까요?</a></li>
+									</ul>
+								</div>
+								<div class="bannerWrap el-row">
+									<div></div>
 								</div>
 							</div>
-							<ul class="gnbEtc">
-								<li><a href="mypage"><i
-										class="el-mypage el-icon-undefined"></i>마이페이지</a></li>
-								<li><a><i class="el-history el-icon-undefined"></i>최근 본
-										차량</a></li>
-								<li><a><i class="el-favorite el-icon-undefined"></i>찜한차량</a></li>
-								<!---->
-								<!---->
-								<li class="menuWhy"><a>왜 K Car를 선택할까요?</a></li>
-							</ul>
-						</div>
-						<div class="bannerWrap el-row">
-							<div>
-								<!---->
+						</c:when>
+
+						<c:otherwise>
+
+							<div class="leftMenu">
+								<div class="kcarMember">
+									<div class="subTitle">
+										<strong>${sessionScope.name } 고객님</strong>
+
+										<div class="btnLogout">
+											<button type="button"
+												class="el-button logout el-button--default"
+												onclick="location.href='logout'">
+												<!---->
+												<!---->
+												<span> 로그아웃 </span>
+											</button>
+										</div>
+									</div>
+									<ul class="gnbEtc">
+										<li><a href="mypage"><i
+												class="el-mypage el-icon-undefined"></i>마이페이지</a></li>
+										<li><a><i class="el-history el-icon-undefined"></i>최근
+												본 차량</a></li>
+										<li><a><i class="el-favorite el-icon-undefined"></i>찜한차량</a></li>
+										<!---->
+										<!---->
+										<li class="menuWhy"><a>왜 K Car를 선택할까요?</a></li>
+									</ul>
+								</div>
+								<div class="bannerWrap el-row">
+									<div>
+										<!---->
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					
-						
-						
-					</c:otherwise>
-				</c:choose>
 
 
-					
+
+						</c:otherwise>
+					</c:choose>
+
+
+
 
 
 					<div class="gnbAllWrap">
@@ -224,70 +241,73 @@
 								<ul>
 									<li><a>내차팔기</a>
 										<ul>
-											<li><a href="sc/HomeSvcMain">내차팔기 홈서비스</a></li>
+											<li><a href="/sc/HomeSvcMain">내차팔기 홈서비스</a></li>
 										</ul>
 										<ul>
-											<li><a href="sc/CorpCarDispslApl">법인차매각신청</a></li>
+											<li><a href="/sc/CorpCarDispslApl">법인차매각신청</a></li>
 										</ul>
 										<ul>
-											<li><a href= "sc/ScrpcaApl">폐차신청</a></li>
+											<li><a href="/sc/ScrpcaApl">폐차신청</a></li>
 										</ul>
 										<ul>
-											<li><a href="sc/SellCustReview">내차팔기 고객후기</a></li>
+											<li><a href="/sc/SellCustReview">내차팔기 고객후기</a></li>
 										</ul></li>
-									<li><a>내차사기</a>
+									<li><a href="/carbuy">내차사기</a>
 										<ul>
-											<li><a href="vehicleSearch">차량검색</a></li>
+											<li><a href="/carbuy">차량검색</a></li>
 										</ul>
 										<ul>
-											<li><a href="homeSvc">내차사기 홈서비스</a></li>
+											<li><a href="/homeSvc">내차사기 홈서비스</a></li>
 										</ul>
-										
+
 										<ul>
-											<li><a href="latelyViewedCar">최근 본 차량</a></li>
+											<li><a href="/latelyViewedCar">최근 본 차량</a></li>
 										</ul>
 										<ul>
-											<li><a href="BuyCustReview">내차사기 고객후기</a></li>
+											<li><a href="/BuyCustReview">내차사기 고객후기</a></li>
 										</ul>
-										
+
 										<ul>
-											<li><a href="brandCar">브랜드 인증관</a></li>
+											<li><a href="/brandCar">브랜드 인증관</a></li>
+										</ul>
+										<ul>
+											<li><a href="/db/drCntr">전국 직영점</a></li>
 										</ul></li>
 									<li><a>렌트</a>
 										<ul>
 											<li><a>중고차렌트</a></li>
 										</ul>
-										
+
 										<ul>
-											<li><a href="rentNewCar">신차렌트</a></li>
+											<li><a href="/rentNewCar">신차렌트</a></li>
 										</ul>
 										<ul>
-											<li><a href="rentDriver">기사포함렌트</a></li>
+											<li><a href="/rentDriver">기사포함렌트</a></li>
 										</ul>
 										<ul>
-											<li><a href="rentShop">렌트지점</a></li>
+											<li><a href="/rentShop">렌트지점</a></li>
 										</ul>
 										<ul>
-											<li><a href="rentNormalRepair">렌트일반정비소</a></li>
+											<li><a href="/rentNormalRepair">렌트일반정비소</a></li>
 										</ul>
 										<ul>
-											<li><a href="rentAccidentRepair">렌트사고정비소</a></li>
+											<li><a href="/rentAccidentRepair">렌트사고정비소</a></li>
 										</ul></li>
-										<li><a>공지사항</a>
+									<li><a>공지사항</a>
 										<ul>
-											<li><a href="NotcMatrList">공지사항</a></li>
-											<li><a href="NotcMatrList">이벤트</a></li>
+											<li><a href="/NotcMatrList">공지사항</a></li>
+											<li><a href="/NotcMatrList?listViewno=event">이벤트</a></li>
 										</ul></li>
-										<li><a>고객지원</a>
+									<li><a>고객지원</a>
 										<ul>
-											<li><a href="csQstn">자주하는 질문</a></li>
-											<li><a href="csVoc">제안/칭찬접수</a></li>
-											</ul></li>
-									
+											<li><a href="/csQstn">자주하는 질문</a></li>
+											<li><a href="cs/csVoc">제안/칭찬접수</a></li>
+										</ul></li>
+
 								</ul>
 							</div>
-							
-							
+
+
 							<div class="rightLink">
 								<span><a>회사소개</a></span> <span><a>개인정보처리방침</a></span>
 							</div>

@@ -4416,6 +4416,23 @@ keyframes v-modal-out {
 	overflow: hidden
 }
 
+/* 모달창 배경 버튼등 튀어나오는거 
+바디 위에 span 배경 위에 모달
+
+ */
+ 
+#reviewModalBack,
+#modalMenuBack {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 100;
+}
+
 .el-message-box {
 	display: inline-block;
 	width: 420px;
@@ -64851,10 +64868,10 @@ table .hidden {
 }
 
 .carInfoWrap .carInfoContainer .carInfoContent .carInfoDetailWrap .carInfoRight .stikyWrap
-	{
+{
 	position: -webkit-sticky;
 	position: sticky;
-	top: 6.4rem
+	top: 6.4rem;
 }
 
 .carInfoWrap .carInfoContainer .carInfoContent .carInfoDetailWrap .carInfoRight .sumSummaryWrap
@@ -80810,7 +80827,7 @@ body>.ab-feed .ab-no-cards-message {
 	content: "";
 	width: 12rem;
 	height: 5.6rem;
-	background: url(/images/common/pop-sticker-car.png) no-repeat 0 0;
+	background: url(https://www.kcar.com/images/common/pop-sticker-car.png) no-repeat 0 0;
 	background-size: 12rem 5.6rem
 }
 

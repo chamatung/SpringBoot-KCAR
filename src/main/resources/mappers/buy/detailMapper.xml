@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.one.kcar.dao.buy.ICarDetailDAO">
+	<select id="car" parameterType="String" resultType="com.one.kcar.dto.buy.CarDTO">
+		SELECT * FROM KCAR_CAR WHERE c_num=#{c_num}
+	</select>
+	<select id="carInfo" parameterType="String" resultType="com.one.kcar.dto.buy.CarInfoDTO">
+		SELECT * FROM KCAR_CAR_INFO WHERE c_num=#{c_num}
+	</select>
+	<select id="carPhotoList" parameterType="String" resultType="com.one.kcar.dto.buy.CarPhotoDTO">
+		SELECT * FROM KCAR_CAR_PHOTO WHERE c_num=#{c_num} ORDER BY c_p_photoNum
+	</select>
+	<select id="carOptionPhoto" resultType="com.one.kcar.dto.buy.CarOptionPhotoDTO">
+		SELECT * FROM KCAR_CAR_OPTION_PHOTO
+	</select>
+	<select id="carOption" parameterType="String" resultType="com.one.kcar.dto.buy.CarOptionDTO">
+		SELECT * FROM KCAR_CAR_OPTION WHERE c_num=#{c_num}
+	</select>
+	<select id="quesionList" resultType="com.one.kcar.dto.buy.QuestionDTO">
+		SELECT * FROM KCAR_QUESTION WHERE q_classification = '브랜드'
+	</select>
+	<select id="reviewList" resultType="com.one.kcar.dto.buy.BuyReviewDTO">
+		SELECT * FROM kcar_buy_review WHERE ROWNUM <![CDATA[<=]]> 3 ORDER BY c_c_index desc
+	</select>
+	<update id="carUpdate" parameterType="String">
+		UPDATE KCAR_CAR SET c_saleStatus=1 WHERE c_num=#{c_num}
+	</update>
+	<update id="contract" parameterType="com.one.kcar.dto.buy.ContractDTO">
+		UPDATE KCAR_CAR_CONTRACT SET c_c_b_email=#{c_c_b_email}, c_c_b_name=#{c_c_b_name}, c_c_b_tel=#{c_c_b_tel},
+		c_c_b_zipcode=#{c_c_b_zipcode}, c_c_b_addr1=#{c_c_b_addr1}, c_c_b_addr2=#{c_c_b_addr2}, c_c_b_totalPrice=#{c_c_b_totalPrice }, 
+		c_c_b_carPrice=#{c_c_b_carPrice }, c_c_b_registrationPrice=#{c_c_b_registrationPrice }, c_c_b_managePrice=#{c_c_b_managePrice },
+		c_c_b_registPrice=#{c_c_b_registPrice }, c_c_b_kw=#{c_c_b_kw } WHERE c_num=#{c_num}
+	</update>
+	<select id="store" parameterType="String" resultType="com.one.kcar.dto.buy.StoreDTO">
+		SELECT * FROM KCAR_STORE WHERE st_name=#{st_name}
+	</select>
+	<select id="carTag" parameterType="String" resultType="com.one.kcar.dto.buy.CarTagDTO">
+		SELECT * FROM KCAR_CAR_TAG WHERE c_num=#{c_num}
+	</select>
+</mapper>

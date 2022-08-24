@@ -33,8 +33,5 @@
 		)B WHERE rn BETWEEN 1 and 27
 	</select>
 	
-<!-- 	<select id="kcarCarRentList" resultType="com.one.kcar.dto.rent.kcarCarRentDTO"> -->
-<!-- 		SELECT * FROM kcarCarRent -->
-<!-- 	</select> -->
 </mapper>
 

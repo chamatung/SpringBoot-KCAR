@@ -225,7 +225,7 @@
 										<!-- forEach end -->
 									</ul>
 									<!-- 내차사기 고객후기 모달창 -->
-									<div>
+					<div>
 						<span id="reviewModalBack"></span>
 						<div class="el-dialog__wrapper popup popCenter" id="reviewModal"
 							style="z-index: 2010;display:none;">
@@ -295,31 +295,33 @@
 							<!-- forEach start -->
 							<div role="tablist" aria-multiselectable="true"
 								class="el-collapse faqList">
+								
 								<c:forEach var="question" items="${questionList }" varStatus="status">
-								<div class="el-collapse-item">
-									<div role="tab" aria-controls="el-collapse-content-6580" onclick="question('${status.index}')"
-										aria-describedby="el-collapse-content-6580">
-										<div role="button" id="el-collapse-head-6580" tabindex="0"
-											class="el-collapse-item__header">
-											<i class="el-icon-Q"></i> <span>${question.q_title }</span><i
-												class="el-collapse-item__arrow el-icon-arrow-right"></i>
+									<div class="el-collapse-item">
+										<div role="tab" aria-controls="el-collapse-content-6580" onclick="question('${status.index}')"
+											aria-describedby="el-collapse-content-6580">
+											<div role="button" id="el-collapse-head-6580" tabindex="0"
+												class="el-collapse-item__header">
+												<i class="el-icon-Q"></i> <span>${question.q_title }</span><i
+													class="el-collapse-item__arrow el-icon-arrow-right"></i>
+											</div>
 										</div>
-									</div>
-									<div role="tabpanel" aria-hidden="true"
-										aria-labelledby="el-collapse-head-6580"
-										id="el-collapse-content-6580" class="el-collapse-item__wrap"
-										style="display: none;">
-										<div class="el-collapse-item__content">
-											<div>
-												<i class="el-icon-A"></i>
-												<div class="faqA">
-													${question.q_content }
+										<div role="tabpanel" aria-hidden="true"
+											aria-labelledby="el-collapse-head-6580"
+											id="el-collapse-content-6580" class="el-collapse-item__wrap"
+											style="display: none;">
+											<div class="el-collapse-item__content">
+												<div>
+													<i class="el-icon-A"></i>
+													<div class="faqA">
+														${question.q_content }
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
 								</c:forEach>
+								
 							</div>
 							<!-- forEach start -->
 							
@@ -392,59 +394,10 @@
 	<iframe height="0" width="0" title="Criteo DIS iframe"
 		style="display: none;"></iframe>
 		
+
+<script src="js/question.js"></script>
+<script src="js/reviewModal.js"></script>
 <script>
-var questionContent = document.querySelectorAll('.el-collapse-item__wrap'); // content클래스들
-var questionCnt = 0; // 클릭시마다 cnt 세기 열기 닫기 구분용
-var questionIndex = -1; // content열고 다시 다른 content 열때 기존 content닫기 위한 index
-var question = function(index){ // title 클릭 함수
-	console.log(index);
-	console.log(questionCnt);
-	console.log(questionIndex);
-	if(questionIndex != index & questionIndex != -1){
-		questionContent[questionIndex].style.display = "none";
-		questionCnt = 0;
-	}
-	questionCnt++;
-	if(questionCnt % 2 != 0){
-		questionContent[index].style.display = "block";
-		questionIndex = index;
-	}else{
-		questionContent[index].style.display = "none";
-		questionIndex = -1;
-	}
-}
-
-//review 모달창
-var modalTitle = document.getElementById('modalTitle');
-var modalModelNDate = document.getElementById('modalModelNDate');
-var modalContent = document.getElementById('modalContent');
-var modalPhoto = document.getElementById('modalPhoto');
-var reviewModalBack = document.getElementById('reviewModalBack');
-var reviewModal = document.getElementById('reviewModal');
-
-function reviewModalOpen(model,title,review,date,photo) {
-	document.body.classList.add('el-popup-parent--hidden');
-	modalTitle.innerHTML = title;
-	modalModelNDate.innerHTML = model + " <em class=\"emLine\"></em> " + date;
-	modalContent.innerHTML = review;
-	modalPhoto.src = photo;
-	
-	reviewModal.style.display="flex";
-	reviewModalBack.style.display="flex";
-}
-//modal창 close
-function reviewModalClose() {
-	reviewModal.style.display="none";
-	reviewModalBack.style.display="none";
-	
-	document.body.classList.remove('el-popup-parent--hidden');
-
-		modalTitle.innerHTML = "";
-	modalModelNDate.innerHTML = "";
-	modalContent.innerHTML = "";
-	modalPhoto.src = "";
-}
-
 var swiperWrapper = document.querySelector('.swiper-wrapper');
 //홈페이지 접근시 domTree 생성 시 함수 실행
 document.addEventListener("DOMContentLoaded", function(){

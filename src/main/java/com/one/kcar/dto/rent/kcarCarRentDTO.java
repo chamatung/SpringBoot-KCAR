@@ -14,6 +14,9 @@ crFuel varchar2(20) not null,
 crNewPrice varchar2(15) not null,
 crGrade varchar2(15) not null,
 crSpecialPrice varchar2(15) null,
+crBrand varchar2(25) null,
+crpPhoto varchar2(150) null,
+crName varchar2(40) not null,
 constraint pkCr primary key (crNumber)
 );
  */
@@ -142,6 +145,4 @@ public class kcarCarRentDTO {
 	public void setCrBrand(String crBrand) {
 		this.crBrand = crBrand;
 	}
-	
-	
 }

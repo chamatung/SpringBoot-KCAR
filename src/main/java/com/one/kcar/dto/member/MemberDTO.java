@@ -30,9 +30,6 @@ public class MemberDTO {
 	private String m_oauth;
 	private String m_oauthEmail;
 	
-	
-	
-	
 	public int getM_id() {
 		return m_id;
 	}

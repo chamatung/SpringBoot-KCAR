@@ -48,7 +48,7 @@ public class sellController {
 	
 	// 내차팔기 고객후기
 	@RequestMapping("sc/SellCustReview")
-	public String SellCustReview(SellReviewDTO review,Model model,String currentPage,HttpSession session) {
+	public String SellCustReview(Model model,String currentPage,HttpSession session) {
 		if(currentPage == null)
 			currentPage="1";
 		List<SellReviewDTO> list = service.reviewList(currentPage);

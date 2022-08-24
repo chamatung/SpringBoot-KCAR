@@ -46234,7 +46234,7 @@ textarea {
 
 .homeServiceWrap .homeCont .contentsBox .carImg {
 	width: 100%;
-	height: 53rem
+	height: 60rem
 }
 
 .homeServiceWrap .homeCont .contentsBox .carImg img {

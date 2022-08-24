@@ -86,8 +86,8 @@
 							<div class="contentsBox section01 el-row">
 								<div class="myInfoBox">
 									<div>
-										<p class="myName"> ${sessionScope.name }님</p>
-										<a href="update" class="txtButton"> 정보 수정 </a>
+										<p class="myName">이성표님</p>
+										<a href="/mp/myinfo/auth" class="txtButton"> 정보 수정 </a>
 									</div>
 									<div class="totalList">
 										<ul>
@@ -97,7 +97,7 @@
 											<li><span>렌트차량</span> <a href="/RentAplList"
 												class=""><strong>${rent_check }</strong></a></li>
 											<li><span>최근본차량</span> <a
-												href="/bc/LatelyViewedCar/list" class=""><strong>0</strong></a></li>
+												href="/bc/LatelyViewedCar/list" class=""><strong>18</strong></a></li>
 										</ul>
 									</div>
 								</div>
@@ -126,14 +126,14 @@
 															<table cellspacing="0" cellpadding="0" border="0"
 																class="el-table__header" style="width: 905px;">
 																<colgroup>
-																	<col name="el-table_5_column_12" width="585">
-																	<col name="el-table_5_column_13" width="320">
+																	<col name="el-table_1_column_1" width="585">
+																	<col name="el-table_1_column_2" width="320">
 																	<col name="gutter" width="0">
 																</colgroup>
 																<thead class="has-gutter">
 																	<tr class="">
 																		<th colspan="1" rowspan="1"
-																			class="el-table_5_column_12     is-leaf el-table__cell"><div
+																			class="el-table_1_column_1     is-leaf el-table__cell"><div
 																				class="cell">차량정보</div></th>
 																		<th colspan="1" rowspan="1"
 																			class="el-table_5_column_13     is-leaf el-table__cell"><div
@@ -1041,21 +1041,21 @@
 															<table cellspacing="0" cellpadding="0" border="0"
 																class="el-table__header" style="width: 905px;">
 																<colgroup>
-																	<col name="el-table_7_column_17" width="105">
-																	<col name="el-table_7_column_18" width="525">
-																	<col name="el-table_7_column_19" width="275">
+																	<col name="el-table_3_column_6" width="105">
+																	<col name="el-table_3_column_7" width="525">
+																	<col name="el-table_3_column_8" width="275">
 																	<col name="gutter" width="0">
 																</colgroup>
 																<thead class="has-gutter">
 																	<tr class="">
 																		<th colspan="1" rowspan="1"
-																			class="el-table_7_column_17     is-leaf el-table__cell"><div
+																			class="el-table_3_column_6     is-leaf el-table__cell"><div
 																				class="cell">견적일</div></th>
 																		<th colspan="1" rowspan="1"
-																			class="el-table_7_column_18     is-leaf el-table__cell"><div
+																			class="el-table_3_column_7     is-leaf el-table__cell"><div
 																				class="cell">차량정보</div></th>
 																		<th colspan="1" rowspan="1"
-																			class="el-table_7_column_19     is-leaf el-table__cell"><div
+																			class="el-table_3_column_8     is-leaf el-table__cell"><div
 																				class="cell">렌트비</div></th>
 																		<th class="el-table__cell gutter"
 																			style="width: 0px; display: none;"></th>

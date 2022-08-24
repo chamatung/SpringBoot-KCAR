@@ -10,5 +10,5 @@ public class SpringBootKCarApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootKCarApplication.class, args);
 	}
-
+	
 }

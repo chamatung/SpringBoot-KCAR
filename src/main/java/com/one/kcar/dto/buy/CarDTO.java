@@ -22,12 +22,10 @@ public class CarDTO {
 	private String c_model;
 	private String cb_brand;
 	private String cb_m_model;
-	private String c_name;
 	private String c_year;
 	private String c_distance;
 	private String c_price;
 	private String c_color;
-	private String c_city;
 	private String c_fuel;
 	private String c_change;
 	private String c_acident;
@@ -35,7 +33,18 @@ public class CarDTO {
 	private String c_rent;
 	private String c_photo;
 	private String st_name;
+	private String m_id;
+	private String m_email;
+	private String c_saleStatus;
 	
+	private String monthPrice;
+	
+	public String getMonthPrice() {
+		return monthPrice;
+	}
+	public void setMonthPrice(String monthPrice) {
+		this.monthPrice = monthPrice;
+	}
 //	c_i_certified	varchar2(20)	default '브랜드인증'	브랜드인증
 //	c_i_distance	varchar2(10)	default '짧은km'	짧은km
 //	c_i_newCar	varchar2(10)	default '신차급'	신차급
@@ -45,6 +54,7 @@ public class CarDTO {
 //	c_i_specialOption	varchar2(15)	default '특옵션'	특옵션
 //	c_i_rent	varchar2(15)	default '렌트'	렌트
 
+	
 	private String c_t_certified;
 	private String c_t_distance;
 	private String c_t_newCar;
@@ -86,12 +96,6 @@ public class CarDTO {
 	public void setCb_m_model(String cb_m_model) {
 		this.cb_m_model = cb_m_model;
 	}
-	public String getC_name() {
-		return c_name;
-	}
-	public void setC_name(String c_name) {
-		this.c_name = c_name;
-	}
 	public String getC_year() {
 		return c_year;
 	}
@@ -115,12 +119,6 @@ public class CarDTO {
 	}
 	public void setC_color(String c_color) {
 		this.c_color = c_color;
-	}
-	public String getC_city() {
-		return c_city;
-	}
-	public void setC_city(String c_city) {
-		this.c_city = c_city;
 	}
 	public String getC_fuel() {
 		return c_fuel;
@@ -160,6 +158,24 @@ public class CarDTO {
 	}
 	
 	
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getM_email() {
+		return m_email;
+	}
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+	public String getC_saleStatus() {
+		return c_saleStatus;
+	}
+	public void setC_saleStatus(String c_saleStatus) {
+		this.c_saleStatus = c_saleStatus;
+	}
 	public String getC_photo() {
 		return c_photo;
 	}

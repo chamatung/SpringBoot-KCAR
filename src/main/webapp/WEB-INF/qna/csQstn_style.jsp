@@ -45061,7 +45061,7 @@ textarea {
 	border-radius: 0 0 .4rem .4rem
 }
 
-.searchView .searchText {
+.searchText {
 	margin: .4rem 0 4rem;
 	text-align: center;
 	color: #16171d;

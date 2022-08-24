@@ -117,25 +117,25 @@
 									<div class="el-tabs__nav-scroll">
 										<div role="tablist" class="el-tabs__nav is-top"
 											style="transform: translateX(0px);">
-											<div class="el-tabs__active-bar is-top"
+											<div class="el-tabs__active-bar is-top" id="navBar"
 												style="width: 610px; transform: translateX(0px);"></div>
 											
 											
 												
-											<div id="tab-innertab01" aria-controls="pane-innertab01"
+											<div id="tab-innertab01" aria-controls="pane-innertab01" onclick="noticeClick()"
 												role="tab" aria-selected="true" tabindex="0"
 												class="el-tabs__item is-top is-active">
 <!-- 												<button class="tab-button" data-tab-section="tab-section-1"> -->
-												신차렌트
+												<span id="navNotice">신차렌트</span>
 <!-- 												</button> -->
 												</div>
 												
-											<div id="tab-innertab02" aria-controls="pane-innertab02"
+											<div id="tab-innertab02" aria-controls="pane-innertab02" onclick="eventClick()"
 												role="tab" tabindex="-1" class="el-tabs__item is-top">
 <!-- 												<button class="tab-button" data-tab-section="tab-section-2"> -->
-												신차렌트
+												<span id="navEvent">신차렌트
 <!-- 												</button> -->
-												이용안내</div>
+												이용안내</span></div>
 												
 											
 												
@@ -144,11 +144,11 @@
 								</div>
 							</div>
 							<div class="el-tabs__content">
-								<div role="tabpanel" id="pane-innertab01"
+								<div role="tabpanel" id="pane-innertab02"
 									aria-labelledby="tab-innertab01" class="el-tab-pane">
 									
-<!-- 									<section id="tab-section-1" class="tab-section"> -->
-									<div class="newRent">
+									<section id="tab-section-1" class="tab-section">
+									<div class="newRent" id="newRent">
 									
 										<h4 class="tit02">케이카 인기차종</h4>
 										<p class="txt02 mT8">놓치면 아쉬울 신차 TOP 14!</p>
@@ -311,12 +311,12 @@
 									
 									
 								</div>
-								<div role="tabpanel" aria-hidden="true" id="pane-innertab02"
+								<div role="tabpanel" aria-hidden="true" id="pane-innertab01"
 									aria-labelledby="tab-innertab02" class="el-tab-pane"
 									style="display: none;">
 									
-<!-- 									<section id="tab-section-2" class="tab-section" hidden> -->
-									<div class="newRentInfo">
+									<section id="tab-section-2" class="tab-section" hidden>
+									<div class="newRentInfo" id="newRentInfo">
 									
 										<h4 class="tit02">신차렌트, 무엇이 좋나요?</h4>
 										<p class="txt02 mT8">신차 구매보다 합리적인 신차렌트의 장점을 확인해 보세요.</p>
@@ -765,5 +765,34 @@
 	<script type="text/javascript" id="">window.criteo_q=window.criteo_q||[];var deviceType=/iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";window.criteo_q.push({event:"setAccount",account:73896},{event:"setSiteType",type:deviceType},{event:"viewHome"});</script>
 
 	<script type="text/javascript" id="">kakaoPixel("8101473052006960319").pageView();</script>
+	<script>
+	var navBar = document.getElementById("navBar");
+	   var navNotice = document.getElementById("navNotice");
+	   var navEvent = document.getElementById("navEvent");
+	   
+	      function noticeClick() {
+	         if(document.getElementById("pane-innertab01").style.display = "block"){
+	            document.getElementById("pane-innertab01").style.display = "none";
+	         }
+	         document.getElementById("pane-innertab02").style.display = "block";
+	         
+	         navBar.style.transform = "translateX(0px)";
+	         
+	         navNotice.style.color = "#b70f28";
+	         navEvent.style.color = "black";
+	         
+	      }
+	      
+	      function eventClick() {
+	         if(document.getElementById("pane-innertab02").style.display = "block"){
+	            document.getElementById("pane-innertab02").style.display = "none";
+	         }
+	         document.getElementById("pane-innertab01").style.display = "block";
+	         
+	         navBar.style.transform = "translateX(610px)";
+	         navEvent.style.color = "#b70f28";
+	         navNotice.style.color = "black";
+	      }
+	</script>
 </body>
 </html>

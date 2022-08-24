@@ -137,10 +137,10 @@
 						<div class="el-row">
 							<section>
 								<h3 id="kcarRentC0061" class="centerTit">서울역지점</h3>
-								<div class="infoBox">
+								<div class="infoBox" style="padding: 10px;">
 								
 								
-									<div id="map" style="width:650px;height:350px;"></div>
+									<div id="map" style="width:650px;height:350px; margin-right: 10px;"></div>
 
 										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25b6215a33995fb8cff8835aecce271b&libraries=services"></script>
 										<script>
@@ -227,7 +227,7 @@
 								<div class="infoBox">
 								
 								
-									<div id="map2" style="width:600px;height:350px;"></div>
+									<div id="map2" style="width:600px;height:350px;margin-right: 10px;"></div>
 
 										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25b6215a33995fb8cff8835aecce271b&libraries=services"></script>
 										<script>
@@ -314,7 +314,7 @@
 								<div class="infoBox">
 								
 								
-									<div id="map3" style="width:600px;height:350px;"></div>
+									<div id="map3" style="width:600px;height:350px;margin-right: 10px;"></div>
 
 										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=25b6215a33995fb8cff8835aecce271b&libraries=services"></script>
 										<script>

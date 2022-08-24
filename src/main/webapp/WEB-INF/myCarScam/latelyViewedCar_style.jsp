@@ -14015,7 +14015,7 @@ to {
 }
 
 .el-scrollbar {
-	overflow: hidden;
+	/* overflow: hidden; */
 	position: relative
 }
 
@@ -29343,8 +29343,8 @@ a.button.DarkColor:active, button.DarkColor:active {
 }
 
 .el-scrollbar .el-scrollbar__wrap {
-	overflow: hidden;
-	overflow-y: auto;
+	/* overflow: hidden;
+	overflow-y: auto; */
 	margin-bottom: 0 !important
 }
 

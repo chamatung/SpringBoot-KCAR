@@ -84,7 +84,7 @@
 												<div id="tab-innertab02" aria-controls="pane-innertab02"
 													role="tab" tabindex="-1" class="el-tabs__item is-top"
 													aria-selected="true" onclick="carList()">직영점 차량
-													(153대)</div>
+													(${totalsize}대)</div>
 											</div>
 										</div>
 									</div>

@@ -1,0 +1,22 @@
+
+{
+    "carTag" : [
+        { "c_num" : "378로8351"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "142구1490"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "164어2419"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "105모5525"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "164주2645"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "143모8919"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "152차4503"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "105모5528"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "478로8351"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "242구1490"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "264어2419"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "205모5525"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "264주2645"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "243모8919"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "252차4503"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "205모5528"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  },
+        { "c_num" : "148모8044"  , "c_t_distance" : "짧은KM" , "c_t_newCar" : "신차급" , "c_t_fourWheel" : "4륜구동"  , "c_t_oneOwner" : "1인 소유자"  }  
+    ]
+}

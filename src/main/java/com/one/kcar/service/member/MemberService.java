@@ -25,14 +25,13 @@ public class MemberService {
 	@Autowired IMemberDAO memberDao;
 	@Autowired IadminDAO adminDao;
 	@Autowired HttpSession session;
-	
+
 	public String isExistId(String email) {
 		if (email == null)
 			return "아이디를 입력 후 다시 시도하세요.";
 		int count = memberDao.isExistId(email);
 		if (count == 1)
 			return "중복 아이디 입니다.";
-
 		return "사용 가능한 아이디입니다.";
 	}
 
@@ -79,6 +78,7 @@ public class MemberService {
 		
 		session.invalidate();// 인증번호 및 인증 상태 제거
 		member.setM_role(Role.USER);
+		System.out.println(member.getM_role());
 		memberDao.insertMember(member);
 		return "가입 완료";
 	}

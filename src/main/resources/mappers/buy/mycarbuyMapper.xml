@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.one.kcar.dao.buy.ImyCarbuyDAO">
+	<select id="allSelect" resultType="com.one.kcar.dto.buy.BuyDTO">
+		SELECT * from kcar_car A left
+		join kcar_carbrand B on a.cb_brand =
+		b.cb_brand
+	</select>
+
+	<select id="brandModel" resultType="String">
+		SELECT cb_m_model from
+		kcar_car where cb_brand=#{brand}
+	</select>
+
+
+	<!-- 메인검색 -->
+
+
+	<select id="selectCar" resultType="com.one.kcar.dto.buy.BuyDTO">
+		select rw.* from(select rownum rn,com.* from (SELECT * from kcar_car A left join kcar_carbrand B on a.cb_brand =
+		b.cb_brand Left join kcar_car_option c on a.c_num = c.c_num where
+		a.c_num is not null
+		<if test="!button.getCar_model().isEmpty()">
+			and
+			<foreach collection="button.getCar_model()" item="detail"
+				open="cb_m_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_acident().isEmpty()">
+			and
+			<foreach collection="button.getCar_acident()" item="detail"
+				open="c_acident in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_brand1().isEmpty()">
+			and
+			<foreach collection="button.getCar_brand1()" item="detail"
+				open="a.cb_brand in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_change().isEmpty()">
+			and
+			<foreach collection="button.getCar_change()" item="detail"
+				open="c_change in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_color.isEmpty()">
+			and
+			<foreach collection="button.getCar_color" item="detail"
+				open="c_color in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_fuel().isEmpty()">
+			and
+			<foreach collection="button.getCar_fuel()" item="detail"
+				open="c_fuel in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_type().isEmpty()">
+			and
+			<foreach collection="button.getCar_type()" item="detail"
+				open="c_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_seat().isEmpty()">
+			and
+			<foreach collection="button.getCar_seat()" item="detail"
+				open="c_seat in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_store().isEmpty()">
+			and
+			<foreach collection="button.getCar_store()" item="detail"
+				open="st_name in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_option().isEmpty()">
+
+			<foreach collection="button.getCar_option()" item="detail">
+				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+				<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+				<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+			</foreach>
+		</if>
+		and c_distance between #{button.min_dis} and #{button.max_dis}
+
+		and
+		c_year between #{button.min_year} and #{button.max_year}
+
+		<if test="alignment == '최근연식순'">
+			ORDER BY c_year desc
+		</if>
+		<if test="alignment == '낮은연식순'">
+			ORDER BY c_year asc
+		</if>
+		<if test="alignment == '적은주행거리순'">
+			ORDER BY c_distance asc
+		</if>
+		<if test="alignment == '많은주행거리순'">
+			ORDER BY c_distance desc
+		</if>
+		<if test="alignment.equals('낮은가격순')">
+			ORDER BY c_price asc
+		</if>
+		<if test="alignment == '높은가격순'">
+			ORDER BY c_price desc
+		</if>)com)rw where rn between #{be} and #{en}
+	</select>
+
+
+	<!-- 브랜드인증관 -->
+
+
+	<select id="selectCar2" resultType="com.one.kcar.dto.buy.BuyDTO">
+		select rw.* from(select rownum rn,com.* from (SELECT * from kcar_car A left join kcar_carbrand B on a.cb_brand =
+		b.cb_brand Left join kcar_car_option c on a.c_num = c.c_num where
+		cb_domestic = '해외'
+		<if test="!button.getCar_model().isEmpty()">
+			and
+			<foreach collection="button.getCar_model()" item="detail"
+				open="cb_m_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_acident().isEmpty()">
+			and
+			<foreach collection="button.getCar_acident()" item="detail"
+				open="c_acident in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_brand1().isEmpty()">
+			and
+			<foreach collection="button.getCar_brand1()" item="detail"
+				open="a.cb_brand in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_change().isEmpty()">
+			and
+			<foreach collection="button.getCar_change()" item="detail"
+				open="c_change in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_color.isEmpty()">
+			and
+			<foreach collection="button.getCar_color" item="detail"
+				open="c_color in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_fuel().isEmpty()">
+			and
+			<foreach collection="button.getCar_fuel()" item="detail"
+				open="c_fuel in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_type().isEmpty()">
+			and
+			<foreach collection="button.getCar_type()" item="detail"
+				open="c_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_seat().isEmpty()">
+			and
+			<foreach collection="button.getCar_seat()" item="detail"
+				open="c_seat in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_store().isEmpty()">
+			and
+			<foreach collection="button.getCar_store()" item="detail"
+				open="st_name in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_option().isEmpty()">
+
+			<foreach collection="button.getCar_option()" item="detail">
+				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+				<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+				<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+			</foreach>
+		</if>
+		and c_distance between #{button.min_dis} and #{button.max_dis}
+
+		and
+		c_year between #{button.min_year} and #{button.max_year}
+
+		<if test="alignment == '최근연식순'">
+			ORDER BY c_year desc
+		</if>
+		<if test="alignment == '낮은연식순'">
+			ORDER BY c_year asc
+		</if>
+		<if test="alignment == '적은주행거리순'">
+			ORDER BY c_distance asc
+		</if>
+		<if test="alignment == '많은주행거리순'">
+			ORDER BY c_distance desc
+		</if>
+		<if test="alignment.equals('낮은가격순')">
+			ORDER BY c_price asc
+		</if>
+		<if test="alignment == '높은가격순'">
+			ORDER BY c_price desc
+		</if>)com)rw where rn between #{be} and #{en}
+	</select>
+
+<!-- 페이징용 카운터세기 (메인) -->
+	<select id="selectCarCount" resultType="Integer">
+		SELECT count(*) as cnt from kcar_car A left join kcar_carbrand B on
+		a.cb_brand =
+		b.cb_brand Left join kcar_car_option c on a.c_num =
+		c.c_num where
+		a.c_num is not null
+		<if test="!button.getCar_model().isEmpty()">
+			and
+			<foreach collection="button.getCar_model()" item="detail"
+				open="cb_m_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_acident().isEmpty()">
+			and
+			<foreach collection="button.getCar_acident()" item="detail"
+				open="c_acident in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_brand1().isEmpty()">
+			and
+			<foreach collection="button.getCar_brand1()" item="detail"
+				open="a.cb_brand in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_change().isEmpty()">
+			and
+			<foreach collection="button.getCar_change()" item="detail"
+				open="c_change in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_color.isEmpty()">
+			and
+			<foreach collection="button.getCar_color" item="detail"
+				open="c_color in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_fuel().isEmpty()">
+			and
+			<foreach collection="button.getCar_fuel()" item="detail"
+				open="c_fuel in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_type().isEmpty()">
+			and
+			<foreach collection="button.getCar_type()" item="detail"
+				open="c_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_seat().isEmpty()">
+			and
+			<foreach collection="button.getCar_seat()" item="detail"
+				open="c_seat in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_store().isEmpty()">
+			and
+			<foreach collection="button.getCar_store()" item="detail"
+				open="st_name in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_option().isEmpty()">
+
+			<foreach collection="button.getCar_option()" item="detail">
+				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+				<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+				<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+			</foreach>
+		</if>
+		and c_distance between #{button.min_dis} and #{button.max_dis}
+
+		and
+		c_year between #{button.min_year} and #{button.max_year}
+
+	</select>
+
+	<!-- 전부 -->
+	<select id="searchAll" resultType="com.one.kcar.dto.buy.BuyDTO">
+		select * from (Select rownum
+		rn,com.* from(SELECT * from kcar_car A left
+		join kcar_carbrand B on
+		a.cb_brand =
+		b.cb_brand Left join
+		kcar_car_option c on a.c_num = c.c_num
+		where
+		a.c_num is not null)com)
+		where rn between 1 and 12
+	</select>
+
+	<!-- 전부 브랜드 인증관 -->
+	<select id="searchAllFore" resultType="com.one.kcar.dto.buy.BuyDTO">
+		select * from (Select rownum rn,com.* from(SELECT * from kcar_car A left
+		join kcar_carbrand B on a.cb_brand =
+		b.cb_brand Left join
+		kcar_car_option c on a.c_num = c.c_num where
+		cb_domestic= '해외')com)
+		where rn between 1 and 12
+	<!-- 조건없이 전부 카운트 -->
+	
+	</select>
+		<select id="serachAllCount" resultType="Integer">
+		select count(*) from kcar_car
+	</select>
+	
+	<!-- 조건없이 전부 카운트 브랜드 인증관-->
+		<select id="serachAllCountFore" resultType="Integer">
+		SELECT count(*) from kcar_car A left join kcar_carbrand B on a.cb_brand =
+		b.cb_brand where cb_domestic='해외'
+	</select>
+	
+	<!-- 브랜드인증관 페이징용 카운트 -->
+	<select id="selectCarCountFore" resultType="Integer">
+		SELECT count(*) as cnt from kcar_car A left join kcar_carbrand B on
+		a.cb_brand =
+		b.cb_brand Left join kcar_car_option c on a.c_num =
+		c.c_num where
+		cb_domestic = '해외'
+		<if test="!button.getCar_model().isEmpty()">
+			and
+			<foreach collection="button.getCar_model()" item="detail"
+				open="cb_m_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_acident().isEmpty()">
+			and
+			<foreach collection="button.getCar_acident()" item="detail"
+				open="c_acident in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_brand1().isEmpty()">
+			and
+			<foreach collection="button.getCar_brand1()" item="detail"
+				open="a.cb_brand in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_change().isEmpty()">
+			and
+			<foreach collection="button.getCar_change()" item="detail"
+				open="c_change in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_color.isEmpty()">
+			and
+			<foreach collection="button.getCar_color" item="detail"
+				open="c_color in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_fuel().isEmpty()">
+			and
+			<foreach collection="button.getCar_fuel()" item="detail"
+				open="c_fuel in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_type().isEmpty()">
+			and
+			<foreach collection="button.getCar_type()" item="detail"
+				open="c_model in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_seat().isEmpty()">
+			and
+			<foreach collection="button.getCar_seat()" item="detail"
+				open="c_seat in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_store().isEmpty()">
+			and
+			<foreach collection="button.getCar_store()" item="detail"
+				open="st_name in (" close=")" separator=",">
+				#{detail}
+			</foreach>
+		</if>
+		<if test="!button.getCar_option().isEmpty()">
+
+			<foreach collection="button.getCar_option()" item="detail">
+				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+				<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+				<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+			</foreach>
+		</if>
+		and c_distance between #{button.min_dis} and #{button.max_dis}
+
+		and
+		c_year between #{button.min_year} and #{button.max_year}
+
+	</select>
+	
+</mapper>
+
+
+
+<!-- SELECT * from kcar_car A left join kcar_carbrand B on a.cb_brand = b.cb_brand 
+	Left join kcar_car_option c on a.c_num = c.c_num; -->

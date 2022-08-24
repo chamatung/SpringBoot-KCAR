@@ -1,15 +1,15 @@
 package com.one.kcar.dto.buy;
 
 public class QuestionDTO {
-	private String q_classfication;
+	private String q_classification;
 	private String q_title;
 	private String q_content;
 	
-	public String getQ_classfication() {
-		return q_classfication;
+	public String getQ_classification() {
+		return q_classification;
 	}
-	public void setQ_classfication(String q_classfication) {
-		this.q_classfication = q_classfication;
+	public void setQ_classification(String q_classification) {
+		this.q_classification = q_classification;
 	}
 	public String getQ_title() {
 		return q_title;

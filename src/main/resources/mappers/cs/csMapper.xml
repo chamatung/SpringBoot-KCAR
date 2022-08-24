@@ -4,8 +4,28 @@
 <mapper namespace="com.one.kcar.dao.cs.ICsDAO">
 
 	<insert id="csWriteProc" parameterType="com.one.kcar.dto.cs.CsDTO">
-		INSERT INTO KCAR_SERVICE VALUES(#{s_category}, #{s_title}, #{s_content}, #{s_file}, #{s_id}, #{s_reply}, #{s_replyValue}, #{s_replyStatus})
+		<selectKey keyProperty="s_no" resultType="int" order="BEFORE">
+			SELECT nvl(max(s_no), 0)+1 FROM KCAR_SERVICE
+		</selectKey>
+		INSERT INTO KCAR_SERVICE VALUES(#{s_no}, #{s_category}, #{s_title}, #{s_content}, #{s_file}, #{s_id}, #{s_reply}, #{s_replyValue}, #{s_replyStatus})
 	</insert>
+	
+	<select id="csVocProc" resultType="com.one.kcar.dto.cs.CsDTO">
+		SELECT B.* FROM(
+			SELECT rownum rn, A.* FROM(
+				SELECT * FROM KCAR_SERVICE
+				ORDER BY s_no DESC
+			)A
+		)B WHERE rn BETWEEN #{b} and #{e}
+	</select>
+	
+	<select id="csVocCount" resultType="int">
+		SELECT count(*) FROM KCAR_SERVICE
+	</select>
+	
+	<select id="csViewProc" resultType="com.one.kcar.dto.cs.CsDTO" parameterType="int">
+		SELECT * FROM KCAR_SERVICE WHERE s_no=#{viewNo}
+	</select> 
 
 	<insert id="noticeWriteProc" parameterType="com.one.kcar.dto.cs.NoticeDTO">
 		<selectKey keyProperty="n_no" resultType="int" order="BEFORE">
@@ -15,10 +35,87 @@
 	</insert>
 	
 	<select id="noticeProc" resultType="com.one.kcar.dto.cs.NoticeDTO">
-		SELECT * FROM KCAR_NOTICE ORDER BY n_no DESC
+			SELECT rownum rn, A.* FROM(
+				SELECT * FROM KCAR_NOTICE
+					<choose>
+						<when test="select == '내용'">WHERE n_content LIKE '%'||#{search}||'%'</when>
+						<when test="select == '제목'">WHERE n_title LIKE '%'||#{search}||'%'</when>
+					</choose>
+				ORDER BY n_no DESC
+			)A
+	</select>
+	
+	<select id="faqProc" resultType="com.one.kcar.dto.buy.QuestionDTO">
+		SELECT * FROM KCAR_QUESTION
+			<choose>
+				<when test="search != ''">WHERE q_title LIKE '%'||#{search}||'%'</when>
+				<when test="search == ''">WHERE q_classification = #{classification}</when>
+			</choose>
 	</select>
 	
 	<select id="noticeViewProc" resultType="com.one.kcar.dto.cs.NoticeDTO" parameterType="int">
 		SELECT * FROM KCAR_NOTICE WHERE n_no=#{viewNo}
 	</select> 
+	
+	<select id="eventViewProc" resultType="com.one.kcar.dto.cs.EventDTO" parameterType="int">
+		SELECT * FROM KCAR_EVENT WHERE e_no=#{viewNo}
+	</select> 
+	
+	<select id="noticeCount" resultType="int" parameterType="HashMap">
+		SELECT count(*) FROM KCAR_NOTICE
+		<choose>
+			<when test="select == '내용'">WHERE n_content LIKE '%'||#{search}||'%'</when>
+			<when test="select == '제목'">WHERE n_title LIKE '%'||#{search}||'%'</when>
+		</choose>
+	</select>
+	
+	<update id="noticeModifyProc" parameterType="com.one.kcar.dto.cs.NoticeDTO" >
+		UPDATE KCAR_NOTICE SET n_title=#{n_title}, n_content=#{n_content} WHERE n_no=#{n_no}
+	</update>
+	
+	<update id="eventModifyProc" parameterType="com.one.kcar.dto.cs.EventDTO" >
+		UPDATE KCAR_EVENT SET e_title=#{e_title}, e_content=#{e_content}, e_startDate=#{e_startDate}, e_endDate=#{e_endDate} WHERE e_no=#{e_no}
+	</update>
+	
+	<delete id="noticeDeleteProc" parameterType="int">
+		DELETE FROM KCAR_NOTICE WHERE n_no=#{n_no}
+	</delete>
+	
+	<delete id="eventDeleteProc" parameterType="int">
+		DELETE FROM KCAR_EVENT WHERE e_no=#{e_no}
+	</delete>
+	
+	<insert id="eventWriteProc" parameterType="com.one.kcar.dto.cs.EventDTO">
+		<selectKey keyProperty="e_no" resultType="int" order="BEFORE">
+			SELECT nvl(max(e_no), 0)+1 FROM KCAR_EVENT
+		</selectKey>
+		INSERT INTO KCAR_EVENT VALUES(#{e_no}, #{e_title}, #{e_content},  #{e_startDate}, #{e_endDate}, #{e_date})
+	</insert>
+	
+	<select id="eventCount" resultType="int" parameterType="HashMap">
+		SELECT count(*) FROM KCAR_EVENT
+		<choose>
+			<when test="select == '내용'">WHERE e_content LIKE '%'||#{search}||'%'</when>
+			<when test="select == '제목'">WHERE e_title LIKE '%'||#{search}||'%'</when>
+		</choose>
+	</select>
+	
+	<select id="eventProc" resultType="com.one.kcar.dto.cs.EventDTO">
+			SELECT rownum rn, A.* FROM(
+				SELECT * FROM KCAR_EVENT
+					<choose>
+						<when test="select == '내용'">WHERE e_content LIKE '%'||#{search}||'%'</when>
+						<when test="select == '제목'">WHERE e_title LIKE '%'||#{search}||'%'</when>
+					</choose>
+				ORDER BY e_no DESC
+			)A
+	</select>
+	
+	<update id="replySend" parameterType="com.one.kcar.dto.cs.CsDTO" >
+		UPDATE KCAR_SERVICE SET s_replyStatus= 'y' WHERE s_no=#{s_no}
+	</update>
+	
+	<insert id="csQstnWriteProc" parameterType="com.one.kcar.dto.buy.QuestionDTO">
+		INSERT INTO KCAR_QUESTION VALUES(#{q_title}, #{q_content}, #{q_classification})
+	</insert>
 </mapper>

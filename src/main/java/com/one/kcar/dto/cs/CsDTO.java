@@ -1,7 +1,7 @@
 package com.one.kcar.dto.cs;
 
 public class CsDTO {
-	private int s_no;
+	/*
 	private String s_category;
 	private String s_title;
 	private String s_content;
@@ -12,14 +12,6 @@ public class CsDTO {
 	private String s_replyStatus;
 	
 	
-	
-	
-	public int getS_no() {
-		return s_no;
-	}
-	public void setS_no(int s_no) {
-		this.s_no = s_no;
-	}
 	public String getS_replyValue() {
 		return s_replyValue;
 	}

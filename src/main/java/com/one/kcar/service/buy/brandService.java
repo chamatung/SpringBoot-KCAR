@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.one.kcar.dao.buy.IBrandDAO;
@@ -21,11 +22,11 @@ public class brandService {
 	private int totalCnt; 
 	public void brandCarList(String brand, Model model) {
 		// 브랜드 차량 수 / 판매중인 차량 리스트 / 그에 맞는 차량모델 /개수는 15개씩 보여줌
-		ArrayList<CarDTO> brandCarList = brandDao.brandCarList(brand); // 브랜드 차 dto 리스트
-		ArrayList<CarDTO> brandModelList = brandDao.brandModelList(brand); // 브랜드 차 모델정보 필터창에 넣을 것
+		//ArrayList<CarDTO> brandCarList = brandDao.brandCarList(brand); // 브랜드 차 dto 리스트
+		//ArrayList<CarDTO> brandModelList = brandDao.brandModelList(brand); // 브랜드 차 모델정보 필터창에 넣을 것
 		
-		model.addAttribute("brandCarList", brandCarList);
-		model.addAttribute("brandModelList", brandModelList);
+		//model.addAttribute("brandCarList", brandCarList);
+		//model.addAttribute("brandModelList", brandModelList);
 
 	}
 
@@ -113,6 +114,7 @@ public class brandService {
 	}
 	
 	public String ajaxBrandCarAllList(ArrayList<CarDTO> brandCarAllList, int currentPageNum, int totalPage, int totalCount,int totalCnt,String brand, String brandModel,String alignment) {
+		if(alignment == null) alignment = "기본정렬";
 		String result = "				<input type=\"hidden\" id=\"brandCarAllCount\"value=\""+totalCnt+"\">\r\n"
 				+ "						<input type=\"hidden\" id=\"filterCarAllCount\"value=\""+totalCount+"\">"	
 				+ "						<input type=\"hidden\" id=\"brandHidden\" value=\""+brand+"\">\r\n"

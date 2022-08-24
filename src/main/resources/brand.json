@@ -1,0 +1,19 @@
+
+{
+    "carBrand" : [
+        {"cb_brand" : "아우디" ,"cb_koreaLan" : "아우디 인증 중고차" ,"cb_EnglishLan" : "Audi Approved :plus" ,"cb_photo" : "/images/common/brandlogo/logos-brand-audi.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "렉서스" ,"cb_koreaLan" : "렉서스 인증 중고차" ,"cb_EnglishLan" : "LEXUS CERTIFIED" ,"cb_photo" : "/images/common/brandlogo/logos-brand-rexus.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "볼보" ,"cb_koreaLan" : "볼보 인증 중고차" ,"cb_EnglishLan" : "VOLVO SELEKT" ,"cb_photo" : "/images/common/brandlogo/logos-brand-volvo.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "링컨" ,"cb_koreaLan" : "링컨 인증 중고차" ,"cb_EnglishLan" : "LINCOLN Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-lincoln.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "벤츠" ,"cb_koreaLan" : "벤츠 인증 중고차" ,"cb_EnglishLan" : "Mercedes-Benz Certified" ,"cb_photo" : "/images/common/brandlogo/logos-brand-benz.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "BMW" ,"cb_koreaLan" : "BMW 인증 중고차" ,"cb_EnglishLan" : "BMW Premium Selection" ,"cb_photo" : "/images/common/brandlogo/logos-brand-bmw.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "미니" ,"cb_koreaLan" : "미니 인증 중고차" ,"cb_EnglishLan" : "MINI NEXT" ,"cb_photo" : "/images/common/brandlogo/logos-brand-mini.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "랜드로버" ,"cb_koreaLan" : "랜드로버 인증 중고차" ,"cb_EnglishLan" : "LAND ROVER Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-land-rover.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "페라리" ,"cb_koreaLan" : "페라리 인증 중고차" ,"cb_EnglishLan" : "Ferrari Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-ferrari.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "폭스바겐" ,"cb_koreaLan" : "폭스바겐 인증 중고차" ,"cb_EnglishLan" : "Vlokswagen Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-volkswagen.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "포드" ,"cb_koreaLan" : "포드 인증 중고차" ,"cb_EnglishLan" : "FORD Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-ford.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "재규어" ,"cb_koreaLan" : "재규어 인증 중고차" ,"cb_EnglishLan" : "JAGUAR Approved" ,"cb_photo" : "/images/common/brandlogo/logos-brand-jaguar.png" ,"cb_domestic" : "해외" },
+        {"cb_brand" : "롤스로이스" ,"cb_koreaLan" : "롤스로이스 인증 중고차" ,"cb_EnglishLan" : "Rolls-Royce Provenance" ,"cb_photo" : "/images/common/brandlogo/logos-brand-rolls-royce.png" ,"cb_domestic" : "해외" }
+
+    ]
+}

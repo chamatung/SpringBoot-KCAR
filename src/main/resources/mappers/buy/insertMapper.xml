@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.one.kcar.dao.buy.IInsertDAO">
+ <!--db에 insert하기 com.one.kcar.dto.buy.CarDTO -->
+	<insert id="insertCarBrand" parameterType="String">
+		INSERT INTO KCAR_CARBRAND VALUES(#{cb_brand},#{cb_koreaLan},#{cb_EnglishLan},#{cb_photo},#{cb_domestic})
+		INSERT INTO KCAR_CARBRAND(cb_brand) VALUES(#{cb_brand})
+	</insert>
+	<insert id="insertCarBrandModel" parameterType="String">
+		INSERT INTO KCAR_CARBRAND_MODEL VALUES(#{cb_brand},#{cb_m_model})
+	</insert>
+	<insert id="insertCar" parameterType="com.one.kcar.dto.insert.InsertCarDTO">
+		INSERT INTO KCAR_CAR VALUES(#{c_num},#{c_model},#{cb_brand},#{cb_m_model},#{c_year},#{c_distance},#{c_price},#{c_color},#{c_fuel},#{c_change},#{c_acident},#{c_seat},#{c_rent},#{c_photo},#{st_name},#{m_id},#{m_email},#{c_saleStatus})
+	</insert>
+	<insert id="insertCarTag" parameterType="String">
+		INSERT INTO KCAR_CAR_TAG(c_num, c_t_distance, c_t_newCar, c_t_fourWheel,c_t_oneOwner) VALUES(#{c_num},#{c_t_distance},#{c_t_newCar},#{c_t_fourWheel},#{c_t_oneOwner})
+	</insert>
+	<insert id="insertContract" parameterType="String">
+		INSERT INTO KCAR_CAR_CONTRACT(c_c_index,c_num,c_c_s_email) VALUES(contractIndex_seq.NEXTVAL, #{c_num},#{c_c_s_email})
+	</insert>
+	<insert id="insertReview" parameterType="String">
+		INSERT INTO KCAR_BUY_REVIEW VALUES(#{c_c_index}, #{m_r_title},#{m_r_review},#{m_r_registDate},#{m_r_image})
+	</insert>
+	
+	<insert id="insertCarPhoto" parameterType="String">
+		INSERT INTO KCAR_CAR_PHOTO VALUES(#{c_num},#{c_p_photoNum},#{c_p_photo})
+	</insert>
+	<insert id="insertQuestion" parameterType="com.one.kcar.dto.buy.QuestionDTO">
+		INSERT INTO KCAR_QUESTION VALUES(#{q_classification},#{q_title},#{q_content})
+	</insert>
+	<insert id="insertMember" parameterType="com.one.kcar.dto.member.MemberDTO">
+		INSERT INTO kcar_member VALUES (mId_seq.nextval, #{m_pw}, #{m_name}, #{m_email}, #{m_zipcode}, #{m_addr1}, #{m_addr2},#{m_tel}, #{m_role},#{m_oauth,jdbcType=VARCHAR} ,#{m_oauthEmail,jdbcType=VARCHAR})
+	</insert>
+</mapper>

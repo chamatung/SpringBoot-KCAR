@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.one.kcar.dao.search.IsearchDAO">
+
+	<select id="getmodel" resultType="String">
+		SELECT cb_m_model FROM kcar_car
+	</select>
+
+	<select id="getrentmodel" resultType="String">
+		SELECT crname FROM kcarcarrent
+	</select>
+	
+	<select id="getbrand" resultType="String">
+		SELECT cb_brand FROM kcar_car
+	</select>
+
+
+	<select id="getrentbrand" resultType="String">
+		SELECT crbrand FROM kcarcarrent
+	</select>
+
+	<select id="search" resultType="com.one.kcar.dto.buy.CarDTO">
+		select * from kcar_car a left join kcar_car_option b on a.c_num =
+		b.c_num
+		<choose>
+			<when test="!brand.equals('')">
+				WHERE cb_brand = #{brand}
+				<if test="!model.equals('')"> and cb_m_model = #{model}</if>
+				<if test="!list.isEmpty()">
+					<foreach collection="list" item="detail">
+						<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+						<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+						<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+						<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+						<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+						<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+						<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+						<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+						<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+					</foreach>
+				</if>
+			</when>
+			<when test="!model.equals('')">
+				where cb_m_model = #{model}
+				<foreach collection="list" item="detail">
+					<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+					<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+					<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+					<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
+					<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+					<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+					<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+					<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+					<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+				</foreach>
+			</when>
+			<otherwise>
+				where a.c_num is not null
+				<foreach collection="list" item="detail">
+					<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
+					<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
+					<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
+					<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
+					<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
+					<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
+					<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
+					<if test="detail.equals('블랙박스')"> and c_o_blackBox ='블랙박스'</if>
+					<if test="detail.equals('선루프')"> and c_o_sonRoof ='선루프'</if>
+				</foreach>
+			</otherwise>
+
+		</choose>
+	</select>
+
+
+	<!-- 자동완성 -->
+	<select id="likemodel" resultType="String">
+		SELECT cb_m_model FROM
+		kcar_car WHERE cb_m_model LIKE '%'||#{val}||'%' ORDER by cb_m_model
+		desc
+	</select>
+	<select id="likerent" resultType="String">
+		SELECT crname FROM kcarcarrent
+		WHERE crname LIKE '%'||#{val}||'%' ORDER by crname desc
+	</select>
+
+
+	<!-- 렌트 -->
+	<select id="rentsearch"
+		resultType="com.one.kcar.dto.rent.kcarCarRentDTO">
+		select * from kcarcarrent a left join kcarCarRentOption b on a.crnumber =
+		b.crnumber
+		<choose>
+			<when test="!brand.equals('')">
+				WHERE crbrand = #{brand}
+				<if test="!model.equals('')"> and crname = #{model}</if>
+				<if test="!list.isEmpty()">
+					<foreach collection="list" item="detail">
+						<if test="detail.equals('에어백')"> and croairbag='에어백'</if>
+						<if test="detail.equals('네비게이션')"> and cronavigation='네비게이션'</if>
+						<if test="detail.equals('하이패스')"> and crohiPass='하이패스'</if>
+						<if test="detail.equals('후방센서')"> and crobackSensor='후방센서'</if>
+						<if test="detail.equals('후방카메라')"> and crocamera ='후방카메라'</if>
+						<if test="detail.equals('핸들열선')"> and crohandleHot ='핸들열선'</if>
+						<if test="detail.equals('스마트키')"> and crosmartKey ='스마트키'</if>
+						<if test="detail.equals('블랙박스')"> and croblackBox ='블랙박스'</if>
+						<if test="detail.equals('선루프')"> and crosunRoof ='선루프'</if>
+					</foreach>
+				</if>
+			</when>
+			<when test="!model.equals('')">
+				where crname = #{model}
+				<foreach collection="list" item="detail">
+					<if test="detail.equals('에어백')"> and croairbag='에어백'</if>
+					<if test="detail.equals('네비게이션')"> and cronavigation='네비게이션'</if>
+					<if test="detail.equals('하이패스')"> and crohiPass='하이패스'</if>
+					<if test="detail.equals('후방센서')"> and crobackSensor='후방센서'</if>
+					<if test="detail.equals('후방카메라')"> and crocamera ='후방카메라'</if>
+					<if test="detail.equals('핸들열선')"> and crohandleHot ='핸들열선'</if>
+					<if test="detail.equals('스마트키')"> and crosmartKey ='스마트키'</if>
+					<if test="detail.equals('블랙박스')"> and croblackBox ='블랙박스'</if>
+					<if test="detail.equals('선루프')"> and crosunRoof ='선루프'</if>
+				</foreach>
+			</when>
+			<otherwise>
+				where a.crnumber is not null
+				<foreach collection="list" item="detail">
+					<if test="detail.equals('에어백')"> and croairbag='에어백'</if>
+					<if test="detail.equals('네비게이션')"> and cronavigation='네비게이션'</if>
+					<if test="detail.equals('하이패스')"> and crohiPass='하이패스'</if>
+					<if test="detail.equals('후방센서')"> and crobackSensor='후방센서'</if>
+					<if test="detail.equals('후방카메라')"> and crocamera ='후방카메라'</if>
+					<if test="detail.equals('핸들열선')"> and crohandleHot ='핸들열선'</if>
+					<if test="detail.equals('스마트키')"> and crosmartKey ='스마트키'</if>
+					<if test="detail.equals('블랙박스')"> and croblackBox ='블랙박스'</if>
+					<if test="detail.equals('선루프')"> and crosunRoof ='선루프'</if>
+				</foreach>
+			</otherwise>
+
+		</choose>
+	</select>
+</mapper>

@@ -1,21 +1,6 @@
 package com.one.kcar.dto.buy;
 
-//create sequence contractIndex_seq increment by 1 start with 1;
-//drop table kcar_car_contract;
-//create table kcar_car_contract(
-//c_c_index number(6) not null,
-//c_num varchar2(10) not null,
-//c_c_b_email varchar2(30) null,
-//c_c_s_email varchar2(30) not null,
-//c_c_b_name varchar2(30) null,
-//c_c_b_tel varchar2(30) null,
-//c_c_b_zipcode varchar2(30) null,
-//c_c_b_addr1 varchar2(30) null,
-//c_c_b_addr2 varchar2(30) null,
-//c_c_b_totalPrice varchar2(30) null,
-//);
 public class ContractDTO {
-	private int c_c_index;
 	private String c_num;
 	private String c_c_b_email;
 	private String c_c_s_email;
@@ -25,13 +10,12 @@ public class ContractDTO {
 	private String c_c_b_addr1;
 	private String c_c_b_addr2;
 	private String c_c_b_totalPrice;
+	private String c_c_b_carPrice;
+	private String c_c_b_registrationPrice;
+	private String c_c_b_managePrice;
+	private String c_c_b_registPrice;
+	private String c_c_b_kw;
 	
-	public int getC_c_index() {
-		return c_c_index;
-	}
-	public void setC_c_index(int c_c_index) {
-		this.c_c_index = c_c_index;
-	}
 	public String getC_num() {
 		return c_num;
 	}
@@ -86,7 +70,36 @@ public class ContractDTO {
 	public void setC_c_b_totalPrice(String c_c_b_totalPrice) {
 		this.c_c_b_totalPrice = c_c_b_totalPrice;
 	}
-	
-	
+	public String getC_c_b_carPrice() {
+		return c_c_b_carPrice;
+	}
+	public void setC_c_b_carPrice(String c_c_b_carPrice) {
+		this.c_c_b_carPrice = c_c_b_carPrice;
+	}
+	public String getC_c_b_registrationPrice() {
+		return c_c_b_registrationPrice;
+	}
+	public void setC_c_b_registrationPrice(String c_c_b_registrationPrice) {
+		this.c_c_b_registrationPrice = c_c_b_registrationPrice;
+	}
+	public String getC_c_b_managePrice() {
+		return c_c_b_managePrice;
+	}
+	public void setC_c_b_managePrice(String c_c_b_managePrice) {
+		this.c_c_b_managePrice = c_c_b_managePrice;
+	}
+	public String getC_c_b_registPrice() {
+		return c_c_b_registPrice;
+	}
+	public void setC_c_b_registPrice(String c_c_b_registPrice) {
+		this.c_c_b_registPrice = c_c_b_registPrice;
+	}
+	public String getC_c_b_kw() {
+		return c_c_b_kw;
+	}
+	public void setC_c_b_kw(String c_c_b_kw) {
+		this.c_c_b_kw = c_c_b_kw;
+	}
 
+	
 }

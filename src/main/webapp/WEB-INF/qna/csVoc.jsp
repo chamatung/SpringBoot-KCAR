@@ -95,7 +95,7 @@
 					<div class="el-row">
 						<div class="formTable">
 							<div class="workerList">
-				<!-- form -->	<form action="csProc" class="el-form loginForm" method="post" enctype="multipart/form-data" id="f">
+				<!-- form -->	<form action="/cs/csProc" class="el-form loginForm" method="post" enctype="multipart/form-data" id="f">
 									<div class="el-form-item">
 										<!---->
 										<div class="el-form-item__content">
@@ -349,7 +349,7 @@
 						</div>
 						<div class="footerBtnWrap">
 							<div class="searchTrigger box maxW840 btnLF4 el-row">
-								<button class="button chosenApply" onclick="location.href='menu'">취소</button>
+								<button class="button chosenApply" onclick="backButton()">취소</button>
 								<button class="button apply" onclick="submitForm()">제출</button>
 							</div>
 						</div>
@@ -449,6 +449,11 @@
 			 
 		 }
 		 
+		 function backButton() {
+			 if (confirm("작성을 취소하시겠습니까?") == true){
+				 location.href='home';
+			 }
+		 }
 		
 		 function listClick1() {
 			 $("#category").val("내차사기");
@@ -536,12 +541,6 @@
 			$("#reply").attr("placeholder", "kcar@naver.com");
 		}
 		
-		/* function phoneClick() {
-			$("#replyArea").show();
-			label.innerHTML = "휴대폰 번호";
-			$("#reply").attr("placeholder", "010-0000-0000");
-		}
-		 */
 		function notReturn() {
 			$("#replyArea").hide();
 			$("#reply").val("");
@@ -564,13 +563,6 @@
 				
 			}
 		});
-		
-		/* jQuery(document).ready(function(){
-			jQuery("#menulist").on("click", "li", function(e){
-				e.preventDefault();
-				alert(jQuery(this).text() );
-			})
-		}); */
 		
 		function submitForm() {
 			var category = $("#category").val();
@@ -615,7 +607,6 @@
 				return false;
 			}
 			
-		
 		}
 		
 	</script>

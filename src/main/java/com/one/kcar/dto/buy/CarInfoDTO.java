@@ -8,7 +8,6 @@ public class CarInfoDTO {
 //	c_i_recommend	varchar2(1500)	null	차 추천이유
 //	c_i_summary	varchar2(1500)	null	진단결과
 //	c_i_history	varchar2(1500)	null	차량 특이사항
-//	c_i_insurance	varchar2(1500)	null	차량 보험(보류)
 
 	private String c_num;
 
@@ -47,7 +46,6 @@ public class CarInfoDTO {
 	public void setC_i_insurance(String c_i_insurance) {
 		this.c_i_insurance = c_i_insurance;
 	}
-
 	
 	
 }

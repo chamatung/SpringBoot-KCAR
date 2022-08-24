@@ -150,6 +150,12 @@
 							<h1 class="title">공지사항</h1>
 							<p class="desc">K Car의 새로운 소식을 전달받으실 수 있습니다.</p>
 						</div>
+						
+					<form action="" method="post" id="f">
+					<input type="hidden" value="${viewList.n_no }" name="n_no"/>
+					<input type="hidden" value="${viewList.n_title }" name="n_title"/>
+					<input type="hidden" value="${viewList.n_content }" name="n_content"/>
+					<input type="hidden" value="notice" name="listViewno"/>
 						<div>
 							<div class="boardView">
 								<div class="boardViewTitle">
@@ -165,18 +171,22 @@
 									${viewList.n_content }
 								</div>
 							</div>
+							
 							<div class="searchTrigger box Large maxW97 el-row">
-								<button class="button apply" onclick="location.href='NotcMatrList'">목록</button>
+								<button class="button apply" onclick="listView()">목록</button>
+								<button class="button apply" formaction="noticeModifyForm">수정하기</button>
+								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
 							</div>
-							<div class="boardViewPaging">
+							
+							<!-- <div class="boardViewPaging">
 								<ul>
 									<li class="bvPN">이전글</li>
 									<li class="bvPT"><a
 										class="el-link el-link--default is-underline">
-											<!---->
+											
 											<span class="el-link--inner"> [공지] K Car 사이트 개편에 따른 이용
 												가이드 안내 </span>
-										<!---->
+										
 									</a></li>
 									<li class="bvPD">2022.07.18</li>
 								</ul>
@@ -184,15 +194,16 @@
 									<li class="bvPN">다음글</li>
 									<li class="bvPT"><a
 										class="el-link el-link--default is-underline">
-											<!---->
+											
 											<span class="el-link--inner"> [공지] K Car 전국 직영점 8월 휴점
 												안내 </span>
-										<!---->
+										
 									</a></li>
 									<li class="bvPD">2022.08.11</li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
+					</form>
 					</div>
 				</div>
 				<%@include file="/WEB-INF/default/footer.jsp" %>
@@ -330,5 +341,21 @@
 	<script type="text/javascript" id="">window.criteo_q=window.criteo_q||[];var deviceType=/iPad/.test(navigator.userAgent)?"t":/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent)?"m":"d";window.criteo_q.push({event:"setAccount",account:73896},{event:"setSiteType",type:deviceType},{event:"viewHome"});</script>
 
 	<script type="text/javascript" id="">kakaoPixel("8101473052006960319").pageView();</script>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+	 function removeCheck(){
+		 if (confirm("해당 공지를 삭제하시겠습니까?") == true){
+			 $("#f").attr("action", "noticeDeleteProc");
+		 }
+
+	 }
+	 
+	 function listView(){
+		 $("#f").attr("action", "NotcMatrList");
+		 
+	 }
+	</script>
 </body>
 </html>

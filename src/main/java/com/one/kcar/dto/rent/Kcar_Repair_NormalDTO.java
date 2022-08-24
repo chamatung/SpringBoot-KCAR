@@ -5,7 +5,7 @@ package com.one.kcar.dto.rent;
   3  crn_name varchar2(50) not null,
   4  crn_tel varchar2(15) not null,
   5  crn_addr varchar2(300) not null,
-  6  constraint pk_crn primary key (crn_location)
+  6  constraint pk_crn primary key (crn_name)
   7  );
 
 Table created.

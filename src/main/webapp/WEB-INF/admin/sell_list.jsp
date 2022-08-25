@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>내차팔기 신청관리</title>
 </head>
 <body>
 <%@ include file="/WEB-INF/default/admin_header.jsp" %>

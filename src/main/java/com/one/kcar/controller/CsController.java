@@ -66,9 +66,8 @@ public class CsController {
 		public String csQstnWriteProc(HttpServletRequest req, RedirectAttributes model) {
 			String msg = service.csQstnWriteProc(req);
 			model.addFlashAttribute("msg", msg);
-			
 			if(msg.equals("작성 완료")) {
-				return "redirect:cs/csQstn";
+				return "redirect:main";
 			}
 			return "redirect:csQstneWriteForm";
 		}
@@ -140,7 +139,7 @@ public class CsController {
 			model.addFlashAttribute("msg", msg);
 			
 			if(msg.equals("공지사항 작성 완료")) {
-				return "redirect:NotcMatrList";
+				return "redirect:NotcMatrListManage";
 			}
 			return "redirect:noticeWriteForm";
 		}
@@ -185,7 +184,7 @@ public class CsController {
 			model.addFlashAttribute("msg", msg);
 			
 			if(msg.equals("수정 완료")) {
-				return "redirect:NotcMatrList";
+				return "redirect:NotcMatrListManage";
 			}
 			return "redirect:noticeModifyForm";
 		}
@@ -195,7 +194,7 @@ public class CsController {
 			String msg = service.eventModifyProc(event);
 			model.addFlashAttribute("msg", msg);
 			if(msg.equals("수정 완료")) {
-				return "redirect:NotcMatrList";
+				return "redirect:NotcMatrListManage";
 			}
 			return "redirect:eventModifyForm";
 		}
@@ -204,14 +203,14 @@ public class CsController {
 		public String noticeDeleteProc(String n_no) {
 			int no = Integer.parseInt(n_no);
 			service.noticeDeleteProc(no);
-			return "redirect:NotcMatrList";
+			return "redirect:NotcMatrListManage";
 		}	
 		
 		@RequestMapping(value = "eventDeleteProc")
 		public String eventDeleteProc(String e_no) {
 			int no = Integer.parseInt(e_no);
 			service.eventDeleteProc(no);
-			return "redirect:NotcMatrList";
+			return "redirect:NotcMatrListManage";
 		}
 		
 		@GetMapping(value = "eventWriteForm")
@@ -226,7 +225,7 @@ public class CsController {
 			model.addFlashAttribute("msg", msg);
 			
 			if(msg.equals("이벤트 작성 완료")) {
-				return "redirect:NotcMatrList";
+				return "redirect:NotcMatrListManage";
 			}
 			model.addAttribute("view", listViewno);
 			return "redirect:eventWriteForm";
@@ -259,6 +258,36 @@ public class CsController {
 				return "redirect:csVocManage";
 			}
 			return "redirect:csViewProc";
+		}
+		
+		@RequestMapping(value = "NotcMatrListManage")
+		public String NotcMatrListManage(Model model, @RequestParam(value="listViewno", required = false)String listViewno) {
+				model.addAttribute("view", listViewno);
+			
+			System.out.println(listViewno);
+			return "bd/NotcMatrListManage";
+		}
+		
+		@RequestMapping(value = "noticeManageViewProc")
+		public String noticeManageViewProc(@RequestParam(value = "no", required=false)String no, Model model) {
+			if(no == null || no == "") {
+				return "redirect:NotcMatrListManage"; 
+			}
+			
+			int viewNo = Integer.parseInt(no);
+			service.noticeViewProc(viewNo, model);
+			return "bd/NoticeViewFormManage";
+		}
+		
+		@RequestMapping(value = "eventManageViewProc")
+		public String eventManageViewProc(@RequestParam(value = "no", required=false)String no, Model model) {
+			if(no == null || no == "") {
+				return "redirect:NotcMatrListManage";
+			}
+			
+			int viewNo = Integer.parseInt(no);
+			service.eventViewProc(viewNo, model);
+			return "bd/EventViewFormManage";
 		}
 		
 		

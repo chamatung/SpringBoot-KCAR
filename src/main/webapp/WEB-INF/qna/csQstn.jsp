@@ -412,7 +412,7 @@
 			          if (searchValue != ""){
 			        	  $("#nav").hide();
 			        	  htmlString += "<div class='mT20'>";
-			        	  htmlString += "<a href='cs/csQstn' class='moreBtn el-link el-link--default is-underline'>";
+			        	  htmlString += "<a href='csQstn' class='moreBtn el-link el-link--default is-underline'>";
 			        	  htmlString += "<span class='el-link--inner'>";
 			        	  htmlString += "<i class='el-icon-arrow-left'></i>";
 			        	  htmlString += "돌아가기 </span> </a> </div>";

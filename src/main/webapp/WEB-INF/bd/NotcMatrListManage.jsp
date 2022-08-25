@@ -4,7 +4,7 @@
 
 <html lang="ko" class="chrome">
 <head>
-<title>공지사항 및 이벤트</title>
+<title>공지사항 및 이벤트 관리</title>
 <meta data-n-head="ssr" charset="utf-8">
 <meta data-n-head="ssr" name="viewport"
 	content="width=device-width, initial-scale=1">
@@ -228,12 +228,11 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="/WEB-INF/default/header.jsp" %>
+				<%@include file="/WEB-INF/default/admin_header.jsp" %>
 				<div class="contentsWrap">
 					<div class="el-row">
 						<div class="subHeader">
-							<h1 class="title">공지사항</h1>
-							<p class="desc">K Car의 새로운 소식을 전달받으실 수 있습니다.</p>
+							<h1 class="title">공지사항/이벤트 관리</h1>
 						</div>
 						<div>
 							<div class="tabsCol02 el-tabs el-tabs--top">
@@ -261,30 +260,30 @@
 										<form action="" method="post" id="notice_form_Search">
 										<input type="hidden" name="no" value="notice">
 										
-											<div class="boardSearch">
+											<!--<div class="boardSearch">
 												<p>
 													총 <span id="totalNotice"></span> 건의 글이 있습니다.
 												</p>
 												<ul class="boardSearchForm">
 													<li class="searchSelect"><div class="el-select">
-															<!---->
+															
 															<div class="el-input el-input--suffix" onclick="searchDrop()" id="drop">
-																<!---->
+																
 																<input type="text" readonly="readonly"
 																	autocomplete="off" placeholder="전체" id="selectValue"
 																	class="el-input__inner" name="select">
-																<!---->
+																
 																<span class="el-input__suffix"><span
 																	class="el-input__suffix-inner"><i
 																		class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-																	<!---->
-																		<!---->
-																		<!---->
-																		<!---->
-																		<!----></span>
-																<!----></span>
-																<!---->
-																<!---->
+																	
+																		
+																		
+																		
+																		</span>
+																</span>
+																
+																
 															</div>
 															<div class="el-select-dropdown el-popper" id="dropdown"
 																style="display: none; min-width: 246px;">
@@ -294,7 +293,7 @@
 																		style="margin-bottom: -17px; margin-right: -17px;">
 																		<ul
 																			class="el-scrollbar__view el-select-dropdown__list">
-																			<!---->
+																			
 																			<li class="el-select-dropdown__item" onclick="item1()"><span>전체</span></li>
 																			<li class="el-select-dropdown__item" onclick="item2()"><span>제목</span></li>
 																			<li class="el-select-dropdown__item" onclick="item3()"><span>내용</span></li>
@@ -309,26 +308,26 @@
 																			style="transform: translateY(0%);"></div>
 																	</div>
 																</div>
-																<!---->
+																
 															</div>
 														</div></li>
 													<li class="searchInput"><div class="el-input">
-															<!---->
+															
 															<input type="text" autocomplete="off" name="search"
 																placeholder="검색어를 입력해주세요" class="el-input__inner">
-															<!---->
-															<!---->
-															<!---->
-															<!---->
+															
+															
+															
+															
 														</div></li>
 													<li><button type="button" id="notice_btn_Search"
 															class="el-button btn10 el-button--default">
-															<!---->
-															<!---->
+															
+															
 															<span><span class="_hidden">검색</span></span>
 														</button></li>
 												</ul>
-											</div>
+											</div> -->
 											</form><input type="hidden" value="${msg }" id="msg">
 						<!-- form -->		<form action="" id="f" method="post">
 											<input type="hidden" name="no" id="no" />
@@ -387,7 +386,8 @@
 													<!---->
 													<!---->
 												</div>
-												<div class="mT40 pagination -sm">
+												<button type="button" style="width: 100px; float: right; margin: 33px 20px 0 0;" onclick="location.href='noticeWriteForm'" class="button apply">글쓰기</button>
+												<div class="mT40 pagination -sm" style="margin-left: 50px;">
 													<!---->
 													<div class="pagingNum" id="pagingNum">
 															<ul id="pagingul" class="pagingul">
@@ -409,74 +409,7 @@
 										<div class="boardList">
 										<form action="" method="post" id="event_form_Search">
 										<input type="hidden" name="no" value="event">
-											<div class="boardSearch">
-												<p>
-													총 <span id="totalEvent"></span> 건의 글이 있습니다.
-												</p>
-												<ul class="boardSearchForm">
-													<li class="searchSelect"><div class="el-select">
-															<!---->
-															<div class="el-input el-input--suffix" onclick="searchDropE()">
-																<!---->
-																<input type="text" readonly="readonly" id="selectValueE"
-																	autocomplete="off" placeholder="전체" name="select"
-																	class="el-input__inner" >
-																<!---->
-																<span class="el-input__suffix"><span
-																	class="el-input__suffix-inner"><i
-																		class="el-select__caret el-input__icon el-icon-arrow-up"></i>
-																	<!---->
-																		<!---->
-																		<!---->
-																		<!---->
-																		<!----></span>
-																<!----></span>
-																<!---->
-																<!---->
-															</div>
-															<div class="el-select-dropdown el-popper"
-																style="display: none; min-width: 246px;" id="dropdownE">
-																<div class="el-scrollbar" style="">
-																	<div
-																		class="el-select-dropdown__wrap el-scrollbar__wrap"
-																		style="margin-bottom: -17px; margin-right: -17px;">
-																		<ul
-																			class="el-scrollbar__view el-select-dropdown__list" >
-																			<!---->
-																			<li class="el-select-dropdown__item selected" onclick="item1E()"><span>전체</span></li>
-																			<li class="el-select-dropdown__item" onclick="item2E()"><span>제목</span></li>
-																			<li class="el-select-dropdown__item" onclick="item3E()"><span>내용</span></li>
-																		</ul>
-																	</div>
-																	<div class="el-scrollbar__bar is-horizontal">
-																		<div class="el-scrollbar__thumb"
-																			style="transform: translateX(0%);"></div>
-																	</div>
-																	<div class="el-scrollbar__bar is-vertical">
-																		<div class="el-scrollbar__thumb"
-																			style="transform: translateY(0%);"></div>
-																	</div>
-																</div>
-																<!---->
-															</div>
-														</div></li>
-													<li class="searchInput"><div class="el-input">
-															<!---->
-															<input type="text" autocomplete="off" name="search"
-																placeholder="검색어를 입력해 주세요." class="el-input__inner">
-															<!---->
-															<!---->
-															<!---->
-															<!---->
-														</div></li>
-													<li><button type="button" id="event_btn_Search"
-															class="el-button btn10 el-button--default">
-															<!---->
-															<!---->
-															<span><span class="_hidden">검색</span></span>
-														</button></li>
-												</ul>
-											</div>
+											
 		<!-- view -->					</form><input type="hidden" value="${view }" id="view">
 										<form action="" id="eventForm" method="post">
 												<input type="hidden" name="no" id="no" />
@@ -549,16 +482,15 @@
 													<!---->
 													<!---->
 												</div>
-												<div class="mT40">
-													<div class="pagination -sm">
-														<!---->
-														<div class="pagingNum">
-															<ul class="pagingulEvent" id="pagingulEvent">
-															
+												<button type="button" style="width: 100px; float: right; margin: 33px 20px 0 0;" onclick="location.href='eventWriteForm'" class="button apply">글쓰기</button>
+												<div class="mT40 pagination -sm" style="margin-left: 50px;">
+													<!---->
+													<div class="pagingNum" id="pagingNum">
+															<ul id="pagingulEvent" class="pagingulEvent">
+
 															</ul>
-														</div>
-														<!---->
 													</div>
+													
 												</div>
 												<!-- <div>
 														<button type="button" style="width: 100px;" onclick="location.href='eventWriteForm'">글쓰기</button>
@@ -732,7 +664,6 @@
 			navNotice.style.color = "#b70f28";
 			navEvent.style.color = "black";
 			
-			getNoticeList(1, dataPerPage, totalData);
 		}
 		
 		function eventClick() {
@@ -744,8 +675,6 @@
 			navBar.style.transform = "translateX(610px)";
 			navEvent.style.color = "#b70f28";
 			navNotice.style.color = "black";
-			
-			getEventList(1, dataPerPage, totalData);
 		}
 		
 		function searchDrop() {
@@ -889,7 +818,7 @@
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_3_column_10   el-table__cell'>";
 			        	  htmlString += "		<div class='cell'>";
 			        	  htmlString += "			<span class='el-link--inner'>";		
-			        	  htmlString += "				<a href='noticeViewProc?no=" + obj.noticeList[i].n_no + "'>" + obj.noticeList[i].n_title + "</a>";
+			        	  htmlString += "				<a href='noticeManageViewProc?no=" + obj.noticeList[i].n_no + "'>" + obj.noticeList[i].n_title + "</a>";
 			        	  htmlString += "			</span>";
 			        	  htmlString += "		</div>";
 			        	  htmlString += "	</td>";
@@ -957,7 +886,7 @@
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_13   el-table__cell'>";
 			        	  htmlString += "		<div class='cell'>";
 			        	  htmlString += "			<span class='el-link--inner'>";		
-			        	  htmlString += "				<a href='eventViewProc?no=" + obj.eventList[i].e_no + "'>" + obj.eventList[i].e_title + "</a>";
+			        	  htmlString += "				<a href='eventManageViewProc?no=" + obj.eventList[i].e_no + "'>" + obj.eventList[i].e_title + "</a>";
 			        	  htmlString += "			</span>";
 			        	  htmlString += "		</div>";
 			        	  htmlString += "	</td>";
@@ -965,14 +894,7 @@
 			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_startDate + " ~ " + obj.eventList[i].e_endDate + "</div>";
 			        	  htmlString += "	</td>";
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_15   el-table__cell'>";
-			        	  if(eventStatus == "마감"){ 
-				        	 	 htmlString += "		<div class='cell' id='eventStatus' style='color:red;'>" + eventStatus + "</div>";
-				        	  }else if(eventStatus == "진행 예정"){  
-				        	 	 htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";  
-				        	  }else{
-				        	 	 htmlString += "		<div class='cell' id='eventStatus' style='color:green;'>" + eventStatus + "</div>"; 
-				        	  }
-			        	 // htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";
+			        	  htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";
 			        	  htmlString += "	</td>";
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_16   el-table__cell'>";
 			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_date + "</div>";

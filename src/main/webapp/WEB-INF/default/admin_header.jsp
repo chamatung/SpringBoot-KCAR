@@ -35,19 +35,23 @@
 				<li role="menuitem" aria-haspopup="true"
 					class="el-submenu is-active" onmouseover="dropdown3()"
 					onmouseout="dropup3()"><div class="el-submenu__title" style="">
+<<<<<<< HEAD
 						<a href="csVoc_list">제안/칭찬 리스트 </a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
+=======
+						<a href="csVocManage">제안/칭찬 리스트 </a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
+>>>>>>> jin
 					</div></li>
 				<li role="menuitem" aria-haspopup="true"
 					class="el-submenu is-active" onmouseover="dropdown3()"
 					onmouseout="dropup3()"><div class="el-submenu__title" style="">
-						<a href="notice_Insert">공지사항 </a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
-					</div></li>
-				<li role="menuitem" aria-haspopup="true"
-					class="el-submenu is-active" onmouseover="dropdown3()"
-					onmouseout="dropup3()"><div class="el-submenu__title" style="">
-						<a href="event_Insert">이벤트 </a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
+						<a href="NotcMatrListManage">공지사항/이벤트 </a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
 					</div></li>
 				
+				<li role="menuitem" aria-haspopup="true"
+					class="el-submenu is-active" onmouseover="dropdown3()"
+					onmouseout="dropup3()"><div class="el-submenu__title" style="">
+						<a href="csQstnWriteForm">자주하는 질문 작성</a> <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
+					</div></li>
 
 			</ul>
 			

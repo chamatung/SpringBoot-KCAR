@@ -174,8 +174,8 @@
 							</div>
 							<div class="searchTrigger box Large maxW97 el-row">
 								<button class="button apply" onclick="listView()">목록</button>
-								<button class="button apply" formaction="eventModifyForm">수정하기</button>
-								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
+								<!-- <button class="button apply" formaction="eventModifyForm">수정하기</button>
+								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button> -->
 							</div>
 							
 							<!-- <div class="boardViewPaging">

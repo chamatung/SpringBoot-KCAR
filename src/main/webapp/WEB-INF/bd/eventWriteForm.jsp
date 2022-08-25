@@ -40,7 +40,7 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="/WEB-INF/default/header.jsp" %>
+				<%@include file="/WEB-INF/default/admin_header.jsp" %>
 				<div class="contentsWrap">
 					<div class="el-row">
 						<div class="subHeader">

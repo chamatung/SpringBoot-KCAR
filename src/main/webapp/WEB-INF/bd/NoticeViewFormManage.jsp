@@ -143,12 +143,11 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="/WEB-INF/default/header.jsp" %>
+				<%@include file="/WEB-INF/default/admin_header.jsp" %>
 				<div class="contentsWrap">
 					<div class="el-row">
 						<div class="subHeader">
 							<h1 class="title">공지사항</h1>
-							<p class="desc">K Car의 새로운 소식을 전달받으실 수 있습니다.</p>
 						</div>
 						
 					<form action="" method="post" id="f">
@@ -174,8 +173,8 @@
 							
 							<div class="searchTrigger box Large maxW97 el-row">
 								<button class="button apply" onclick="listView()">목록</button>
-								<!-- <button class="button apply" formaction="noticeModifyForm">수정하기</button>
-								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button> -->
+								<button class="button apply" formaction="noticeModifyForm">수정하기</button>
+								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
 							</div>
 							
 							<!-- <div class="boardViewPaging">

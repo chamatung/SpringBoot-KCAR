@@ -229,7 +229,7 @@ public class CsServiceImpl implements ICsService {
 		String classification = req.getParameter("classification");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-
+System.out.println(content);
 		QuestionDTO question = new QuestionDTO();
 		question.setQ_classification(classification);
 		question.setQ_title(title);

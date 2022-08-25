@@ -143,39 +143,38 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="/WEB-INF/default/header.jsp" %>
+				<%@include file="/WEB-INF/default/admin_header.jsp" %>
 				<div class="contentsWrap">
 					<div class="el-row">
 						<div class="subHeader">
-							<h1 class="title">공지사항</h1>
-							<p class="desc">K Car의 새로운 소식을 전달받으실 수 있습니다.</p>
+							<h1 class="title">이벤트</h1>
 						</div>
-						
 					<form action="" method="post" id="f">
-					<input type="hidden" value="${viewList.n_no }" name="n_no"/>
-					<input type="hidden" value="${viewList.n_title }" name="n_title"/>
-					<input type="hidden" value="${viewList.n_content }" name="n_content"/>
-					<input type="hidden" value="notice" name="listViewno"/>
+					<input type="hidden" value="${eventviewList.e_no }" name="e_no"/>
+					<input type="hidden" value="${eventviewList.e_title }" name="e_title"/>
+					<input type="hidden" value="${eventviewList.e_content }" name="e_content"/>
+					<input type="hidden" value="${eventviewList.e_startDate }" name="e_startDate"/>
+					<input type="hidden" value="${eventviewList.e_endDate }" name="e_endDate"/>
+					<input type="hidden" value="event" name="listViewno"/>
 						<div>
 							<div class="boardView">
 								<div class="boardViewTitle">
 									<h5>
-										${viewList.n_title }
+										${eventviewList.e_title }
 										<!---->
 									</h5>
 									<p>
-										<span>관리자</span> <span>${viewList.n_date }</span>
+										<span>관리자</span> <span>${eventviewList.e_date }</span>
 									</p>
 								</div>
 								<div class="borderViewCon">
-									${viewList.n_content }
+									${eventviewList.e_content }
 								</div>
 							</div>
-							
 							<div class="searchTrigger box Large maxW97 el-row">
 								<button class="button apply" onclick="listView()">목록</button>
-								<!-- <button class="button apply" formaction="noticeModifyForm">수정하기</button>
-								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button> -->
+								<button class="button apply" formaction="eventModifyForm">수정하기</button>
+								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
 							</div>
 							
 							<!-- <div class="boardViewPaging">
@@ -346,8 +345,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 	 function removeCheck(){
-		 if (confirm("해당 공지를 삭제하시겠습니까?") == true){
-			 $("#f").attr("action", "noticeDeleteProc");
+		 if (confirm("해당 이벤트를 삭제하시겠습니까?") == true){
+			 $("#f").attr("action", "eventDeleteProc");
 		 }
 
 	 }

@@ -86,7 +86,7 @@
 							<div class="contentsBox section01 el-row">
 								<div class="myInfoBox">
 									<div>
-										<p class="myName">이성표님</p>
+										<p class="myName">${sessionScope.name }님</p>
 										<a href="/mp/myinfo/auth" class="txtButton"> 정보 수정 </a>
 									</div>
 									<div class="totalList">

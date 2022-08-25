@@ -40,12 +40,11 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="/WEB-INF/default/header.jsp" %>
+				<%@include file="/WEB-INF/default/admin_header.jsp" %>
 				<div class="contentsWrap">
 					<div class="el-row">
 						<div class="subHeader">
-							<h1 class="title">이벤트</h1>
-							<p class="desc">K Car의 새로운 소식을 전달받으실 수 있습니다.</p>
+							<h1 class="title">이벤트 수정</h1>
 						</div>
 						<form action="eventModifyProc" method="post">
 							<input type="hidden" name="e_no" value="${eventmodifyList.e_no }">

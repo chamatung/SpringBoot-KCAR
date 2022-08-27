@@ -44,7 +44,7 @@ function checkAuth(){
 					<form action="find_pw_email" method="post">
 					<div class="logListWrap loginCenter">
 						<h1 class="kcarLogo" style="cursor: pointer;">K car logo</h1>
-						<h3>이메일 인증</h3>
+						<h3>비밀번호 찾기(이메일 인증)</h3>
 						
 						<br>
 <!-- 						<form action="mailcheck" method="post"> -->
@@ -106,7 +106,7 @@ function checkAuth(){
 								</div>
 								<div class="footerBtnWrap">
 						<div class="searchTrigger box maxW400 el-row">
-							<button class="button apply" onclick ="location.href='mailcheck'">회원가입</button>
+							<button class="button apply" onclick ="location.href='mailcheck'">비밀번호 찾기</button>
 						</div>
 					</div>
 					</form>

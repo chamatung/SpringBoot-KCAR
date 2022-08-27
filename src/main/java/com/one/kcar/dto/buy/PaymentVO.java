@@ -11,8 +11,10 @@ public class PaymentVO {
 	private int kw;
 	//선수금 차량의 30%
 	private double advancePayment;
+	private int advancePayment2;
 	//할부원금 = 차량가격 - 선수금 = a
 	private double installment;
+	private int installment2;
 	//대출상환 개월 수 = n
 	private int installmentIndex;
 	//연이자
@@ -25,6 +27,14 @@ public class PaymentVO {
 	
 	private int sum;//총 구매가격
 	
+	public int getAdvancePayment2() {
+		return advancePayment2;
+	}
+
+	public int getInstallment2() {
+		return installment2;
+	}
+
 	public PaymentVO() {
 		this.managePrice = 297000;
 		this.registPrice = 33000;
@@ -58,12 +68,14 @@ public class PaymentVO {
 //	double advancePrice = carPrice * 0.3;
 	public void setAdvancePayment(int carPrice) {
 		this.advancePayment = carPrice * 0.3;
+		this.advancePayment2 = (int) this.advancePayment / 10000;
 		setInstallment(carPrice, advancePayment);
 	}
 //	//선수금 제외 차량가격 기준 할부원금 a
 //	double installment = carPrice - advancePrice;
 	public void setInstallment(int carPrice, double advancePayment) {
 		this.installment = carPrice - advancePayment;
+		this.installment2 = (int) this.installment;
 		setYearRate(this.rate);
 	}
 //	//대출상환 개월 수 n

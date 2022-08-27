@@ -131,6 +131,13 @@ public class rentCarService{
 		return members;
 	}
 	
+	public kcarCarRentDTO updateInfo(String m_email, String crNumber,kcarCarRentDTO mailUpdate) {
+		mailUpdate.setM_email(m_email);
+		crNumber = (String) session.getAttribute("crNumber");
+		kcarCarRentDao.updateMail(m_email, crNumber);
+		return mailUpdate;
+	}
+	
 
 }
 

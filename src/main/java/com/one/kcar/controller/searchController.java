@@ -24,7 +24,7 @@ public class searchController {
 	@Autowired
 	searchService service;
 @Autowired HttpSession session;
-	@GetMapping("search//IntgSearchList")
+	@GetMapping("search/IntgSearchList")
 	public String Search(String searchWord, Model model) {
 
 		Set<String> modellist = service.getmodel();

@@ -70,7 +70,7 @@
 						<div class="contentsBox el-row">
 							<div>
 								<div class="desc">
-									<strong> ${sessionScope.id } 고객님, 안녕하세요.<br>
+									<strong> ${sessionScope.name } 고객님, 안녕하세요.<br>
 									<br> 지금부터 홈서비스 바로구매를 시작하겠습니다.<br> 먼저, 차량 정보와 예상 결제
 										금액을 확인해 주세요.<br></strong>
 								</div>

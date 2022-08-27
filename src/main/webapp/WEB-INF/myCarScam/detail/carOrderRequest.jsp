@@ -65,7 +65,7 @@
 													<div class="flexbox">
 														<div class="el-input is-disabled">
 															<!---->
-															<input type="text" disabled="disabled" autocomplete="off"
+															<input type="text" readonly="readonly" autocomplete="off"
 																placeholder="이름 입력" maxlength="20" value="${member.m_name }"
 																class="el-input__inner" id="name" name="m_name">
 															<!---->
@@ -92,7 +92,7 @@
 													<div class="flexbox">
 														<div class="el-input is-disabled el-input--suffix">
 															<!---->
-															<input type="text" disabled="disabled" autocomplete="off"
+															<input type="text" readonly="readonly" autocomplete="off"
 																placeholder="휴대폰번호 입력" value="${member.m_tel }"
 																inputmode="numeric" maxlength="13"
 																class="el-input__inner" id="tel" name="m_tel">
@@ -112,7 +112,7 @@
 													<div class="flexbox">
 														<div class="el-input is-disabled">
 															<!---->
-															<input type="text" disabled="disabled" autocomplete="off"
+															<input type="text" readonly autocomplete="off"
 																placeholder="우편번호 입력" class="el-input__inner" id="zipcode" name="m_zipcode" value="${member.m_zipcode }">
 															<!---->
 															<!---->
@@ -128,7 +128,7 @@
 													</div>
 													<div class="el-input is-disabled">
 														<!---->
-														<input type="text" disabled="disabled" autocomplete="off"
+														<input type="text" readonly autocomplete="off"
 															placeholder="주소 입력" class="el-input__inner" id="addr1" name="m_addr1" value="${member.m_addr1 }">
 														<!---->
 														<!---->
@@ -526,141 +526,82 @@
 			</div>
 		</div>
 	</div>
-
-
-<!-- 휴대폰인증 -->
-<!-- jQuery -->
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script> -->
-<!-- iamport.payment.js -->
-<!-- <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script> -->
-<!-- <script> -->
-// var IMP = window.IMP; // 생략 가능
-// IMP.init("imp00000000");	// 예: imp00000000
-// var m_name = document.getElementById('name');
-// var m_tel = document.getElementById('tel');
-// var nameCnt = 0;
-// var nameChange = function(){
-// 	// IMP.certification(param, callback) 호출
-// 	IMP.certification({ // param
-// 	  popup : false // PC환경에서는 popup 파라메터가 무시되고 항상 true 로 적용됨
-// 	}, function (rsp) { // callback
-// 	  if (rsp.success) {
-// 		  var m_name = document.getElementById('name');
-// 		  var m_tel = document.getElementById('tel');
-// 		  var nameCnt = 0;
-// 		  nameChange();
-// 	  } else {
-// 	   alert('인증실패');
-// 	  }
-// 	});
-// }
-<!-- </script> -->
-
+	<input type="hidden" id="xHidden" value>
+	<input type="hidden" id="yHidden" value>
+	
+<script src="/js/reviewModal.js"></script>
+<script src="/js/carOrderRequest.js"></script>
 <!-- 다음주소 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9ad7fe2c39172f9de2508087c8fe0f0c&libraries=services"></script>
 <script>
-// text활성화
-var m_name = document.getElementById('name');
-var m_tel = document.getElementById('tel');
-var nameCnt = 0;
-var nameChange = function(){
-	if(nameCnt == 1){
-		return;
-	}
-	nameCnt ++;
-	var is_disabled = document.querySelectorAll('.el-input.is-disabled');
-	is_disabled[0].classList.remove('is-disabled');
-	is_disabled[1].classList.remove('is-disabled');
-	m_name.disabled = false;	
-	m_tel.disabled = false;	
-}
-//다음 주소입력
+var xAddress = document.getElementById('xHidden');
+var yAddress = document.getElementById('yHidden');
+// 다음 주소입력
 var daumAddr = function(){
 	new daum.Postcode({
 		oncomplete: function(data){
 			var addr = "";
+			var test = "";
 			if(data.userSelectedType == "R"){
 				addr = data.roadAddress;
 			}else{
 				addr = data.jibunAddress;
 			}
+			
 			document.getElementById('zipcode').value = data.zonecode;
 			document.getElementById('addr1').value = addr;
 			document.getElementById('addr2').focus();
+			addressChk(data.address);
 		}
 	}).open();
 }
-
-//약관동의	
-var el_checkbox = document.querySelectorAll('.el-checkbox');
-var el_checkbox__input = document.querySelectorAll('.el-checkbox__input');
-var el_checkbox__original = document.querySelectorAll('.el-checkbox__original');
-var cnt = 0;
-var agree = function(index){
-	if(cnt == 1) {
-		cnt = 0;
-		return;
-	}
-	cnt++;
-	const check = el_checkbox__original[index];
-	const is_checked = check.checked;
+var x,y = "";
+var addressChk = function(address){
+	console.log(address)
+	var geocoder = new daum.maps.services.Geocoder();
 	
-	if(index == 1){
-		if(is_checked == false){
-			for(var i = 1;i<el_checkbox.length;i++){
-				if(el_checkbox[i].classList.contains('is-checked') == false){
-					el_checkbox[i].classList.add('is-checked');	
-					el_checkbox__input[i].classList.add('is-checked');	
-				}
-			}
-		}else{
-			for(var i = 1; i<el_checkbox.length;i++){
-				if(el_checkbox[i].classList.contains('is-checked')){
-					el_checkbox[i].classList.remove('is-checked');	
-					el_checkbox__input[i].classList.remove('is-checked');	
-				}
-			}
+	geocoder.addressSearch(address, function(result,status){
+		if(status == daum.maps.services.Status.OK){
+			var corders = new daum.maps.LatLng(result[0].y, result[0].x);
+			
+			y = result[0].x;
+			x = result[0].y;
+			xAddress.value = x;
+			yAddress.value = y;
+// 			addressSend();
 		}
-		return;
-	}
-	if(index == 5){
-		if(is_checked == false){
-			for(var i = 5;i<el_checkbox.length-1;i++){
-				if(el_checkbox[i].classList.contains('is-checked') == false){
-					el_checkbox[i].classList.add('is-checked');	
-					el_checkbox__input[i].classList.add('is-checked');	
-				}
-			}
-		}else{
-			for(var i = 5; i<el_checkbox.length-1;i++){
-				if(el_checkbox[i].classList.contains('is-checked')){
-					el_checkbox[i].classList.remove('is-checked');	
-					el_checkbox__input[i].classList.remove('is-checked');	
-				}
-			}
-		}
-		return;
-	}
-	if(is_checked == false){
-		el_checkbox[index].classList.add('is-checked');	
-		el_checkbox__input[index].classList.add('is-checked');	
-	}else{
-		el_checkbox[index].classList.remove('is-checked');	
-		el_checkbox__input[index].classList.remove('is-checked');	
-	}
+	})
 }
-//주문신청하기
-var orderRequest = function(){
-	for(var i = 2; i < 5; i++){
-		if(el_checkbox__original[i].checked == false){
-			alert('필수 동의항목에 체크해주세요');
-			return;
-		}
-	}
-	var addr1 = document.getElementById('addr1').disabled = false;	
-	var zipcode = document.getElementById('zipcode').disabled = false;	
-	document.getElementById('detailF').submit();
-}
+
+//script가 아닌 서버로 보내서 작업할 것
+// var req;
+// var addressSend(){
+// 	var x1 = xAddress.value;
+// 	var y1 = yAddress.value;
+// 	var curl = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.1058342,37.359708&goal="+x1+","+y1+"&option=trafast";
+// 	if(req == null){
+// 		req = new XMLHttpRequest();
+// 	}
+// 	req.onreadystatechange = addressResult;
+// 	req.open('GET',curl);
+	
+// 	req.setRequestHeader('X-NCP-APIGW-API-KEY-ID', "4rnpgkjox9");
+// 	req.setRequestHeader('X-NCP-APIGW-API-KEY', "MwsfHHuAfhVZynzi4HcoMKNnf1BW7MJYZM4OZqNI");
+	
+// 	req.send();
+// }
+// var addressResult = function(){
+// 	if (req.readyState == 4 & req.status == 200) {
+// 		console.log(messge)
+// 		console.log(code)
+// 	}
+// }
+//네이버 요청
+// curl "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.1058342,37.359708&goal=129.075986,35.179470&option=trafast"
+// -H "X-NCP-APIGW-API-KEY-ID: {애플리케이션 등록 시 발급받은 client id 값}" 
+// -H "X-NCP-APIGW-API-KEY: {애플리케이션 등록 시 발급받은 client secret값}" -v
 </script>
+
 </body>
 </html>

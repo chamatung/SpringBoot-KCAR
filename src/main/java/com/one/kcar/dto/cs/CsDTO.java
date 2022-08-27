@@ -2,6 +2,14 @@ package com.one.kcar.dto.cs;
 
 public class CsDTO {
 	/*
+	 create table KCAR_SERVICE ( s_no number, s_category varchar2(25) not null,
+	 s_title varchar2(100) not null, s_content varchar2(1500) not null, s_file
+	 varchar2(150), s_id varchar2(20) not null, s_reply varchar2(1) not null,
+	 s_replyValue varchar2(30), s_replyStatus varchar2(1) default 'n', primary
+	 key(s_no) );
+	 */
+	 
+	private int s_no;
 	private String s_category;
 	private String s_title;
 	private String s_content;

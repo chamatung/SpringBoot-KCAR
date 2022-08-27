@@ -134,33 +134,24 @@ hr {
 			<div class="titLabel">차량옵션</div>
 			<div class="item">
 				<div class="input__check">
-					<input class="form-check-input" type="checkbox" name="croSunRoof"
-						id="c_o_sonRoof"> <label class="form-check-label"
-						for="c_o_sonRoof"><span></span> 선루프</label> <input
-						class="form-check-input" type="checkbox" name="croHiPass"
-						id="c_o_hiPass"> <label class="form-check-label"
-						for="c_o_hiPass"><span></span> 하이패스</label> <input
-						class="form-check-input" type="checkbox" name="croBackSensor"
-						id="c_o_backSensor"> <label class="form-check-label"
-						for="c_o_backSensor"><span></span> 후방센서</label> <input 
-						class="form-check-input" type="checkbox" name="croCamera"
-						id="c_o_sonRoof"> <label class="form-check-label"
-						for="c_o_sonRoof"><span></span> 후방카메라</label><input
-						class="form-check-input" type="checkbox" name="croNavigation"
-						id="c_o_navigation"> <label class="form-check-label"
-						for="c_o_navigation"><span></span> 네비게이션</label> <input
-						class="form-check-input" type="checkbox" name="croHandleHot"
-						id="c_o_handleHot"> <label class="form-check-label"
-						for="c_o_handleHot"><span></span> 핸들열선</label> <input
-						class="form-check-input" type="checkbox" name="croAirBag"
-						id="c_o_airback"> <label class="form-check-label"
-						for="c_o_airback"><span></span> 에어백</label> <input
-						class="form-check-input" type="checkbox" name="croSmartKey"
-						id="c_o_smartKey"> <label class="form-check-label"
-						for="c_o_smartKey"><span></span> 스마트키</label> <input
-						class="form-check-input" type="checkbox" name="croBlackBox"
-						id="c_o_blackBox"> <label class="form-check-label"
-						for="c_o_blackBox"><span></span> 블랙박스</label>
+					<input class="form-check-input" type="checkbox" name="croSunRoof" id="c_o_sonRoof" value="선루프"> 
+						<label class="form-check-label" for="c_o_sonRoof"><span></span> 선루프</label> 
+					<input class="form-check-input" type="checkbox" name="croHiPass" id="c_o_hiPass" value="하이패스"> 
+						<label class="form-check-label" for="c_o_hiPass"><span></span> 하이패스</label> 
+					<input class="form-check-input" type="checkbox" name="croBackSensor" id="c_o_backSensor" value="후방센서"> 
+						<label class="form-check-label" for="c_o_backSensor"><span></span> 후방센서</label> 
+					<input class="form-check-input" type="checkbox" name="croCamera" id="c_o_camera"  value="후방카메라"> 
+						<label class="form-check-label"for="c_o_camera"><span></span> 후방카메라</label>
+					<input class="form-check-input" type="checkbox" name="croNavigation" id="c_o_navigation" value="네비게이션"> 
+						<label class="form-check-label" for="c_o_navigation"><span></span> 네비게이션</label> 
+					<input class="form-check-input" type="checkbox" name="croHandleHot" id="c_o_handleHot" value="핸들열선"> 
+						<label class="form-check-label" for="c_o_handleHot"><span></span> 핸들열선</label> 
+					<input class="form-check-input" type="checkbox" name="croAirBag" id="c_o_airback" value="에어백"> 
+						<label class="form-check-label" for="c_o_airback"><span></span> 에어백</label> 
+					<input class="form-check-input" type="checkbox" name="croSmartKey" id="c_o_smartKey" value="스마트키"> 
+						<label class="form-check-label" for="c_o_smartKey"><span></span> 스마트키</label> 
+					<input class="form-check-input" type="checkbox" name="croBlackBox" id="c_o_blackBox" value="블랙박스"> 
+						<label class="form-check-label" for="c_o_blackBox"><span></span> 블랙박스</label>
 				</div>
 
 			</div>

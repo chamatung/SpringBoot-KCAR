@@ -96,8 +96,6 @@
 												class=""><strong>${check}</strong></a></li>
 											<li><span>렌트차량</span> <a href="/RentAplList"
 												class=""><strong>${rent_check }</strong></a></li>
-											<li><span>최근본차량</span> <a
-												href="/bc/LatelyViewedCar/list" class=""><strong>18</strong></a></li>
 										</ul>
 									</div>
 								</div>

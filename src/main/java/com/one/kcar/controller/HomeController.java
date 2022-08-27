@@ -93,9 +93,9 @@ public class HomeController{
 	public String city() {
 		return "city/city";
 	}
-	@GetMapping("test2")
+	@GetMapping("test")
 	public String test() {
-		return "test2";
+		return "test";
 	}
 	
 	// 비밀번호 찾기

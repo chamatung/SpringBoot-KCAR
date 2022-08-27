@@ -38,4 +38,7 @@
 	<select id="carTag" parameterType="String" resultType="com.one.kcar.dto.buy.CarTagDTO">
 		SELECT * FROM KCAR_CAR_TAG WHERE c_num=#{c_num}
 	</select>
+	<update id="sellRequestUpdate" parameterType="String" >
+		UPDATE KCAR_SELL_REQUEST SET s_r_progress=#{3} WHERE s_r_num=#{c_num}
+	</update>
 </mapper>

@@ -6,7 +6,7 @@
 		SELECT R.* FROM(SELECT * FROM KCAR_CAR ORDER BY DBMS_RANDOM.RANDOM) R WHERE ROWNUM <![CDATA[<=]]> 20
 	</select>
 	<select id="reviewList" resultType="com.one.kcar.dto.buy.BuyReviewDTO">
-		SELECT * FROM kcar_buy_review WHERE ROWNUM <![CDATA[<=]]> 6 ORDER BY c_c_index desc
+		SELECT * FROM kcar_buy_review WHERE ROWNUM <![CDATA[<=]]> 3 ORDER BY c_c_index desc
 	</select>
 	<select id="quesionList" resultType="com.one.kcar.dto.buy.QuestionDTO">
 		SELECT * FROM KCAR_QUESTION WHERE q_classification = '브랜드'
@@ -14,15 +14,4 @@
 	<select id="memberCount" resultType="String">
 		SELECT SUM(COUNT(m_id)) AS COUNT FROM KCAR_MEMBER GROUP BY m_id
 	</select>
-<!-- 
-
-마이바티스 부등호 사용시 
-
-아래와 같이 또는 <!CDATA[]]> 대괄호 안에 작성ㅉ
-< lt
-> gt
-<= lte
->= gte
-
- -->
 </mapper>

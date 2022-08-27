@@ -6,7 +6,7 @@
 	<div class="gnbArea">
 		<div class="topNavi">
 			<h1 class="kcarHeaderLogo">
-				<a href="home">대한민국 No.1 직영중고차 KCar</a>
+				<a href="/home">대한민국 No.1 직영중고차 KCar</a>
 			</h1>
 			<button class="menuAll">
 				<span class="_hidden">전체메뉴</span>
@@ -40,7 +40,7 @@
 							<a href="/sc/CorpCarDispslApl">법인차매각신청</a>
 						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
-							<a href="/sc/ScrpcaApl">폐차신청</a>
+							<a onclick="scrappedPage()">폐차신청</a>
 						</li>
 						<li role="menuitem" tabindex="-1" class="el-menu-item menuItem">
 							<a href="/sc/SellCustReview">내차팔기 고객후기</a>
@@ -382,5 +382,9 @@
 		allMenuCloseBtn.addEventListener('click', function() {
 			allMenu.style.display = 'none';
 		})
+		//폐차신청 페이지 새로 띄우기
+		var scrappedPage = function(){
+			window.open('/sc/ScrpcaApl');
+		}
 	</script>
 </header>

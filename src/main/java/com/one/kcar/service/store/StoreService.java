@@ -50,7 +50,7 @@ public class StoreService {
 		String result="";
 		List<CarDTO> list = dao.storeOption(s_option,alignment,st_name);
 		for (CarDTO i : list) {
-			result += "<div class='carListBox' style='cursor: pointer;'>";
+			result += "<a href='/detail/carInfo?c_num="+i.getC_num()+"'><div class='carListBox' style='cursor: pointer;'>";
 			result += "<div class='carListImg' style='cursor: pointer;'>";
 			result += "<div> <img src='"+i.getC_photo()+"' alt='챠량이미지'";
 			result += "onerror='this" + ".src='/images/search/bg_no_Img_lg.png''";
@@ -64,7 +64,7 @@ public class StoreService {
 			result += "<div class='carListFlex'> <div class='carExpIn'> <p class='carExp'>"+i.getC_price()+"만원</p> </div> <p class='detailCarCon'>";
 			result += "<span class='block'>"+i.getC_year()+"</span> <span>"+i.getC_distance();
 			result += "km</span> <span>"+i.getC_fuel()+"</span> <span>"+i.getSt_name()+"</span> </p> </div> <ul class='infoTooltip'>";
-			result += "</ul></div></div>";
+			result += "</ul></div></div></a>";
 		}
 		return result;
 	}

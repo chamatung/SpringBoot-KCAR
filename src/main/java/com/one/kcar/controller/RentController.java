@@ -90,13 +90,16 @@ public class RentController {
 		@GetMapping(value="rentUsedInfoProc")
 		public String ruiProc(HttpServletRequest request, String crNumber, Model model,HttpSession session) {
 			crNumber = request.getParameter("crNumber");
-			session.setAttribute("crnumber", crNumber);
+			session.setAttribute("crNumber", crNumber);
 			String m_email = (String) session.getAttribute("id");
-//			session.setAttribute("email", m_email);
+			session.setAttribute("email", m_email);
 //			System.out.println(crNumber);
 			if(crNumber == null || crNumber.isEmpty())
 				return "rent/rentUsed";
-			else{
+			if(m_email == null || m_email.isEmpty()) {
+//				System.out.println("로그인후 사용");
+				return "member/logins";
+			}else{
 				kcarCarRentDTO kcar = carRentService.rentUsedInfo(crNumber);
 				model.addAttribute("rentUsedInfo",kcar);
 				ArrayList<kcarCarRentPhotoDTO> crPhotoList = carRentService.crPhotoList(crNumber);
@@ -119,42 +122,35 @@ public class RentController {
 		//JSON파일 DTO로 전송
 		@ResponseBody
 		@GetMapping(value = "rentUsedInsert", produces = "text/html; charset=UTF-8")
-		public String rentUsed3Insert() throws FileNotFoundException, IOException {
+		public String rentUsedInsert() throws FileNotFoundException, IOException {
 			int result = carRentService.insert();
 			if(result == 0)
 				return "DB 입력 실패";
 			return "파일 -> DB로 이전 완료";
 		}
-		
 		// coolSMS 테스트 화면
 		
-		/*
+		
 		@GetMapping(value = "sms")
-		public String mySms() {
+		public String mySms(HttpServletRequest request, kcarCarRentDTO mailUpdate,String crNumber, Model model,HttpSession session) {
+			crNumber = (String) session.getAttribute("crNumber");
+			String m_email = (String) session.getAttribute("id");
+			
+			mailUpdate = carRentService.updateInfo(m_email, crNumber, mailUpdate);
 			return "rent/sms";
 		}
-		*/
-		
-		@RequestMapping(value = "sms")
-		public String mySms(HttpServletRequest request, Model model,HttpSession session) {
-			String crNumber = (String)session.getAttribute("crnumber");
-			if(crNumber == null || crNumber.isEmpty())
-				return "rent/rentUsedInfo";
-			else {
-				kcarCarRentDTO kcar = carRentService.rentUsedInfo(crNumber);
-				model.addAttribute("rentUsedInfo",kcar);
-			}
-			return "rent/sms";
-		}
-		
 		
 		@Autowired private smsService phoneService;
 		// coolSMS 구현 로직 연결  
 		
-		@GetMapping(value = "sms/sendSMS")
-		public @ResponseBody String sendSMS2(@RequestParam(value="to") String to) throws CoolsmsException {  	
-			return phoneService.PhoneNumberCheck(to);
+		@ResponseBody
+		@PostMapping(value = "sms/sendSMS",produces = "text/html; charset=utf-8" )
+		public String sendSMS(@RequestBody(required = false) HashMap<String , String> data) throws CoolsmsException {  	
+//			System.out.println(data.get("to"));
+//			System.out.println(data.get("name"));
+			return phoneService.PhoneNumberCheck(data.get("to"), data.get("name"));
 		}
+		
 		
 //		@RequestMapping(value = "rentUsed")
 //		public String kcarCarRentList(Model model, @RequestParam(required=false, defaultValue = "1") ) {

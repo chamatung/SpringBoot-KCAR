@@ -2,88 +2,87 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.one.kcar.dao.buy.IBrandDAO">
-
-	<select id="brandList" resultType="com.one.kcar.dto.buy.BrandDTO">
-		SELECT cbc.cb_brand, cbcb.cb_domestic,cbcb.cb_englishlan,cbcb.cb_korealan,cbcb.cb_photo,cbc.count FROM
-			(SELECT cb.cb_brand,  COUNT(c.c_num) count FROM
-			KCAR_CARBRAND cb 
-			LEFT JOIN KCAR_CAR c
-			ON cb.cb_brand = c.cb_brand 
-			WHERE cb.cb_domestic='해외' 
-			GROUP BY cb.cb_brand 
-			ORDER BY cb.cb_brand
-			) cbc 
-		LEFT JOIN kcar_carbrand cbcb 
-		ON cbcb.cb_brand = cbc.cb_brand
-	</select>
-	<select id="brandCarList" parameterType="String" resultType="com.one.kcar.dto.buy.CarDTO">
-		SELECT c.*, ct.* FROM KCAR_CAR c FULL OUTER JOIN KCAR_CAR_TAG ct ON c.c_num = ct.c_num WHERE c.cb_brand=#{brand} 
-	</select>
-	<select id="brandModelList" parameterType="String" resultType="com.one.kcar.dto.buy.CarDTO">
-		SELECT cb_m_model FROM KCAR_CARBRAND_MODEL WHERE cb_brand=#{brand}
-	</select>
-	<select id="brandCarAllList" resultType="com.one.kcar.dto.buy.CarDTO">
-		SELECT rr.* FROM
-			(SELECT ROWNUM RN, r.* FROM
-    			(SELECT a.*, b.c_t_certified,b.c_t_distance,b.c_t_fourwheel,b.c_t_maintenance,b.c_t_newcar,b.c_t_oneowner,b.c_t_rent,b.c_t_specialoption FROM
-        			(SELECT c.* FROM
-            			KCAR_CAR c 
-            			LEFT JOIN KCAR_CARBRAND cb 
-            			on c.cb_brand = cb.cb_brand 
-            			WHERE cb.cb_domestic = '해외' and c.c_saleStatus = 0
-        			) a 
-       			FULL OUTER JOIN KCAR_CAR_TAG b on a.c_num = b.c_num
-       			<if test="brand != null and brandModel != null">
-					join WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel}
-				</if>
-				<if test="brand != null and brandModel == null">
-					WHERE cb_brand = #{brand}
-				</if>
-				<if test="alignment == '기본정렬' or alignment == null">
-					ORDER BY DBMS_RANDOM.RANDOM
-				</if>C_T_SPECIALOPTION
-				<if test="alignment == '최근연식순'">
-					ORDER BY c_year desc,c_distance asc
-				</if>
-				<if test="alignment == '낮은연식순'">
-					ORDER BY c_year asc,c_distance asc
-				</if>
-				<if test="alignment == '적은주행거리순'">
-					ORDER BY c_distance asc
-				</if>
-				<if test="alignment == '많은주행거리순'">
-					ORDER BY c_distance desc
-				</if>
-				<if test="alignment == '낮은가격순'">
-					ORDER BY c_price asc,c_distance asc
-				</if>
-				<if test="alignment == '높은가격순'">
-					ORDER BY c_price desc,c_distance asc
-				</if>
-   				) r
-			) rr  
-		WHERE RN BETWEEN ${start} AND ${end}
-	</select>
-	<select id="brandCarModelList" parameterType="String" resultType="map">
-		SELECT cb.cb_m_model, count(c.c_num) count
-	    FROM KCAR_CARBRAND_MODEL cb 
-	    LEFT JOIN  KCAR_CAR c
-	    on cb.cb_m_model = c.cb_m_model
-	    WHERE cb.cb_brand = #{brand} AND c.c_saleStatus = 0
-	    GROUP BY cb.cb_m_model
-	    ORDER BY  cb.cb_m_model
-	</select>
-	<select id="brandCarAllCnt" parameterType="String" resultType="String">
-		SELECT SUM(COUNT(c_num)) AS COUNT FROM KCAR_CAR 
-		<if test="brand != null and brandModel != null ">
-			WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel} AND c_saleStatus = 0
-		</if>
-		<if test="brand != null and brandModel == null">
-			WHERE cb_brand = #{brand} AND c_saleStatus = 0
-		</if>
-		group by cb_brand
-	</select>
-	<select id="questionList" resultType="com.one.kcar.dto.buy.QuestionDTO">
-		SELECT * FROM KCAR_QUESTION
-	</select>
+   <select id="brandList" resultType="com.one.kcar.dto.buy.BrandDTO">
+      SELECT cbc.cb_brand, cbcb.cb_domestic,cbcb.cb_englishlan,cbcb.cb_korealan,cbcb.cb_photo,cbc.count FROM
+         (SELECT cb.cb_brand,  COUNT(c.c_num) count FROM
+         KCAR_CARBRAND cb 
+         LEFT JOIN KCAR_CAR c
+         ON cb.cb_brand = c.cb_brand 
+         WHERE cb.cb_domestic='해외' 
+         GROUP BY cb.cb_brand 
+         ORDER BY cb.cb_brand
+         ) cbc 
+      LEFT JOIN kcar_carbrand cbcb 
+      ON cbcb.cb_brand = cbc.cb_brand
+   </select>
+   <select id="brandCarList" parameterType="String" resultType="com.one.kcar.dto.buy.CarDTO">
+      SELECT c.*, ct.* FROM KCAR_CAR c FULL OUTER JOIN KCAR_CAR_TAG ct ON c.c_num = ct.c_num WHERE c.cb_brand=#{brand} 
+   </select>
+   <select id="brandModelList" parameterType="String" resultType="com.one.kcar.dto.buy.CarDTO">
+      SELECT cb_m_model FROM KCAR_CARBRAND_MODEL WHERE cb_brand=#{brand}
+   </select>
+   <select id="brandCarAllList" resultType="com.one.kcar.dto.buy.CarDTO">
+      SELECT rr.* FROM
+         (SELECT ROWNUM RN, r.* FROM
+             (SELECT a.*, b.c_t_certified,b.c_t_distance,b.c_t_fourwheel,b.c_t_maintenance,b.c_t_newcar,b.c_t_oneowner,b.c_t_rent,b.c_t_specialoption FROM
+                 (SELECT c.* FROM
+                     KCAR_CAR c 
+                     LEFT JOIN KCAR_CARBRAND cb 
+                     on c.cb_brand = cb.cb_brand 
+                     WHERE cb.cb_domestic = '해외' and c.c_saleStatus = 0
+                 ) a 
+                FULL OUTER JOIN KCAR_CAR_TAG b on a.c_num = b.c_num
+             <if test="brand != null and brandModel != null">
+               WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel}
+            </if>
+            <if test="brand != null and brandModel == null">
+               WHERE cb_brand = #{brand}
+            </if>
+            <if test="alignment == '기본정렬' or alignment == null">
+               ORDER BY DBMS_RANDOM.RANDOM
+            </if>
+            <if test="alignment == '최근연식순'">
+               ORDER BY c_year desc,c_distance asc
+            </if>
+            <if test="alignment == '낮은연식순'">
+               ORDER BY c_year asc,c_distance asc
+            </if>
+            <if test="alignment == '적은주행거리순'">
+               ORDER BY c_distance asc
+            </if>
+            <if test="alignment == '많은주행거리순'">
+               ORDER BY c_distance desc
+            </if>
+            <if test="alignment == '낮은가격순'">
+               ORDER BY c_price asc,c_distance asc
+            </if>
+            <if test="alignment == '높은가격순'">
+               ORDER BY c_price desc,c_distance asc
+            </if>
+               ) r
+         ) rr  
+      WHERE RN BETWEEN ${start} AND ${end}
+   </select>
+   <select id="brandCarModelList" parameterType="String" resultType="map">
+      SELECT cb.cb_m_model, count(c.c_num) count
+       FROM KCAR_CARBRAND_MODEL cb 
+       LEFT JOIN  KCAR_CAR c
+       on cb.cb_m_model = c.cb_m_model
+       WHERE cb.cb_brand = #{brand} AND c.c_saleStatus = 0
+       GROUP BY cb.cb_m_model
+       ORDER BY  cb.cb_m_model
+   </select>
+   <select id="brandCarAllCnt" parameterType="String" resultType="String">
+      SELECT SUM(COUNT(c_num)) AS COUNT FROM KCAR_CAR 
+      <if test="brand != null and brandModel != null ">
+         WHERE cb_brand = #{brand} AND cb_m_model = #{brandModel} AND c_saleStatus = 0
+      </if>
+      <if test="brand != null and brandModel == null">
+         WHERE cb_brand = #{brand} AND c_saleStatus = 0
+      </if>
+      group by cb_brand
+   </select>
+   <select id="questionList" resultType="com.one.kcar.dto.buy.QuestionDTO">
+      SELECT * FROM KCAR_QUESTION WHERE q_classification='브랜드'
+   </select>
 </mapper>

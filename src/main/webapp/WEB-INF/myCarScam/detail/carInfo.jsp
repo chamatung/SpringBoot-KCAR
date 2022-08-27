@@ -243,21 +243,8 @@
 												</div>
 												<div class="el-scrollbar__bar is-horizontal">
 													<div class="el-scrollbar__thumb"
-														style="transform: translateX(0%); width: 31.25%;"></div>
+														style="transform: translateX(0%); width: 100%;"></div>
 												</div>
-												<div class="el-scrollbar__bar is-vertical">
-													<div class="el-scrollbar__thumb"
-														style="transform: translateY(0%);"></div>
-												</div>
-											</div>
-											<div class="thumbnail-toolbar">
-												<button class="btn-nav">
-													<span class="prev">이전</span>
-												</button>
-												<span class="current-slide"><i>1</i> / 32</span>
-												<button class="btn-nav">
-													<span class="next">다음</span>
-												</button>
 											</div>
 										</div>
 									</div>
@@ -314,7 +301,7 @@
 															<!---->
 															<input type="text" disabled="disabled" autocomplete="off"
 																class="el-input__inner"
-																value="${carPriceInfo.carPrice/10000 }">
+																value="${car.c_price }">
 															<!---->
 															<!---->
 															<!---->
@@ -337,7 +324,7 @@
 															<!---->
 															<input type="text" autocomplete="off"
 																class="el-input__inner"
-																value="${carPriceInfo.advancePayment/10000 }">
+																value="${carPriceInfo.advancePayment2 }">
 															<!---->
 															<!---->
 															<!---->
@@ -583,7 +570,7 @@
 									<div class="calcBox" data-v-59a16f56="">
 										<ul class="calcDescLists" data-v-59a16f56="">
 											<li data-v-59a16f56=""><span data-v-59a16f56="">총
-													할부 신청 금액</span> <strong data-v-59a16f56="">${carPriceInfo.installment }원</strong></li>
+													할부 신청 금액</span> <strong data-v-59a16f56="">${carPriceInfo.installment2 }원</strong></li>
 											<li data-v-59a16f56=""><span data-v-59a16f56="">월
 													납부금(예상)</span> <strong class="pointC" data-v-59a16f56=""
 												id="monthResult">${carPriceInfo.result } 원</strong></li>
@@ -621,12 +608,8 @@
 												data-v-59a16f56="">진단사항</a></li>
 											<li data-menu="2" data-v-59a16f56=""><a href="#menu2"
 												data-index="2" class="scroll" data-v-59a16f56="">차량정보</a></li>
-											<li data-menu="3" data-v-59a16f56=""><a href="#menu3"
-												data-index="3" class="scroll" data-v-59a16f56="">차량평가</a></li>
 											<li data-menu="4" data-v-59a16f56=""><a href="#menu4"
 												data-index="4" class="scroll" data-v-59a16f56="">차량옵션</a></li>
-											<li data-menu="5" data-v-59a16f56=""><a href="#menu5"
-												data-index="5" class="scroll" data-v-59a16f56="">보험이력</a></li>
 										</ul>
 									</div>
 									<ul class="tabMenuCont" data-v-59a16f56="">
@@ -1141,56 +1124,6 @@
 												<li data-v-59a16f56=""><span data-v-59a16f56="">색상</span>
 													<span data-v-59a16f56="">${car.c_color }</span></li>
 											</ul></li>
-										<li id="menu3" data-menu-section="3" data-v-59a16f56=""><h2
-												class="infoHead2 pT100" data-v-59a16f56="">
-												K Car 차량 전문가!<br data-v-59a16f56=""> <span
-													data-v-59a16f56="">‘윤원기 차량평가사’의 코멘트</span>
-											</h2>
-											<div class="employeeCard" data-v-59a16f56="">
-												<div class="imgbox" data-v-59a16f56="">
-													<img
-														src="https://img.kcar.com//DATA1/carpicture2/emp/pic/3227.jpg?1659352715813"
-														alt="" data-v-59a16f56="">
-												</div>
-												<ul class="employeeCardDesc" data-v-59a16f56="">
-													<li data-v-59a16f56=""><span data-v-59a16f56="">소속</span>
-														<span data-v-59a16f56="">${car.st_name }</span></li>
-													<li data-v-59a16f56=""><span data-v-59a16f56="">매매
-															사원증</span> <span data-v-59a16f56="">21-042-01067</span></li>
-													<li data-v-59a16f56=""><span data-v-59a16f56="">판매차량</span>
-														<a class="el-link el-link--default is-underline"
-														data-v-59a16f56=""> <!----> <span
-															class="el-link--inner"><span data-v-59a16f56="">34대</span></span>
-															<!---->
-													</a></li>
-												</ul>
-											</div>
-											<c:if test="${not empty carInfo}">
-											<ul class="commentLists" data-v-59a16f56="">
-												<li class="col1" data-v-59a16f56=""><h4 class="tit"
-														data-v-59a16f56="">이 차를 추천하는 이유</h4>
-													<ul class="cmtDescLists" data-v-59a16f56="">
-														<li data-v-59a16f56="">
-														${carInfo.c_i_recommend }
-														</li>
-													</ul></li>
-												<li class="col2" data-v-59a16f56=""><h4 class="tit"
-														data-v-59a16f56="">진단 결과 요점 정리</h4>
-													<ul class="cmtDescLists" data-v-59a16f56="">
-														<li data-v-59a16f56="">
-														${carInfo.c_i_summary }
-														</li>
-													</ul></li>
-												<li class="col3" data-v-59a16f56=""><h4 class="tit"
-														data-v-59a16f56="">차량 히스토리 및 특이사항</h4>
-													<ul class="cmtDescLists" data-v-59a16f56="">
-														<li data-v-59a16f56="">
-														${carInfo.c_i_summary }
-														</li>
-													</ul></li>
-											</ul>
-											</c:if>
-											</li>
 										<li id="menu4" data-menu-section="4" data-v-59a16f56=""><h2
 												class="infoHead2 pT100" data-v-59a16f56="">
 												편안하게 타실 수 있도록, <span data-v-59a16f56="">옵션까지 한눈에
@@ -1198,27 +1131,51 @@
 											</h2>
 											<div class="carOptions" data-v-59a16f56="">
 												<ul class="iconLists" data-v-59a16f56="">
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-02"></i> <span class="opText"
-														data-v-59a16f56="">선루프 </span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-11"></i> <span
-														data-v-59a16f56="" class="opText">하이패스 </span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-03"></i> <span
-														data-v-59a16f56="" class="opText">가죽시트 </span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-04"></i> <span
-														data-v-59a16f56="" class="opText">열선시트 </span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-06"></i> <span
-														data-v-59a16f56="" class="opText">스마트키 1개</span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-08"></i> <span
-														data-v-59a16f56="" class="opText">후측방 경보시스템 </span></li>
-													<li data-v-59a16f56=""><i data-v-59a16f56=""
-														class="icon-detail-option-12"></i> <span
-														data-v-59a16f56="" class="opText">LDWS:차선이탈경보 시스템 </span></li>
+													<c:if test="${carOption.c_o_sonRoof != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-02" ></i> <span class="opText"
+														data-v-59a16f56="">선루프</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_hiPass != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-11"></i> <span class="opText"
+														data-v-59a16f56="">하이패스</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_backSensor != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-08"></i> <span class="opText"
+														data-v-59a16f56="">후측방 경보시스템</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_camera != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-08"></i> <span class="opText"
+														data-v-59a16f56="">후측방 카메라</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_navigation != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-07"></i> <span class="opText"
+														data-v-59a16f56="">네비게이션</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_handleHot != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-04"></i> <span class="opText"
+														data-v-59a16f56="">열선시트</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_airback != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-03"></i> <span class="opText"
+														data-v-59a16f56="">에어백</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_smartKey != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-06"></i> <span class="opText"
+														data-v-59a16f56="">스마트키</span></li>
+													</c:if>
+													<c:if test="${carOption.c_o_blackBox != null }">
+														<li data-v-59a16f56=""><i data-v-59a16f56=""
+														class="icon-detail-option-17"></i> <span class="opText"
+														data-v-59a16f56="">블랙박스</span></li>
+													</c:if>
 												</ul>
 											</div>
 										</li>
@@ -1282,7 +1239,7 @@
 										<div class="infoTitleWrap infoTitleWrap2 mb40">
 											<h2 class="infoTitle">자주 묻는 질문</h2>
 											<a class="moreBtn el-link el-link--default is-underline"
-												href="#"> <!----> <span class="el-link--inner">
+												href="/csQstn"> <!----> <span class="el-link--inner">
 													전체보기<i class="el-icon-arrow-right"></i>
 											</span> <!---->
 											</a>
@@ -1897,236 +1854,6 @@
 <script src="/js/question.js"></script>
 <script src="/js/reviewModal.js"></script>
 <script src="/js/installment.js"></script>
-<script type="text/javascript">
-//월 할부금 값 가져오기
-var rateCheck = function(result, num) {
-	var result7 = document.getElementById('hidden7').value;
-	var result8 = document.getElementById('hidden8').value;
-	var result9 = document.getElementById('hidden9').value;
-	var result11 = document.getElementById('hidden11').value;
-	var result13 = document.getElementById('hidden13').value;
-	
-	if (num == '7' & result7 != "null") {
-		console.log(result7)
-		var monthResult = document.getElementById('monthResult');
-		monthResult.innerHTML = Math.floor(result7 * 10000) + '원';
-		return;
-	}
-	if (num == '8' & result8 != "null") {
-		console.log('8')
-		var monthResult = document.getElementById('monthResult');
-		monthResult.innerHTML = Math.floor(result8 * 10000) + '원';
-		return;
-	}
-	if (num == '9' & result9 != "null") {
-		console.log('9')
-		var monthResult = document.getElementById('monthResult');
-		monthResult.innerHTML = Math.floor(result9 * 10000) + '원';
-		return;
-	}
-	if (num == '11' & result11 != "null") {
-		console.log('11')
-		var monthResult = document.getElementById('monthResult');
-		monthResult.innerHTML = Math.floor(result11 * 10000) + '원';
-		return;
-	}
-	if (num == '13' & result13 != "null") {
-		console.log('13')
-		var monthResult = document.getElementById('monthResult');
-		monthResult.innerHTML = Math.floor(result13 * 10000) + '원';
-		return;
-	}
-	var monthResult = document.getElementById('monthResult');
-	monthResult.innerHTML = result + '원';
-}
-	
-//modal창
-var modalMenu = document.getElementById('modalMenu');
-var modalMenuBack = document.getElementById('modalMenuBack');
-var modalMail = document.getElementById('modalMail');
-
-var shareModalOpen = function(){
-	if(document.body.classList.contains('el-popup-parent--hidden') == false){
-		document.body.classList.add('el-popup-parent--hidden');
-	}
-	modalMail.style.display="none";
-	modalMenu.style.display="flex";
-	modalMenuBack.style.display="flex";
-}
-var shareModalClose = function(){
-	modalMenu.style.display="none";
-	modalMenuBack.style.display="none";
-	modalMail.style.display="none";
-	document.body.classList.remove('el-popup-parent--hidden');
-}
-
-var modalMailOpen = function(){
-	modalMenu.style.display="none";
-	modalMail.style.display="flex";
-}
-
-//복사기능
-var site = document.getElementById('siteVal');
-var copySite = function(){
-	//var hiddenFocus = document.getElementById('hiddenFocus');
-	site.select();
-	site.setSelectionRange(0,99999);
-	document.execCommand("copy");
-	//setTimeout(hiddenFocus.focus(), 2000);
-	alert('주소가 복사되었습니다.');
-}
-//이메일주소 select option
-var dropdownAlignment;
-// var alignment;
-var alignmentMethod;
-var alignCnt = 0;
-var alignmentClick = function(){
-	dropdownAlignment = document.querySelector('.el-select-dropdown.el-popper');
-// 	alignment = document.getElementById('alignment');
-	alignmentMethod = document.getElementById('alignmentMethod');
-	alignCnt ++;
-	if(alignCnt % 2 != 0){
-		dropdownAlignment.style.display = "block"
-		alignmentMethod.style.display = "block";
-		alignmentMethod.style.alignContent = "flex-start";
-		alignmentMethod.style.flexDirection = "column";
-		alignmentMethod.style.flexWrap = "wrap";
-		alignmentMethod.style.overFlow = "auto";
-	}else{
-		alignmentMethod.style.remove = "display"
-		alignmentMethod.style.remove = "alignContent"
-		alignmentMethod.style.remove = "flexDirection"
-		alignmentMethod.style.remove = "flexWrap"
-		alignmentMethod.style.remove = "overFlow"
-		dropdownAlignment.style.display = "none"
-	}
-}
-//이메일 select option 선택시 
-var email1 = document.getElementById('email1');
-var email2 = document.getElementById('email2');
-var email = function(site){
-	dropdownAlignment = document.querySelector('.el-select-dropdown.el-popper');
-	alignment = document.getElementById('alignment');
-	alignmentMethod = document.getElementById('alignmentMethod');
-	
-	alignCnt ++;
-	alignmentMethod.style.remove = "display"
-	alignmentMethod.style.remove = "alignContent"
-	alignmentMethod.style.remove = "flexDirection"
-	alignmentMethod.style.remove = "flexWrap"
-	alignmentMethod.style.remove = "overFlow"
-	dropdownAlignment.style.display = "none"
-	if(!site){
-		email2.disabled = false;
-		email2.value = "";
-		email2.focus();
-		alignment.value = null;
-		return;
-	}
-	alignment.value = site;
-	email2.value = site;
-	email2.disabled = true;
-	
-}
-//글자수 제한
-var emailContent;
-var counter;
-var countWord = function(){
-	emailContent = document.getElementById('emailContent');
-	counter = document.getElementById('counter');
-	var contentLength = emailContent.value.length;
-	counter.innerHTML = "("+contentLength+"/<span data-v-6538404c=\"\">2,000</span>자)";
-	if(contentLength>10){
-		emailContent.blur();
-		emailContent.value = emailContent.value.substring(0,10);
-		emailContent.focus();
-		counter.innerHTML = "("+10+"/<span data-v-6538404c=\"\">2,000</span>자)";
-		
-	}
-}
-
-//email send
-var req;
-var emailSend = function(){
-	
-	var carNum = document.getElementById('carNum');
-	var emailName = document.getElementById('name');
-	var email1 = document.getElementById('email1');
-	var email2 = document.getElementById('email2');
-	var emailContent = document.getElementById('emailContent');
-
-	//여기서 필수정보인 이름 이메일주소가 없으면 알림창 띄우고 return필요
-	
-	if(req == null){
-		req = new XMLHttpRequest();
-	}
-	req.onreadystatechange = sendSucess;
-	req.open('post','emailSend');
-	var data = {
-		name : emailName.value,
-		email : email1.value + "@" + email2.value,
-		content : emailContent.value,
-		carNum : carNum.value
-	}
-	data = JSON.stringify(data);
-	req.setRequestHeader('Content-Type', 'application/json; charset=UFT-8');
-	req.send(data);
-}
-//메일 성공여부
-var sendSucess = function(){
-	if(req.readyState == 4 & req.status == 200){
-		if(req.responseText == '성공'){
-			alert('메일발송 완료');
-		}else{
-			alert('메일발송 실패');
-		}
-		
-		
-		modalMail.style.display="none";
-		modalMenu.style.display="flex";
-		modalMenuBack.style.display="flex";
-	}
-}
-
-//동작안함,,
-var shareKakao = function(){
-	try {
-	   Kakao.init('9ad7fe2c39172f9de2508087c8fe0f0c')
-	   Kakao.Link.createDefaultButton({
-	     container: '#shareKakao',
-	     objectType: 'feed',
-	       content: {
-	         title: 'kcar차량정보',
-	         description: 'kcar,브랜드,모델',
-	       imageUrl:'http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg',
-	       link: {
-	           mobileWebUrl: 'https://developers.kakao.com',
-	           androidExecParams: 'test',
-	       },
-	     },
-	     social: {
-	       likeCount: 10,
-	       commentCount: 20,
-	       sharedCount: 30,
-	     },
-	     buttons: [
-	       {
-	         title: '웹으로 이동',
-	         link: {
-	           mobileWebUrl: document.location.href,
-	         },
-	       },
-	       {
-	         title: '앱으로 이동',
-	         link: {
-	           mobileWebUrl: document.location.href,
-	         },
-	       },
-	     ]
-	   });
-	 ; window.kakaoDemoCallback && window.kakaoDemoCallback() 
-	} catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
-}
-</script>
+<script src="/js/carInfo.js"></script>
 </body>
 </html>

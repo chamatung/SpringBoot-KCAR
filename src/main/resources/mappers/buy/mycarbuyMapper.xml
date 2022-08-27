@@ -90,7 +90,7 @@
 				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
 				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
 				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
-				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
 				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
 				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
 				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
@@ -200,7 +200,7 @@
 				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
 				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
 				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
-				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
 				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
 				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
 				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
@@ -309,7 +309,7 @@
 				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
 				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
 				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
-				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
 				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
 				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
 				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>
@@ -434,7 +434,7 @@
 				<if test="detail.equals('에어백')"> and c_o_airback='에어백'</if>
 				<if test="detail.equals('네비게이션')"> and c_o_navigation='네비게이션'</if>
 				<if test="detail.equals('하이패스')"> and c_o_hiPass='하이패스'</if>
-				<if test="detail.equals('후방센서')"> and c_o_c_o_backSensor='후방센서'</if>
+				<if test="detail.equals('후방센서')"> and c_o_backSensor='후방센서'</if>
 				<if test="detail.equals('후방카메라')"> and c_o_camera ='후방카메라'</if>
 				<if test="detail.equals('핸들열선')"> and c_o_handleHot ='핸들열선'</if>
 				<if test="detail.equals('스마트키')"> and c_o_smartKey ='스마트키'</if>

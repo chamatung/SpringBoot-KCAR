@@ -168,7 +168,7 @@
 									</p>
 								</div>
 								<div class="borderViewCon">
-									${viewList.n_content }
+									<pre>${viewList.n_content }</pre>
 								</div>
 							</div>
 							

@@ -12,12 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.one.kcar.dao.buy.ICarDetailDAO;
 import com.one.kcar.dto.buy.CarDTO;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service
 public class latelyCarService {
 	@Autowired
 	private detailService detailService;
+	@Autowired
+	private ICarDetailDAO carDetailDao;
 
 	public String latelyCarList(String alignment, Model model, HttpServletResponse res, String cv,
 			String deleteLatelyCarList) {
@@ -66,6 +72,7 @@ public class latelyCarService {
 					}
 				}
 			}
+			carListCnt = detailService.getLatelyCarDtoList().size();
 			detailService.setLatelyCarDtoList(latelyCarList);
 		}
 
@@ -416,5 +423,45 @@ public class latelyCarService {
 				+ "														</div>";
 
 		return data;
+	}
+
+	public String letterSend(Map<String, String> list) throws CoolsmsException {
+		if(list == null) return null;
+		
+		String letter = list.get("letter");
+		String latelyCarList = list.get("latelyArr");
+		String[] letelyArr = latelyCarList.split(",");
+		//content
+		CarDTO car = new CarDTO();
+		String content = "";
+		for(int i = 0; i < letelyArr.length;i++) {
+			if(letelyArr[i].equals("0") == false) {
+				car =  carDetailDao.car(letelyArr[i]);
+				break;
+			}
+		}
+		if(car != null) {
+			content += "[K Car]\n"
+					+ car.getCb_brand() + " " + car.getCb_m_model() + " " + car.getC_fuel() + "\n"
+					+ "가격 : " + car.getC_price() + "만원" + ", 주행거리 : " + car.getC_distance() + "km" + "\n"
+					+ "http://localhost/detail/carInfo?c_num="+car.getC_num() + "\n"
+					+ "직영점 : " + car.getSt_name();
+			
+			String api_key = "NCS1TGFKZMIWLTNH";
+			String api_secret = "0SSBDERSZCZ3I1KNM2XINGMOQ2QXAMDJ";
+			Message coolsms = new Message(api_key, api_secret);
+			
+		    HashMap<String, String> params = new HashMap<String, String>();
+		    
+		    params.put("to", letter);    // 수신전화번호 (ajax로 view 화면에서 받아온 값으로 넘김)
+		    params.put("from", "01075664016");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+		    params.put("type", "sms"); 
+		    params.put("text", content);
+		    
+		    coolsms.send(params); // 메시지 전송
+			return "성공";
+		}
+		return "실패";
+		
 	}
 }

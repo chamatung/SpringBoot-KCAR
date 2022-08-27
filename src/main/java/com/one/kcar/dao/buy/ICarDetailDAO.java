@@ -44,4 +44,6 @@ public interface ICarDetailDAO {
 
 	CarTagDTO carTag(String c_num);
 
+	void sellRequestUpdate(String c_num);
+
 }

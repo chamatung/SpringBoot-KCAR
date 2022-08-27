@@ -4,17 +4,12 @@
 <head>
 <title>K Car - 직접 매입 직접 판매하는 대한민국 No.1 직영 중고차 케이카</title>
 <%@ include file="member/home_style.jsp" %>
-<c:if test="${not empty msg }">
-	<script>
-		alert("${msg}");
-	</script>
-</c:if>
 </head>
 <body>
 <c:if test="${not empty msg }">
 <script>
 		alert('${msg}');
-	</script>
+</script>
 </c:if>
 	<div id="__nuxt">
 		<!---->

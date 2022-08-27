@@ -117,40 +117,7 @@ input[type=radio]:checked+span {
 									</div>
 								</div>
 							</div>
-							<nav>
-								<div class="mypageMenu">
-									<h2 class="title">
-										<a href="/mp" aria-current="page"
-											class="nuxt-link-exact-active nuxt-link-active"> 마이페이지 </a>
-									</h2>
-									<ul>
-										<li><a href="BuyOrderManage" class=""> 내차사기
-												주문관리 </a></li>
-										<li><a href="SellAplMgtList" class=""> 내차팔기
-												신청관리 </a></li>
-										<li><a href="RentAplList" class=""> 렌트 신청내역 </a></li>
-									</ul>
-									<ul>
-										<li><a href="DrcmgtStrVstResvLst" class=""> 직영점
-												방문예약 신청내역 </a></li>
-										<li><a href="SellRdyCarList" class=""> 판매준비차량 알림
-										</a></li>
-									</ul>
-									<ul>
-										<li><a href="WishCarList" class=""> 찜한 차량 </a></li>
-										<li><a href="LatelyViewedCar" class=""> 최근 본
-												차량 </a></li>
-									</ul>
-									<ul>
-										<li><a href="update" aria-current="page"
-											class="nuxt-link-exact-active nuxt-link-active"> 회원정보 </a></li>
-										<li><a href="/mp" aria-current="page"
-											class="nuxt-link-exact-active nuxt-link-active"> SNS 로그인
-												설정 </a></li>
-										
-									</ul>
-								</div>
-							</nav>
+							<%@ include file="/WEB-INF/mypage/mypage_nav.jsp" %>
 						</div>
 						<div class="mypagCont quitView">
 							<h3 class="subTitle">회원탈퇴</h3>
@@ -260,7 +227,7 @@ input[type=radio]:checked+span {
 												class="el-radio is-checked"><span
 												class="el-radio__input is-checked"></span><input
 												type="radio" aria-hidden="true" tabindex="-1"
-												autocomplete="off" value="1" 
+												autocomplete="off" value="0" 
 												class="el-radio__original" name="select1"><span
 												class="selectoption"></span><span class="el-radio__label">
 													아이디를 변경하려 함 <!---->
@@ -296,11 +263,15 @@ input[type=radio]:checked+span {
 											<label role="radio" tabindex="-1" class="el-radio"><span
 												class="el-radio__input"></span><input type="radio"
 												aria-hidden="true" tabindex="-1" autocomplete="off"
-												value="0" class="el-radio__original" name="select1"><span
+												value="1" class="el-radio__original" name="select1"><span
 												class="selectoption"></span><span class="el-radio__label">
 													직접 입력 <!---->
 											</span></label>
 										</div>
+										<div class="el-textarea" id="textshow" style="display: none;">
+                              <textarea autocomplete="off" placeholder="내용을 입력해주세요" class="el-textarea__inner" style="resize: none; min-height: 47px;"></textarea>
+                              <!---->
+                              </div>
 									</div>
 													</div>
 												</div>
@@ -433,6 +404,19 @@ input[type=radio]:checked+span {
 				렌트사고정비소</li>
 		</ul>
 	</div>
-	
+	<!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+   $('.el-radio__original').on('click', function() {
+       var valueCheck = $('.el-radio__original:checked').val();
+       
+       if ( valueCheck == '1' ) {
+          $("#textshow").show();
+       }else {
+          $("#textshow").hide();
+       }
+   });
+   
+</script>
 </body>
 </html>

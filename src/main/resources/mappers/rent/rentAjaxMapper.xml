@@ -95,6 +95,10 @@
 	<select id="member" resultType="com.one.kcar.dto.member.MemberDTO">
 		SELECT * FROM kcar_member where m_email=#{m_email}
 	</select>
+	
+	<update id="updateMail">
+		UPDATE kcarCarRent SET m_email=#{m_email} WHERE crNumber=#{crNumber}
+	</update>
 </mapper>
 
 

@@ -132,7 +132,7 @@
 										<table style="width: 100%;">
 											<tr>
 												<td style="width: 150px; text-align: center;">제목</td>
-												<td><input type="text" autocomplete="off" maxlength="30" placeholder="제목 입력" class="el-input__inner" id="title" name="title"></td>
+												<td><input type="text" autocomplete="off" placeholder="제목 입력" class="el-input__inner" id="title" name="title"></td>
 											</tr>
 											<tr style="height: 20px;"></tr>
 											<tr>

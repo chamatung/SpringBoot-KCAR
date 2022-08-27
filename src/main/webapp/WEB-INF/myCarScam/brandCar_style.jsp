@@ -22000,7 +22000,7 @@ a.button.DarkColor:active, button.DarkColor:active {
 }
 
 .el-select-dropdown .el-scrollbar .el-select-dropdown__wrap {
-	max-height: 336px
+	max-height: 500px
 }
 
 .el-select-dropdown .el-scrollbar .el-scrollbar__view {

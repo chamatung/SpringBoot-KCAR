@@ -25,6 +25,8 @@ import com.one.kcar.dto.buy.CarDTO;
 import com.one.kcar.dto.member.MemberDTO;
 import com.one.kcar.service.buy.*;
 
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 @Controller
 public class MainContoroller {
 	@Autowired
@@ -48,16 +50,6 @@ public class MainContoroller {
 	public String homeSvc(Model model) {
 		homeService.homeServiceMain(model);
 		return "myCarScam/homeSvc";
-	}
-	//판매준비차량
-	@GetMapping(value="prepareCar")
-	public String prepareCar() {
-		return "myCarScam/prepareCar";
-	}
-	//3D라이브 뷰
-	@GetMapping(value="vrLiveView")
-	public String vrLiveView() {
-		return "myCarScam/vrLiveView";
 	}
 	//최근 본 차량latelyViewedCar
 	@GetMapping(value="latelyViewedCar")
@@ -89,7 +81,13 @@ public class MainContoroller {
 		}
 		return data;
 	}
-	
+	@ResponseBody
+	@PostMapping(value="letterAjax", produces = "text/html; charset=utf-8")
+	public String letterAjax(@RequestBody(required = false) Map<String, String> list) throws CoolsmsException {
+		
+		String msg = latelyCarService.letterSend(list);
+		return msg;
+	}
 	//내차사기 고객후기
 	@GetMapping(value="BuyCustReview")
 	public String BuyCustReview(@RequestParam(value="currentPage",required = false,defaultValue="1")String currentPage,
@@ -100,7 +98,7 @@ public class MainContoroller {
 		buyReviewService.buyReivewAllList(map,model);
 		return "myCarScam/BuyCustReview";
 	}
-	
+	//내차사기 고객후기 페이징
 	@ResponseBody
 	@PostMapping(value="buyReviewPaging", produces = "text/html; charset=utf-8")
 	public String buyReviewPaging(@RequestBody(required = false) HashMap<String,String> map, Model model) {
@@ -134,21 +132,13 @@ public class MainContoroller {
 			return ajaxBrandCarAllList;
 		}
 	}
-	
+	//
 	@ResponseBody
 	@PostMapping(value="modal", produces = "text/html; charset=utf-8")
 	public String modal(@RequestBody(required = false)String brand,@RequestBody(required = false)String model) {
 		String ajaxModalModelList = brandService.ajaxBrandModal(brand,model);
 		
 		return ajaxModalModelList;
-	}
-	
-	
-	@GetMapping(value="brandCar/brandCarList")
-	public String brandCarList(@RequestParam(value="brand", required=false)String brand, Model model ) {
-		if(brand == null || brand.isEmpty()) return "redirect:/brandCar";//brandParameter가 null인 경우 brand메뉴페이지로 이동 //serviceclass로 이동해서 검증할 것
-		brandService.brandCarList(brand, model);
-		return "myCarScam/brand/brandCarList";
 	}
 	
 	//구매차량정보
@@ -181,7 +171,7 @@ public class MainContoroller {
 	public String carOrderBuy(@RequestParam(required=false) String c_num, Model model) {
 		String msg = detailService.carOrder(c_num,model);
 		if(msg != null) {
-			if(msg.equals("로그인")) return "redirect:/member/login";//로그인 안했을때
+			if(msg.equals("로그인")) return "redirect:/logins";//로그인 안했을때
 			if(msg.equals("차번호")) return "redirect:carInfo";//차번호 없을때
 		}
 		return "myCarScam/detail/carOrderBuy";
@@ -190,7 +180,7 @@ public class MainContoroller {
 	public String carOrderRequest(@RequestParam(required=false) String c_num,@RequestParam(required=false) String c_price,Model model) {
 		String msg = detailService.carOrderRequest(c_num,c_price,model);
 		if(msg != null) {
-			if(msg.equals("로그인")) return "redirect:/member/login";//로그인 안했을때
+			if(msg.equals("로그인")) return "redirect:/logins";//로그인 안했을때
 			if(msg.equals("차번호")) return "redirect:carInfo";//차번호 없을때
 		}
 		return "myCarScam/detail/carOrderRequest";
@@ -199,7 +189,7 @@ public class MainContoroller {
 	public String carOrderDetail(MemberDTO member,@RequestParam(required=false) String c_num,Model model) {
 		String msg = detailService.carOrderDetail(member,c_num,model);
 		if(msg != null) {
-			if(msg.equals("로그인")) return "redirect:/member/login";//로그인 안했을때
+			if(msg.equals("로그인")) return "redirect:/logins";//로그인 안했을때
 			if(msg.equals("차번호")) return "redirect:carInfo";//차번호 없을때
 		}
 		return "myCarScam/detail/carOrderDetail";
@@ -208,7 +198,7 @@ public class MainContoroller {
 	public String payment(MemberDTO member,@RequestParam(required=false) String c_num,Model model, RedirectAttributes ra) {
 		String msg = detailService.carPayment(member,c_num,model);
 		if(msg != null) {
-			if(msg.equals("로그인")) return "redirect:/member/login";//로그인 안했을때
+			if(msg.equals("로그인")) return "redirect:/logins";//로그인 안했을때
 			if(msg.equals("차번호")) return "redirect:carInfo";//차번호 없을때
 		}
 		ra.addAttribute("msg", msg);

@@ -169,7 +169,7 @@
 									</p>
 								</div>
 								<div class="borderViewCon">
-									${eventviewList.e_content }
+									<pre>${eventviewList.e_content }</pre>
 								</div>
 							</div>
 							<div class="searchTrigger box Large maxW97 el-row">

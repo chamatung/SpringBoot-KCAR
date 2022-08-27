@@ -5,7 +5,9 @@ function getNoticeList(){
 		          data : $("#notice_form").serialize(),
 		          success : function(obj) {
 			          var htmlString = "";
-			          for ( var i = 0; i < 4; i++) { 
+			          var cnt = obj.noticeList.length;
+			          if(cnt > 4 ) cnt = 4;
+			          for ( var i = 0; i < cnt; i++) { 
 			        	  htmlString += "<p class='notiTxt'>";
 			        	  htmlString += "	<a href='noticeViewProc?no=" + obj.noticeList[i].n_no + "'>" + obj.noticeList[i].n_title + "</a>";
 						  htmlString += "</p>";
@@ -26,7 +28,9 @@ function getNoticeList(){
 		          data : $("#event_form").serialize(),
 		          success : function(obj) {
 			          var htmlString = "";
-			          for ( var i = 0; i < 4; i++) { 
+			          var cnt = obj.eventList.length;
+			          if(cnt > 4 ) cnt = 4;
+			          for ( var i = 0; i < cnt; i++) { 
 			        	  htmlString += "<p class='notiTxt'>";
 			        	  htmlString += "	<a href='eventViewProc?no=" + obj.eventList[i].e_no + "'>" + obj.eventList[i].e_title + "</a>";
 						  htmlString += "</p>";

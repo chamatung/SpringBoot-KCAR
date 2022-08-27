@@ -179,7 +179,7 @@ public class MemberService {
 				session.setAttribute("tel", check.getM_tel());
 				session.setAttribute("id_num", check.getM_id());
 				
-				return "중복";
+				return "로그인 성공";
 			}
 			return "회원가입 후 사용 가능합니다";
 		

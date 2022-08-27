@@ -8,18 +8,12 @@ function installmentCheck(_installmentIndex,carPrice){
 	var rate9 = document.getElementById('9');
 	var rate11 = document.getElementById('11');
 	var rate13 = document.getElementById('13');
-
-	yearRate7 = (0.07 / 12);
-	yearRate8 = (0.08 / 12);
-	yearRate9 = (0.09 / 12);
-	yearRate11 = (0.11 / 12);
-	yearRate13 = (0.13 / 12);
 	
-	result7 = Calculation(yearRate7, _installmentIndex, installmentPrice);
-	result8 = Calculation(yearRate8, _installmentIndex, installmentPrice);
-	result9 = Calculation(yearRate9, _installmentIndex, installmentPrice);
-	result11 = Calculation(yearRate11, _installmentIndex, installmentPrice);
-	result13 = Calculation(yearRate13, _installmentIndex, installmentPrice);
+	result7 = Calculation(0.07 / 12, _installmentIndex, installmentPrice);
+	result8 = Calculation(0.08 / 12, _installmentIndex, installmentPrice);
+	result9 = Calculation(0.09 / 12, _installmentIndex, installmentPrice);
+	result11 = Calculation(0.11 / 12, _installmentIndex, installmentPrice);
+	result13 = Calculation(0.13 / 12, _installmentIndex, installmentPrice);
 
 	rate7.innerHTML = "연 7% <br>" + Math.floor(result7) + "만원";
 	rate8.innerHTML = "연 8% <br>" + Math.floor(result8) + "만원";

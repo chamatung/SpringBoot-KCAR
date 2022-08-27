@@ -1,5 +1,6 @@
 package com.one.kcar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +15,15 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.one.kcar.dto.admin.CarDTO;
 import com.one.kcar.dto.admin.CarTagDTO;
 import com.one.kcar.dto.admin.CaroptionDTO;
-
+import com.one.kcar.dto.buy.BrandDTO;
 import com.one.kcar.dto.buy.CarInfoDTO;
 import com.one.kcar.dto.buy.ContractDTO;
+import com.one.kcar.dto.buy.StoreDTO;
 import com.one.kcar.dto.cs.EventDTO;
 import com.one.kcar.dto.cs.NoticeDTO;
 import com.one.kcar.dto.member.MemberDTO;
@@ -38,18 +39,24 @@ public class adminController {
 	@GetMapping("car_update")
 	String car_update(HttpServletRequest request,Model model) {
 		String num = request.getParameter("s_r_num");
+		
+		ArrayList<StoreDTO> stList = service.storeList();
+		ArrayList<BrandDTO> brandList = service.brandList();
+		
 		SellDTO sell = service.list_info(num);
+		
 		model.addAttribute("list",sell);
-	
+		model.addAttribute("stList",stList);
+		model.addAttribute("brandList",brandList);
 		
 		return "admin/car_update";
 	}
-	@Transactional
+	
 	@PostMapping("car_update")
 	String car_update(HttpServletRequest request, ModelMap model,MemberDTO member,SellDTO sell,CarDTO car,
 			CarInfoDTO carinfo,CarTagDTO cartag,CaroptionDTO caroption,String m_email,
-			MultipartHttpServletRequest multi,ContractDTO contract) {
-		String msg = service.register(request,member,sell,car,carinfo,cartag,caroption,m_email,multi,contract);
+			MultipartHttpServletRequest multi,ContractDTO contract,String admin_email) {
+		String msg = service.register(request,member,sell,car,carinfo,cartag,caroption,m_email,multi,contract,admin_email);
 		if(msg.equals("g"))
 			return"admin/main";
 			

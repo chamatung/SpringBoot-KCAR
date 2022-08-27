@@ -181,7 +181,7 @@
 							</div>
 							<div class="buttonWrap">
 								<div class="searchTrigger box Large RedColor el-row">
-									<button class="button chosenApply" onclick="location.href='vehicleSearch'">차량검색</button>
+									<button class="button chosenApply" onclick="location.href='carbuy'">차량검색</button>
 								</div>
 							</div>
 						</div>
@@ -197,7 +197,7 @@
 								</strong><br> 내차사기 홈서비스를 이용하셨어요.
 							</div>
 							<div class="reviewWrap">
-								<a href="/bc/review/BuyCustReview" class="viewmore"> 더보기 </a>
+								<a href="/BuyCustReview" class="viewmore"> 더보기 </a>
 								<div>
 									<ul>
 									<!-- forEach start -->
@@ -284,7 +284,7 @@
 						<div class="faqWrap">
 							<div class="infoTitleWrap mb40">
 								<h2 class="infoTitle">자주 하는 질문</h2>
-								<a class="moreBtn el-link el-link--default is-underline" href="#">
+								<a class="moreBtn el-link el-link--default is-underline" href="/csQstn">
 									<!---->
 									<span class="el-link--inner"> 전체 보기<i
 										class="el-icon-arrow-right"></i></span>

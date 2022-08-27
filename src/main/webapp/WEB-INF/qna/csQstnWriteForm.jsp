@@ -173,12 +173,13 @@
 											<tr style="height: 20px;"></tr>
 											<tr>
 												<td style="width: 150px; text-align: center;">제목</td>
-												<td><input type="text" autocomplete="off" maxlength="30" placeholder="제목 입력" class="el-input__inner" id="title" name="title"></td>
+												<td><input type="text" autocomplete="off" maxlength="30" placeholder="제목 입력" class="el-input__inner" id="title" name="title"
+												style="width: 980px;"></td>
 											</tr>
 											<tr style="height: 20px;"></tr>
 											<tr>
 												<td style="width: 150px; text-align: center;">내용</td>
-												<td><textarea autocomplete="off" rows="2" cols="10" placeholder="내용 입력" class="el-textarea__inner" id="content" name="content" style="resize: none; min-height: 173px; height: 350px;"></textarea></td>
+												<td><textarea autocomplete="off" rows="2" cols="10" placeholder="내용 입력" class="el-textarea__inner" id="content" name="content" style="resize: none; min-height: 173px; height: 350px; width: 980px;"></textarea></td>
 											</tr>
 										</table>
 									</div>

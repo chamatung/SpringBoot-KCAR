@@ -53,9 +53,11 @@ public class MemberController {
 	@PostMapping("logins")
 	public String logins(MemberDTO member,Model model) {
 		String msg = memberService.login(member);
-		model.addAttribute("msg", msg);
-		if(msg.equals("로그인 성공"))
+		if(msg.equals("로그인 성공")) {
+			model.addAttribute("msg", null);
 			return "home";
+		}
+		model.addAttribute("msg", msg);
 		return "member/logins";
 	}
 	
@@ -93,10 +95,11 @@ public class MemberController {
 		session.setAttribute("accessToken", accessToken);
 		
 		String msg = memberService.kakao_check(member);
-		model.addAttribute("msg",msg);
-		if(msg.equals("중복")) {
+		if(msg.equals("로그인 성공")) {
+			model.addAttribute("msg",null);
 			return "home";
 		}
+		model.addAttribute("msg",msg);
 		return "member/register2";
 	}
 	@RequestMapping("naverCallback")
@@ -113,10 +116,11 @@ public class MemberController {
 		session.setAttribute("naver_email", naver_email);
 		
 		String msg = memberService.naver_check(member);
-		model.addAttribute("msg",msg);
 		if(msg.equals("중복")) {
+			model.addAttribute("msg",null);
 			return "home";
 		}
+		model.addAttribute("msg",msg);
 		return "member/register2";
 	}
 }

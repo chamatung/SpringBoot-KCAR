@@ -117,14 +117,14 @@
 												<form>
 													<table>
 														<tr>
-															<td><select name="select2" style="width: 100px; height: 50px;">
+															<td><select name="select2" style="width: 150px; height: 50px;">
 																	<option value="">전체</option>
 																	<option value="brand">브랜드</option>
 																	<option value="fuel">연료</option>
 															</select> <input type=text name='search2' placeholder="검색어를 입력하세요."
 																		 style="width: 500px; height: 50px;"/>
 																	  <input type=submit name='searchBtn' value='검색' 
-																	 	 placeholder="검색어를 입력하세요." style="width: 100px; height: 50px;" /></td>
+																	 	 placeholder="검색어를 입력하세요." style="width: 150px; height: 50px;" /></td>
 														</tr>
 													</table>
 												</form>

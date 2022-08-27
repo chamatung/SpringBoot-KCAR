@@ -51,10 +51,10 @@ public class myCarbuyService {
 		} else {
 			for (BuyDTO i : list) {
 				result += "<div class='carListBox'> <div class='carListImg'> <span class='car360Img'><img src='/images/common/ico-360.svg' alt='360'></span>";
-				result += "<a href='/bc/search' aria-current='page' class='nuxt-link-exact-active nuxt-link-active' id='mkt_clickCar'>";
+				result += "<a href='/detail/carInfo?c_num="+i.getC_num()+"' aria-current='page' class='nuxt-link-exact-active nuxt-link-active' id='mkt_clickCar'>";
 				result += "<img src='" + i.getC_photo() + "'";
 				result += "alt='챠량이미지' onerror=\"this.src='/images/search/bg_no_Img_lg.png'\" loading='lazy'></a> </div>";
-				result += "<ul class='listViewLabel'></ul>	<div class='detailInfo'> <div class='carName'> <p class='carTit'> <a href='/bc/search' aria-current='page'";
+				result += "<ul class='listViewLabel'></ul>	<div class='detailInfo'> <div class='carName'> <p class='carTit'> <a href='/detail/carInfo?c_num="+i.getC_num()+"' aria-current='page'";
 				result += "class='nuxt-link-exact-active nuxt-link-active'";
 				result += "id='mkt_clickCarNm'>" + i.getCb_brand() + i.getCb_m_model() + "</a></p> </div>";
 				result += "<div class='carListFlex'> <div class='carExpIn'> <p class='carExp'>" + i.getC_price()
@@ -107,10 +107,10 @@ public class myCarbuyService {
 		} else {
 			for (BuyDTO i : list) {
 				result += "<div class='carListBox'> <div class='carListImg'> <span class='car360Img'><img src='/images/common/ico-360.svg' alt='360'></span>";
-				result += "<a href='/bc/search' aria-current='page' class='nuxt-link-exact-active nuxt-link-active' id='mkt_clickCar'>";
+				result += "<a href='/detail/carInfo?c_num="+i.getC_num()+"' aria-current='page' class='nuxt-link-exact-active nuxt-link-active' id='mkt_clickCar'>";
 				result += "<img src='" + i.getC_photo() + "'";
 				result += "alt='챠량이미지' onerror=\"this.src='/images/search/bg_no_Img_lg.png'\" loading='lazy'></a> </div>";
-				result += "<ul class='listViewLabel'></ul>	<div class='detailInfo'> <div class='carName'> <p class='carTit'> <a href='/bc/search' aria-current='page'";
+				result += "<ul class='listViewLabel'></ul>	<div class='detailInfo'> <div class='carName'> <p class='carTit'> <a href='/detail/carInfo?c_num='"+i.getC_num()+"' aria-current='page'";
 				result += "class='nuxt-link-exact-active nuxt-link-active'";
 				result += "id='mkt_clickCarNm'>" + i.getCb_brand() + " " + i.getCb_m_model() + "</a></p> </div>";
 				result += "<div class='carListFlex'> <div class='carExpIn'> <p class='carExp'>" + i.getC_price()

@@ -1,5 +1,6 @@
 package com.one.kcar.dao.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -7,8 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 import com.one.kcar.dto.admin.CarDTO;
 import com.one.kcar.dto.admin.CarTagDTO;
 import com.one.kcar.dto.admin.CaroptionDTO;
+import com.one.kcar.dto.buy.BrandDTO;
+import com.one.kcar.dto.buy.BrandModelDTO;
 import com.one.kcar.dto.buy.CarInfoDTO;
 import com.one.kcar.dto.buy.ContractDTO;
+import com.one.kcar.dto.buy.StoreDTO;
 import com.one.kcar.dto.cs.CsDTO;
 import com.one.kcar.dto.cs.EventDTO;
 import com.one.kcar.dto.cs.NoticeDTO;
@@ -55,11 +59,18 @@ public interface IadminDAO {
 
 	int rent_check(String m_email);
 
+	ArrayList<StoreDTO> storeList();
 
+	BrandDTO checkBrand(String cb_brand);
 
-	
+	void insertBrand(BrandDTO checkBrand);
 
-	
+	void insertBrandModel(BrandModelDTO checkModel);
+
+	BrandModelDTO checkBrandModel(String cb_m_model);
+
+	ArrayList<BrandDTO> brandList();
+
 
 }
 				

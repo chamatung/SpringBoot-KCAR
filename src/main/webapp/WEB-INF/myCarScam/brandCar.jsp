@@ -93,7 +93,7 @@
 										<c:forEach var="brand" items="${brandList }"
 											varStatus="status">
 											<li><a class="el-link el-link--default is-underline"
-												href="brandCar/brandCarList?brand=${brand.cb_brand}"> <!---->
+												onclick="brandAlignment('${brand.cb_brand }')"> <!---->
 													<span class="el-link--inner"><img
 														src="${brand.cb_photo }" alt="${brand.cb_brand }"
 														class="brandLogo">
@@ -145,7 +145,7 @@
 														<li class="el-select-dropdown__item" value="기본정렬" onclick="alignmentMethodCheck('기본정렬')"><span>기본정렬</span></li>
 														<li class="el-select-dropdown__item" value="최근연식순" onclick="alignmentMethodCheck('최근연식순')"><span>최근연식순</span></li>
 														<li class="el-select-dropdown__item" value="낮은연식순" onclick="alignmentMethodCheck('낮은연식순')"><span>낮은연식순</span></li>
-								0						<li class="el-select-dropdown__item" value="적은주행거리순" onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
+														<li class="el-select-dropdown__item" value="적은주행거리순" onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
 														<li class="el-select-dropdown__item" value="많은주행거리순" onclick="alignmentMethodCheck('많은주행거리순')"><span>많은주행거리순</span></li>
 														<li class="el-select-dropdown__item" value="낮은가격순" onclick="alignmentMethodCheck('낮은가격순')"><span>낮은가격순</span></li>
 														<li class="el-select-dropdown__item" value="높은가격순" onclick="alignmentMethodCheck('높은가격순')"><span>높은가격순</span></li>
@@ -179,7 +179,6 @@
 											<!---->
 											<div>
 												<img src="${brandCar.c_photo }" alt="챠량이미지"
-													onerror="this.src='/images/search/bg_no_Img_lg.png'"
 													loading="lazy">
 											</div>
 											<ul class="listViewBtn">
@@ -231,17 +230,6 @@
 										</div>
 									</div>
 								</c:forEach>
-								<script>
-									var carListImg = document.querySelectorAll('.carListImg');
-									var ListViewLabel = document.querySelectorAll('.ListViewLabel');
-									var carName = document.querySelectorAll('.carName');
-									var carNumHidden = document.querySelectorAll('.carNumHidden');
-									
-									var detailPage = function(index){
-										var carNum = carNumHidden[index].value;
-										window.open('detail/carInfo?c_num='+carNum);
-									}
-								</script>
 							</div>
 						</div>
 
@@ -451,5 +439,16 @@
 	<div id="criteo-tags-div" style="display: none;"></div>
 	<script src="js/question.js"></script>
 	<script src="js/brandCar.js"></script>
+	<script>
+		var detailPage = function(index){
+			var carListImg = document.querySelectorAll('.carListImg');
+			var ListViewLabel = document.querySelectorAll('.ListViewLabel');
+			var carName = document.querySelectorAll('.carName');
+			var carNumHidden = document.querySelectorAll('.carNumHidden');
+			var carNum = carNumHidden[index].value;
+			
+			window.open('detail/carInfo?c_num='+carNum);
+		}
+	</script>
 </body>
 </html>

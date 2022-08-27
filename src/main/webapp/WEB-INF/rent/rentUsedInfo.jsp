@@ -4,27 +4,7 @@
 <html lang="ko" class="chrome">
 <head>
 <title>차량상세 중고차렌트</title>
-	<!-- 렌트신청 문자전송 js -->
-<script type="text/javascript">
-$('#send').click(function() {
-	
-	const to = $('#to').val();
-	
-	$.ajax ({
-		url: 'rentUsedInfoProc/sendSMS',
-		type: 'GET',
-		data: {
-			"to" : to
-		},
-		success: function(data) {
-			const checkNum = data;//to로 받아온 데이터
-			alert('메세지 전송'+ checkNum);
-			
-		}
-	});
-	
-});
-</script>
+
 <script
 	src="https://connect.facebook.net/signals/config/771045850193577?v=2.9.75&amp;r=stable"
 	async=""></script>
@@ -265,147 +245,11 @@ $('#send').click(function() {
 													data-v-ec1dd4fa="">연 2만km, 연 3만km</strong></span>
 											</button></li>
 									</ul>
-									<div data-v-ec1dd4fa="" class="flexSB mT100">
-										<h2 data-v-ec1dd4fa="" class="infoHead2 mB0">
-											내 조건에 맞춰 <br data-v-ec1dd4fa=""> <span
-												data-v-ec1dd4fa="">월 렌트비를 계산해 보세요.</span>
-										</h2>
-										<button data-v-ec1dd4fa="" type="button"
-											class="el-button rightDesc viewUnder el-button--text">
-											<!---->
-											<!---->
-											<span> 보험 보상 범위 </span>
-										</button>
-									</div>
-									<div data-v-ec1dd4fa="" class="formWrap">
-										<form data-v-ec1dd4fa="" class="el-form">
-											<div data-v-ec1dd4fa="" class="el-form-item col50P">
-												<!---->
-												<div class="el-form-item__content">
-													<div data-v-ec1dd4fa="">
-														<div data-v-ec1dd4fa="" class="titLabel">
-															초기납입금
-															<button data-v-ec1dd4fa="" type="button"
-																class="el-button el-tooltip item tooltip-btn el-button--default"
-																aria-describedby="el-tooltip-7901" tabindex="0">
-																<!---->
-																<!---->
-																<span><i data-v-ec1dd4fa="" class="el-icon-info2"></i></span>
-															</button>
-														</div>
-														<div data-v-ec1dd4fa="" role="radiogroup"
-															class="el-radio-group radioBoxs">
-															<label data-v-ec1dd4fa="" role="radio" tabindex="-1"
-																class="el-radio-button"><input type="radio"
-																tabindex="-1" autocomplete="off"
-																class="el-radio-button__orig-radio" value="01"><span
-																class="el-radio-button__inner"> 선수금 <!----></span></label> <label
-																data-v-ec1dd4fa="" role="radio" aria-checked="true"
-																tabindex="0" class="el-radio-button is-active"><input
-																type="radio" tabindex="-1" autocomplete="off"
-																class="el-radio-button__orig-radio" value="02"><span
-																class="el-radio-button__inner"> 보증금 <!----></span></label>
-														</div>
-													</div>
-													<div data-v-ec1dd4fa="">
-														<div data-v-ec1dd4fa="" class="titLabel">연간 약정운행거리</div>
-														<div data-v-ec1dd4fa="" role="radiogroup"
-															class="el-radio-group radioBoxs">
-															<label data-v-ec1dd4fa="" role="radio"
-																aria-checked="true" tabindex="0"
-																class="el-radio-button is-active"><input
-																type="radio" tabindex="-1" autocomplete="off"
-																class="el-radio-button__orig-radio" value="2"><span
-																class="el-radio-button__inner"> 20,000km <!----></span></label>
-															<label data-v-ec1dd4fa="" role="radio" tabindex="-1"
-																class="el-radio-button"><input type="radio"
-																tabindex="-1" autocomplete="off"
-																class="el-radio-button__orig-radio" value="3"><span
-																class="el-radio-button__inner"> 30,000km <!----></span></label>
-														</div>
-													</div>
-													<!---->
-												</div>
-											</div>
-											<div data-v-ec1dd4fa="" class="el-form-item">
-												<!---->
-												<div class="el-form-item__content">
-													<div data-v-ec1dd4fa="" class="titLabel">정비 서비스</div>
-													<div data-v-ec1dd4fa="" role="radiogroup"
-														class="el-radio-group radioBoxs">
-														<label data-v-ec1dd4fa="" role="radio" aria-checked="true"
-															tabindex="0" class="el-radio-button is-active"><input
-															type="radio" tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="01"><span
-															class="el-radio-button__inner"> 실속형(정비 미포함) <!----></span></label>
-														<label data-v-ec1dd4fa="" role="radio" tabindex="-1"
-															class="el-radio-button"><input type="radio"
-															tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="03"><span
-															class="el-radio-button__inner"> 입고정비(풀 정비 가능) <!----></span></label>
-														<label data-v-ec1dd4fa="" role="radio" tabindex="-1"
-															class="el-radio-button"><input type="radio"
-															tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="04"><span
-															class="el-radio-button__inner"> 순회정비(풀정비 + 방문점검) <!----></span></label>
-													</div>
-													<!---->
-												</div>
-											</div>
-											<div data-v-ec1dd4fa="" class="el-form-item">
-												<!---->
-												<div class="el-form-item__content">
-													<div data-v-ec1dd4fa="" class="titLabel">렌트기간</div>
-													<div data-v-ec1dd4fa="" role="radiogroup"
-														class="el-radio-group radioBoxs">
-														<label data-v-ec1dd4fa="" role="radio" aria-checked="true"
-															tabindex="0" class="el-radio-button is-active"><input
-															type="radio" tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="12"><span
-															class="el-radio-button__inner"> 12개월 <!----></span></label><label
-															data-v-ec1dd4fa="" role="radio" tabindex="-1"
-															class="el-radio-button"><input type="radio"
-															tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="24"><span
-															class="el-radio-button__inner"> 24개월 <!----></span></label><label
-															data-v-ec1dd4fa="" role="radio" tabindex="-1"
-															class="el-radio-button"><input type="radio"
-															tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="36"><span
-															class="el-radio-button__inner"> 36개월 <!----></span></label><label
-															data-v-ec1dd4fa="" role="radio" tabindex="-1"
-															class="el-radio-button"><input type="radio"
-															tabindex="-1" autocomplete="off"
-															class="el-radio-button__orig-radio" value="48"><span
-															class="el-radio-button__inner"> 48개월 <!----></span></label>
-													</div>
-													<!---->
-												</div>
-											</div>
-										</form>
-									</div>
-									<div data-v-ec1dd4fa="" class="calcBox">
-										<div data-v-ec1dd4fa="" class="rentPrice">
-											<strong data-v-ec1dd4fa="">월 렌트비</strong><strong
-												data-v-ec1dd4fa="" class="pointC">720,000원</strong>
-											<ul data-v-ec1dd4fa="" class="barLists">
-												<li data-v-ec1dd4fa=""><span data-v-ec1dd4fa="">렌트기간</span>
-													<span data-v-ec1dd4fa="">12개월</span></li>
-												<li data-v-ec1dd4fa=""><span data-v-ec1dd4fa="">초기납입금</span>
-													<span data-v-ec1dd4fa="">396만원</span></li>
-											</ul>
-										</div>
-										<div data-v-ec1dd4fa="" class="calcBtnArea">
-											<div data-v-ec1dd4fa="" class="calcBtns">
-												<button data-v-ec1dd4fa="" type="button"
-													class="el-button el-button--default">
-													<!---->
-													<!---->
-													<span> 견적보관 </span>
-												</button>
-											</div>
-										</div>
-									</div>
+									
+									<!-- 시작 -->
+									
+									<!-- 종료 -->
+									
 									<div class="tabMenuWrap" data-v-ec1dd4fa="">
 										<ul class="tabMenu" data-v-ec1dd4fa="">
 											<!---->
@@ -811,12 +655,8 @@ $('#send').click(function() {
 											</div>
 											<div class="searchTrigger box btnSpace8 pT0 el-row"
 												data-v-ec1dd4fa="">
-												<button class="button chosenApply favorite"
-													data-v-ec1dd4fa="">
-													
-												</button>
 												<!--<button class="button apply" data-v-ec1dd4fa="">  -->
-													<a href="http://localhost/sms">상담예약</a><!-- </button>  -->
+												<button class="button apply"><a href="http://localhost/sms" style="color:white">상담예약</a></button>
 											</div>
 											<div data-v-ec1dd4fa="" class="searchSth">
 												<button data-v-ec1dd4fa="" type="button"
@@ -849,162 +689,7 @@ $('#send').click(function() {
 
 					</div>
 					<!-- 모달 시작 -->
-					<div data-v-ec1dd4fa="" class="carRentWrap">
-						<div>
-						<span id="reviewModalBack"></span>
-							<div
-								class="el-dialog__wrapper popup popCenter popFullBody rentResPopup active"
-								style="z-index: 3000;display:none;" id="reviewModal">
-								<div role="dialog" aria-modal="true" aria-label="상담예약신청"
-									class="el-dialog" style="margin-top: 15vh;">
-									<div class="el-dialog__header">
-										<span class="el-dialog__title">상담예약신청</span>
-										<button type="button" aria-label="Close" onclick="reviewModalClose()"
-											class="el-dialog__headerbtn">
-											<i class="el-dialog__close el-icon el-icon-close"></i>
-										</button>
-									</div>
-									<div class="el-dialog__body">
-										<div class="popContent el-scrollbar">
-											<div class="el-scrollbar__wrap"
-												style="margin-bottom: -19px; margin-right: -19px;">
-												<div class="el-scrollbar__view">
-													<div class="popBodyInr">
-														<h2 class="detailTitle">
-															견적을 신청해 주시면 렌트 담당자가<br>확인한 후 빠른 시간 내에 연락을 드립니다.
-														</h2>
-														<p class="etcInfo">
-															렌트 계약은 렌트 담당자 전화상담 후에 확정됩니다.<br> 견적문의 및 신청만으로는 계약이
-															확정되지 않으니 참고해 주세요.
-														</p>
-														<p class="textBox">
-															<span>${rentUsedInfo.crBrand } ${rentUsedInfo.crName } ${rentUsedInfo.crGrade }</span>
-														</p>
-														<div class="formWrapRen">
-															<form class="el-form">
-																<div class="col">
-																	<div class="el-form-item">
-																		<!---->
-																		<div class="el-form-item__content">
-																			<div class="titLabel">신청자명</div>
-																			<div class="el-input el-input--suffix">
-																				<!---->
-																				<input type="text" autocomplete="off"
-																					placeholder="${member.m_name }" class="el-input__inner">
-																					
-																				<!---->
-																				<!---->
-																				<!---->
-																				<!---->
-																			</div>
-																			<!---->
-																		</div>
-																	</div>
-																	<div class="el-form-item">
-																		<!---->
-																		<div class="el-form-item__content">
-																			<div class="titLabel">휴대폰번호</div>
-																			<div class="el-input el-input--suffix">
-																				<!---->
-																				<input type="text" autocomplete="off"
-																					placeholder="${member.m_tel }" maxlength="13"
-																					id="to" name="to" class="el-input__inner">
-																				<button type="button" id="send">전송</button>
-																				<!---->
-																				<!---->
-																				<!---->
-																				<!---->
-																			</div>
-																			<!---->
-																		</div>
-																	</div>
-																</div>
-																<!-- 임시보관소 시작 -->
-																
-																<!-- 임시보관소 종료 -->
-													</div>
-												</div>
-											</div>
-											<div class="el-scrollbar__bar is-horizontal">
-												<div class="el-scrollbar__thumb"
-													style="transform: translateX(0%);"></div>
-											</div>
-											<div class="el-scrollbar__bar is-vertical">
-												<div class="el-scrollbar__thumb"
-													style="height: 49.2166%; transform: translateY(0%);"></div>
-											</div>
-										</div>
-									</div>
-									<div class="el-dialog__footer">
-										<span class="dialog-footer"><div class="footerBtnWrap">
-												<div class="searchTrigger box Large popFixBtnM el-row">
-													<button class="button apply">신청</button>
-													<br>
-												</div>
-											</div></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div class="el-dialog__wrapper popup fullPopup hauto active"
-								style="display: none;">
-								<div role="dialog" aria-modal="true" aria-label="개인정보 취급동의"
-									class="el-dialog" style="margin-top: 15vh;">
-									<div class="el-dialog__header">
-										<span class="el-dialog__title">개인정보 취급동의</span>
-										<button type="button" aria-label="Close"
-											class="el-dialog__headerbtn">
-											<i class="el-dialog__close el-icon el-icon-close"></i>
-										</button>
-									</div>
-									<!---->
-									<div class="el-dialog__footer">
-										<span class="dialog-footer"><div class="footerBtnWrap">
-												<div class="searchTrigger box Large popFixBtnM el-row">
-													<button class="button apply">확인</button>
-												</div>
-											</div></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<div class="el-dialog__wrapper popup fullPopup hauto active"
-								style="display: none;">
-								<div role="dialog" aria-modal="true" aria-label="마케팅 활용"
-									class="el-dialog" style="margin-top: 15vh;">
-									<div class="el-dialog__header">
-										<span class="el-dialog__title">마케팅 활용</span>
-										<button type="button" aria-label="Close"
-											class="el-dialog__headerbtn">
-											<i class="el-dialog__close el-icon el-icon-close"></i>
-										</button>
-									</div>
-									<!---->
-									<div class="el-dialog__footer">
-										<span class="dialog-footer"><div class="footerBtnWrap">
-												<div class="searchTrigger box Large popFixBtnM el-row">
-													<button class="button apply">확인</button>
-												</div>
-											</div></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="el-dialog__wrapper popup confirm noTitle"
-							style="display: none;">
-							<div role="dialog" aria-modal="true" aria-label="noTitle"
-								class="el-dialog" style="margin-top: 15vh;">
-								<div class="el-dialog__header">
-									<span class="el-dialog__title">noTitle</span>
-									<!---->
-								</div>
-								<!---->
-								<!---->
-							</div>
-						</div>
-					</div>
+					
 					<!-- 모달 종료 -->
 					<!---->
 					<div data-v-ec1dd4fa="">

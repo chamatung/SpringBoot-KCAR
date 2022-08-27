@@ -1149,11 +1149,11 @@
 									</div>
 									<div class="carListWrap" id="mainrequest">
 										<c:forEach items="${list}" var="detail">
-											<div class="carListBox">
+								<div class="carListBox">
 												<div class="carListImg">
 													<span class="car360Img"><img
 														src="/images/common/ico-360.svg" alt="360"></span> <a
-														href="/bc/search" aria-current="page"
+														href="/detail/carInfo?c_num=${detail.c_num}" aria-current="page"
 														class="nuxt-link-exact-active nuxt-link-active"
 														id="mkt_clickCar"><img src="${detail.c_photo }"
 														alt="챠량이미지"
@@ -1165,7 +1165,7 @@
 												<div class="detailInfo">
 													<div class="carName">
 														<p class="carTit">
-															<a href="/bc/search" aria-current="page"
+															<a href="/detail/carInfo?c_num=${detail.c_num}" aria-current="page"
 																class="nuxt-link-exact-active nuxt-link-active"
 																id="mkt_clickCarNm"> ${detail.cb_brand}
 																${detail.cb_m_model } </a>
@@ -1215,7 +1215,7 @@
 													<div class="carListImg">
 														<span class="car360Img"><img
 															src="/images/common/ico-360.svg" alt="360"></span> <a
-															href="/bc/search" aria-current="page"
+															href="/detail/carInfo?c_num=${detail.c_num}" aria-current="page"
 															class="nuxt-link-exact-active nuxt-link-active"
 															id="mkt_clickCar"><img src="${detail.c_photo }"
 															alt="챠량이미지"
@@ -1227,7 +1227,7 @@
 													<div class="detailInfo">
 														<div class="carName">
 															<p class="carTit">
-																<a href="/bc/search" aria-current="page"
+																<a href="/detail/carInfo?c_num=${detail.c_num}" aria-current="page"
 																	class="nuxt-link-exact-active nuxt-link-active"
 																	id="mkt_clickCarNm"> ${detail.cb_brand}
 																	${detail.cb_m_model } </a>
@@ -1245,7 +1245,7 @@
 														</div>
 
 													</div>
-												</div>
+												</div></a>
 											</c:forEach>
 										</div>
 										<div class="pagination -sm" id="naviFore">

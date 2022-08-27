@@ -136,7 +136,7 @@
 												<option value="location">지역</option>
 												<option value="name">정비소명</option>
 										</select> <input type=text name='search' placeholder="검색어를 입력하세요."
-													 style="width: 500px; height: 50px;"/>
+													 style="width: 650px; height: 50px;"/>
 												  <input type=submit name='searchBtn' value='검색' 
 												 	 placeholder="검색어를 입력하세요." style="width: 100px; height: 50px;" /></td>
 									</tr>

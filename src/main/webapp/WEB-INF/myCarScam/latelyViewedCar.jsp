@@ -45,95 +45,41 @@
 					<div class="mypageWrap">
 						<div>
 							<div class="mypagePop">
-								<div class="el-dialog__wrapper popup popCenter mypagePop active"
-									style="display: none;">
-									<div role="dialog" aria-modal="true" aria-label="맞춤정보 설정"
-										class="el-dialog" style="margin-top: 15vh;">
-										<div class="el-dialog__header">
-											<span class="el-dialog__title">맞춤정보 설정</span>
-											<button type="button" aria-label="Close"
-												class="el-dialog__headerbtn">
-												<i class="el-dialog__close el-icon el-icon-close"></i>
-											</button>
-										</div>
-										<!---->
-										<div class="el-dialog__footer">
-											<span class="dialog-footer"><div class="footerBtnWrap">
-													<div class="searchTrigger box Large popFixBtnXS el-row">
-														<button type="button" class="button apply">다음</button>
-													</div>
-												</div></span>
-										</div>
-									</div>
-								</div>
-								<div class="el-dialog__wrapper popup popCenter hauto"
-									style="display: none;">
-									<div role="dialog" aria-modal="true" aria-label="맞춤 서비스 제공 안내"
-										class="el-dialog" style="margin-top: 15vh;">
-										<div class="el-dialog__header">
-											<span class="el-dialog__title">맞춤 서비스 제공 안내</span>
-											<button type="button" aria-label="Close"
-												class="el-dialog__headerbtn">
-												<i class="el-dialog__close el-icon el-icon-close"></i>
-											</button>
-										</div>
-										<!---->
-										<div class="el-dialog__footer">
-											<span class="dialog-footer"><div class="footerBtnWrap">
-													<div class="searchTrigger box Large maxW400 el-row">
-														<button class="button apply">닫기</button>
-													</div>
-												</div></span>
-										</div>
-									</div>
-								</div>
-								<div class="el-dialog__wrapper popup confirm noTitle"
-									style="display: none;">
+								<span id="modalBack"></span>
+								<div class="el-dialog__wrapper popup confirm noTitle" id="modal"
+									style="z-index: 3000; display: none">
 									<div role="dialog" aria-modal="true" aria-label="dialog"
 										class="el-dialog" style="margin-top: 15vh;">
 										<div class="el-dialog__header">
 											<span class="el-dialog__title"></span>
 											<button type="button" aria-label="Close"
-												class="el-dialog__headerbtn">
+												class="el-dialog__headerbtn" onclick="modalClose()">
 												<i class="el-dialog__close el-icon el-icon-close"></i>
 											</button>
 										</div>
-										<!---->
+										<div class="el-dialog__body">
+											<div class="popContent">
+												<div class="msgWrap">
+													<div class="desc2">
+														<p>차량을 선택해주세요.</p>
+													</div>
+												</div>
+												<div class="popBtnWrap">
+													<div class="searchTrigger box Inner01 maxW156 el-row">
+														<button type="button" class="button apply"
+															onclick="modalClose()">확인</button>
+													</div>
+												</div>
+											</div>
+										</div>
 										<div class="el-dialog__footer">
 											<span class="dialog-footer"><div></div></span>
 										</div>
 									</div>
 								</div>
+
 							</div>
-							<nav>
-								<div class="mypageMenu">
-									<h2 class="title">
-										<a href="/mp" class=""> 마이페이지 </a>
-									</h2>
-									<ul>
-										<li><a href="/mp/myCarBuyOrderManage" class=""> 내차사기
-												주문관리 </a></li>
-										<li><a href="/mp/MyCarSellAplMgtList" class=""> 내차팔기
-												신청관리 </a></li>
-										<li><a href="/mp/RentAplList" class=""> 렌트 신청내역 </a></li>
-									</ul>
-									<ul>
-										<li><a href="/mp/GurnteReprRcpLst" class=""> 보증수리
-												접수내역 </a></li>
-									</ul>
-									<ul>
-										<li><a href="/bc/latelyViewedCar/list"
-											aria-current="page"
-											class="nuxt-link-exact-active nuxt-link-active active">
-												최근 본 차량 </a></li>
-									</ul>
-									<ul>
-										<li><a href="/bc/latelyViewedCar/list"
-											aria-current="page"
-											class="nuxt-link-exact-active nuxt-link-active"> 회원정보 </a></li>
-									</ul>
-								</div>
-							</nav>
+							<%@include file="/WEB-INF/mypage/mypage_nav.jsp" %>
 						</div>
 						<div class="mypagCont mypageMain">
 							<h3 class="subTitle">최근 본 차량</h3>
@@ -159,14 +105,14 @@
 											<div class="tabCont">
 												<div class="contentsBox section01  el-row">
 													<div class="board">
-													<!-- 비동기통신 할 때,, 최상위 div -->
+														<!-- 비동기통신 할 때,, 최상위 div -->
 														<div class="el-row" id="ajaxAlignment">
 															<div class="legalDesBox ty2">
 																<p>최근 일주일 동안 고객님이 보신 차량입니다. 최근 본 차량을 계속 보관하려면 로그인 후
 																	관심차량에 담아 주세요.</p>
 															</div>
 															<div class="boardStatus">
-															<input type="hidden" id="alignmentHidden" value="기본정렬">
+																<input type="hidden" id="alignmentHidden" value="기본정렬">
 																<span class="total">전체 <span class="pointColor">${latelyCarListCnt }</span>
 																	건
 																</span>
@@ -176,7 +122,8 @@
 																		<div class="el-input el-input--suffix">
 																			<!---->
 																			<input type="text" readonly="readonly"
-																				autocomplete="off" placeholder="기본정렬" value="기본정렬" id="alignment" onclick="alignmentClick()"
+																				autocomplete="off" placeholder="기본정렬" value="기본정렬"
+																				id="alignment" onclick="alignmentClick()"
 																				class="el-input__inner">
 																			<!---->
 																			<span class="el-input__suffix"><span
@@ -193,15 +140,25 @@
 																					class="el-select-dropdown__wrap el-scrollbar__wrap"
 																					style="margin-bottom: -19px; margin-right: -19px;">
 																					<ul
-																						class="el-scrollbar__view el-select-dropdown__list" id="alignmentMethod">
+																						class="el-scrollbar__view el-select-dropdown__list"
+																						id="alignmentMethod">
 																						<!---->
-																						<li class="el-select-dropdown__item" value="기본정렬" onclick="alignmentMethodCheck('기본정렬')"><span>기본정렬</span></li>
-																						<li class="el-select-dropdown__item" value="최근연식순" onclick="alignmentMethodCheck('최근연식순')"><span>최근연식순</span></li>
-																						<li class="el-select-dropdown__item" value="낮은연식순" onclick="alignmentMethodCheck('낮은연식순')"><span>낮은연식순</span></li>
-																						<li class="el-select-dropdown__item" value="적은주행거리순" onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
-																						<li class="el-select-dropdown__item" value="많은주행거리순" onclick="alignmentMethodCheck('많은주행거리순')"><span>많은주행거리순</span></li>
-																						<li class="el-select-dropdown__item" value="낮은가격순" onclick="alignmentMethodCheck('낮은가격순')"><span>낮은가격순</span></li>
-																						<li class="el-select-dropdown__item" value="높은가격순" onclick="alignmentMethodCheck('높은가격순')"><span>높은가격순</span></li>
+																						<li class="el-select-dropdown__item" value="기본정렬"
+																							onclick="alignmentMethodCheck('기본정렬')"><span>기본정렬</span></li>
+																						<li class="el-select-dropdown__item" value="최근연식순"
+																							onclick="alignmentMethodCheck('최근연식순')"><span>최근연식순</span></li>
+																						<li class="el-select-dropdown__item" value="낮은연식순"
+																							onclick="alignmentMethodCheck('낮은연식순')"><span>낮은연식순</span></li>
+																						<li class="el-select-dropdown__item"
+																							value="적은주행거리순"
+																							onclick="alignmentMethodCheck('적은주행거리순')"><span>적은주행거리순</span></li>
+																						<li class="el-select-dropdown__item"
+																							value="많은주행거리순"
+																							onclick="alignmentMethodCheck('많은주행거리순')"><span>많은주행거리순</span></li>
+																						<li class="el-select-dropdown__item" value="낮은가격순"
+																							onclick="alignmentMethodCheck('낮은가격순')"><span>낮은가격순</span></li>
+																						<li class="el-select-dropdown__item" value="높은가격순"
+																							onclick="alignmentMethodCheck('높은가격순')"><span>높은가격순</span></li>
 																					</ul>
 																				</div>
 																				<div class="el-scrollbar__bar is-horizontal">
@@ -244,7 +201,8 @@
 																								<th colspan="1" rowspan="1"
 																									class="el-table_1_column_1   el-table-column--selection  is-leaf el-table__cell"><div
 																										class="cell">
-																										<label class="el-checkbox" onclick="agree('0')"><span
+																										<label class="el-checkbox"
+																											onclick="agree('0')"><span
 																											class="el-checkbox__input"><span
 																												class="el-checkbox__inner"></span><input
 																												type="checkbox" aria-hidden="false"
@@ -275,19 +233,20 @@
 																						<tbody>
 																							<c:choose>
 																								<c:when test="${latelyCarList != null }">
-																									<c:forEach var="car" items="${latelyCarList }" 
+																									<c:forEach var="car" items="${latelyCarList }"
 																										varStatus="status">
 																										<tr class="el-table__row">
 																											<td rowspan="1" colspan="1"
 																												class="el-table_1_column_1  el-table-column--selection el-table__cell"><div
 																													class="cell">
 																													<div class="roundCheck">
-																														<label class="el-checkbox" onclick="agree('${status.count}')"><span
+																														<label class="el-checkbox"
+																															onclick="agree('${status.count}')"><span
 																															class="el-checkbox__input"><span
 																																class="el-checkbox__inner"></span><input
 																																type="checkbox" aria-hidden="false"
-																																class="el-checkbox__original" value="${car.c_num }"></span>
-																															<!----></label>
+																																class="el-checkbox__original"
+																																value="${car.c_num }"></span> <!----></label>
 																													</div>
 																												</div></td>
 																											<td rowspan="1" colspan="1"
@@ -311,9 +270,9 @@
 																																${car.cb_m_model } ${car.c_fuel}</p>
 																															<ul class="options">
 																																<li>${car.c_year }<span
-																																	class="lineH">｜</span> ${car.c_distance }km <span
-																																	class="lineH">｜</span> ${car.c_model }
+																																	class="lineH">｜</span> ${car.c_distance }km
 																																	<span class="lineH">｜</span>
+																																	${car.c_model } <span class="lineH">｜</span>
 																																	${car.st_name }
 																																</li>
 																															</ul>
@@ -333,7 +292,8 @@
 																									</c:forEach>
 																								</c:when>
 																								<c:otherwise>
-																									<div style="margin:110px;text-align: center; font-size: 20px; font-weight: bold;">
+																									<div
+																										style="margin: 110px; text-align: center; font-size: 20px; font-weight: bold;">
 																										<span class="textRed">최근 본 차량이 없습니다.</span>
 																									</div>
 																								</c:otherwise>
@@ -377,7 +337,8 @@
 																</div>
 																<div class="paginationWrap">
 																	<div class="searchTrigger box Inner01 DarkColor el-row">
-																		<button class="button lineApply" onclick="deleteLatelyCar()">삭제</button>
+																		<button class="button lineApply"
+																			onclick="deleteLatelyCar()">삭제</button>
 																	</div>
 																	<div class="pagination -sm mT40">
 																		<!---->
@@ -389,15 +350,13 @@
 																	<div class="utilWrap">
 																		<div
 																			class="searchTrigger box Inner01 DarkColor el-row">
-																			<button class="button lineApply">문자로 받기</button>
+																			<button class="button lineApply"
+																				onclick="modalOpen('letter')">문자로 받기</button>
 																		</div>
 																		<div
 																			class="searchTrigger box Inner01 DarkColor el-row">
-																			<button class="button lineApply">PC에 저장하기</button>
-																		</div>
-																		<div
-																			class="searchTrigger box Inner01 DarkColor el-row">
-																			<button class="button lineApply">메일 보내기</button>
+																			<button class="button lineApply"
+																				onclick="modalOpen('pc')">PC에 저장하기</button>
 																		</div>
 																	</div>
 																</div>
@@ -432,105 +391,97 @@
 					</div>
 					<div class="carRentWrap">
 						<div>
-							<div class="el-dialog__wrapper popup popCenter"
-								style="display: none;">
+							<span id="modalBack"></span>
+							<div class="el-dialog__wrapper popup popCenter" id="modalLetter"
+								style="z-index: 2023;display:none;">
 								<div role="dialog" aria-modal="true" aria-label="차량 정보문자 받기"
 									class="el-dialog" style="margin-top: 15vh;">
 									<div class="el-dialog__header">
 										<span class="el-dialog__title">차량 정보문자 받기</span>
 										<button type="button" aria-label="Close"
-											class="el-dialog__headerbtn">
+											class="el-dialog__headerbtn" onclick="modalClose()">
 											<i class="el-dialog__close el-icon el-icon-close"></i>
 										</button>
 									</div>
-									<!---->
-									<!---->
-								</div>
-							</div>
-						</div>
-						<div class="el-dialog__wrapper popup confirm noTitle"
-							style="display: none;">
-							<div role="dialog" aria-modal="true" aria-label="dialog"
-								class="el-dialog" style="margin-top: 15vh;">
-								<div class="el-dialog__header">
-									<span class="el-dialog__title"></span>
-									<button type="button" aria-label="Close"
-										class="el-dialog__headerbtn">
-										<i class="el-dialog__close el-icon el-icon-close"></i>
-									</button>
-								</div>
-								<!---->
-								<div class="el-dialog__footer">
-									<span class="dialog-footer"><div></div></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div>
-							<div class="el-dialog__wrapper popup fullPopup active"
-								style="display: none;">
-								<div role="dialog" aria-modal="true" aria-label="메일 보내기"
-									class="el-dialog" style="margin-top: 15vh;">
-									<div class="el-dialog__header">
-										<span class="el-dialog__title">메일 보내기</span>
-										<button type="button" aria-label="Close"
-											class="el-dialog__headerbtn">
-											<i class="el-dialog__close el-icon el-icon-close"></i>
-										</button>
-									</div>
-									<!---->
-									<div class="el-dialog__footer">
-										<span class="dialog-footer"><div class="footerBtnWrap">
-												<div class="searchTrigger box multBtn el-row">
-													<button class="button chosenApply">취소</button>
-													<button class="button apply">보내기</button>
+									<div class="el-dialog__body">
+										<div class="popContent el-scrollbar">
+											<div class="el-scrollbar__wrap"
+												style="margin-bottom: -23px; margin-right: -23px;">
+												<div class="el-scrollbar__view">
+													<div class="rentSmsPopup">
+														<div class="titLabel">휴대전화 번호를 입력해주세요.</div>
+														<span><div class="inputBtnWrap">
+																<span><div class="el-input">
+																		<!---->
+																		<input type="text" autocomplete="off"
+																			placeholder="010-0000-0000" input-type="tel"
+																			inputmode="numeric" maxlength="13"
+																			class="el-input__inner" id="letterText">
+																		<!---->
+																		<!---->
+																		<!---->
+																		<!---->
+																	</div></span>
+																<button type="button"
+																	class="el-button checkBtn el-button--default" onclick="letterSend()"> 
+																	<!---->
+																	<!---->
+																	<span> 문자받기 </span>
+																</button>
+															</div>
+															<div class="termsArea">
+																<div class="roundCheck">
+																	<h3 class="subTitle3">
+																		<span><label class="el-checkbox" id="letterCheckBox" onclick="letterAgree()"><span
+																				class="el-checkbox__input" id="letterCheckBox__input"><span
+																					class="el-checkbox__inner"></span><input
+																					type="checkbox" aria-hidden="false" true-value="Y"
+																					false-value="N" class="el-checkbox__original" id="letterCheckBox__original"></span><span
+																				class="el-checkbox__label"> 개인정보 수집 및 이용
+																					동의(필수) <!---->
+																			</span></label></span>
+																		<button type="button"
+																			class="el-button txtButton inner2 el-button--text">
+																			<!---->
+																			<!---->
+																			<span> 보기 </span>
+																		</button>
+																	</h3>
+																	<div class="termsCheckWrap">
+																		<div class="item">
+																			<strong>목적</strong>
+																			<p>차량/ 직영점/ 판매자 정보문자 전송</p>
+																		</div>
+																		<div class="item">
+																			<strong>개인정보 항목</strong>
+																			<p>휴대폰번호</p>
+																		</div>
+																		<div class="item alignTop">
+																			<strong>보유 및 이용기간</strong>
+																			<p>
+																				목적 달성 후 즉시 파기 또는 이용 목적과 관련된 사고조사, <br> 분쟁해결,
+																				민원처리, 법령상 의무 이행을 위한 필요한 <br> 범위 내에서만 보유/이용
+																			</p>
+																		</div>
+																	</div>
+																</div>
+															</div></span>
+														<p class="guideTxt">해당 서비스 제공을 위해서 필요한 최소한의 개인정보이므로
+															동의를 해주셔야 서비스를 이용하실 수 있습니다.</p>
+													</div>
 												</div>
-											</div></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="el-dialog__wrapper popup confirm noTitle"
-							style="display: none;">
-							<div role="dialog" aria-modal="true" aria-label="dialog"
-								class="el-dialog" style="margin-top: 15vh;">
-								<div class="el-dialog__header">
-									<span class="el-dialog__title"></span>
-									<button type="button" aria-label="Close"
-										class="el-dialog__headerbtn">
-										<i class="el-dialog__close el-icon el-icon-close"></i>
-									</button>
-								</div>
-								<!---->
-								<div class="el-dialog__footer">
-									<span class="dialog-footer"><div></div></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<div>
-							<div class="el-dialog__wrapper popup fullPopup active"
-								style="display: none;">
-								<div role="dialog" aria-modal="true" aria-label="메일 보내기"
-									class="el-dialog" style="margin-top: 15vh;">
-									<div class="el-dialog__header">
-										<span class="el-dialog__title">메일 보내기</span>
-										<button type="button" aria-label="Close"
-											class="el-dialog__headerbtn">
-											<i class="el-dialog__close el-icon el-icon-close"></i>
-										</button>
+											</div>
+											<div class="el-scrollbar__bar is-horizontal">
+												<div class="el-scrollbar__thumb"
+													style="transform: translateX(0%);"></div>
+											</div>
+											<div class="el-scrollbar__bar is-vertical">
+												<div class="el-scrollbar__thumb"
+													style="transform: translateY(0%); height: 92.6448%;"></div>
+											</div>
+										</div>
 									</div>
 									<!---->
-									<div class="el-dialog__footer">
-										<span class="dialog-footer"><div class="footerBtnWrap">
-												<div class="searchTrigger box multBtn el-row">
-													<button class="button chosenApply">취소</button>
-													<button class="button apply">보내기</button>
-												</div>
-											</div></span>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -559,6 +510,6 @@
 			</div>
 		</div>
 	</div>
-<script src="js/latelyCar.js"></script>
+	<script src="js/latelyCar.js"></script>
 </body>
 </html>

@@ -116,6 +116,6 @@
 	</update>
 	
 	<insert id="csQstnWriteProc" parameterType="com.one.kcar.dto.buy.QuestionDTO">
-		INSERT INTO KCAR_QUESTION VALUES(#{q_title}, #{q_content}, #{q_classification})
+		INSERT INTO KCAR_QUESTION VALUES(#{q_classification}, #{q_title}, #{q_content})
 	</insert>
 </mapper>

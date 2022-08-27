@@ -40,4 +40,8 @@ public interface IKcarCarRentDAO {
 
 	MemberDTO member(String m_email);
 
+	void updateMail(String m_email, String crNumber);
+
+	
+
 }

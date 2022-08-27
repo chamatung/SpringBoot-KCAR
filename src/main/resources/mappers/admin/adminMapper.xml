@@ -22,7 +22,7 @@
 		INSERT INTO kcar_car_tag VALUES (#{c_num},#{c_t_certified,jdbcType=VARCHAR},#{c_t_distance,jdbcType=VARCHAR},#{c_t_newCar,jdbcType=VARCHAR},#{c_t_fourWheel,jdbcType=VARCHAR},#{c_t_maintenance,jdbcType=VARCHAR},#{c_t_oneOwner,jdbcType=VARCHAR},#{c_t_specialOption,jdbcType=VARCHAR},#{c_t_rent,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insert_Contract" parameterType="com.one.kcar.dto.buy.ContractDTO">
-		INSERT INTO kcar_car_contract VALUES (contractIndex_seq.nextval,#{c_num},#{c_c_b_email,jdbcType=VARCHAR},#{c_c_s_email},#{c_c_b_name,jdbcType=VARCHAR},#{c_c_b_tel,jdbcType=VARCHAR},#{c_c_b_zipcode,jdbcType=VARCHAR},#{c_c_b_addr1,jdbcType=VARCHAR},#{c_c_b_addr2,jdbcType=VARCHAR},#{c_c_b_totalPrice,jdbcType=VARCHAR})
+		INSERT INTO kcar_car_contract VALUES (contractIndex_seq.nextval,#{c_num},#{c_c_b_email,jdbcType=VARCHAR},#{c_c_s_email},#{c_c_b_name,jdbcType=VARCHAR},#{c_c_b_tel,jdbcType=VARCHAR},#{c_c_b_zipcode,jdbcType=VARCHAR},#{c_c_b_addr1,jdbcType=VARCHAR},#{c_c_b_addr2,jdbcType=VARCHAR},#{c_c_b_totalPrice,jdbcType=VARCHAR},#{c_c_b_carPrice,jdbcType=VARCHAR},#{c_c_b_registrationPrice,jdbcType=VARCHAR},#{c_c_b_managePrice,jdbcType=VARCHAR},#{c_c_b_registPrice,jdbcType=VARCHAR},#{c_c_b_kw,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insert_rentCar" parameterType="com.one.kcar.dto.rent.kcarCarRentDTO">
 		INSERT INTO kcarcarrent VALUES (#{crNumber},#{crPrice},#{crMonth},#{crFirstPrice},#{crCc},#{crYear},#{crColor},#{crDistance},#{crMission},#{crFuel},#{crNewPrice},#{crGrade},#{crSpecialPrice,jdbcType=VARCHAR},#{crBrand},#{crpPhoto},#{crName},#{m_email,jdbcType=VARCHAR})
@@ -57,7 +57,22 @@
 	<select id="rent_list"  resultType="com.one.kcar.dto.rent.kcarCarRentDTO">
 		select * from kcarcarrent where m_email=#{m_email}
 	</select>
-
-
-
+	<select id="storeList" resultType="com.one.kcar.dto.buy.StoreDTO">
+		select * from kcar_store
+	</select>
+	<select id="brandList" resultType="com.one.kcar.dto.buy.BrandDTO">
+		select * from kcar_carbrand
+	</select>
+	<select id="checkBrand" resultType="com.one.kcar.dto.buy.BrandDTO">
+		select * from kcar_carbrand where cb_brand=#{cb_brand}
+	</select>
+	<select id="checkBrandModel" resultType="com.one.kcar.dto.buy.BrandModelDTO">
+		select * from kcar_carbrand_model where cb_m_model=#{cb_m_model}
+	</select>
+	<insert id="insertBrandModel" parameterType="com.one.kcar.dto.buy.BrandModelDTO">
+		select * from kcar_carbrand_model
+	</insert>
+	<insert id="insertBrand" parameterType="com.one.kcar.dto.buy.BrandDTO">
+		select * from kcar_carbrand
+	</insert>
 </mapper>

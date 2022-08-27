@@ -167,7 +167,7 @@
 									</p>
 								</div>
 								<div class="borderViewCon">
-									${viewList.n_content }
+									<pre>${viewList.n_content }</pre>
 								</div>
 							</div>
 							
@@ -352,7 +352,7 @@
 	 }
 	 
 	 function listView(){
-		 $("#f").attr("action", "NotcMatrList");
+		 $("#f").attr("action", "NotcMatrListManage");
 		 
 	 }
 	</script>

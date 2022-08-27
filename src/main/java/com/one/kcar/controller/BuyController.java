@@ -34,33 +34,31 @@ public class BuyController {
 	@GetMapping(value = "carbuy")
 	public String insertCar(HttpSession session, Model model) {
 
-		if (session.getAttribute("templist") == null) {// 트래픽 보호를 위한 세션
-			List<BuyDTO> alltag = service.allSelect();
-			Set<String> type = new HashSet<String>();
-			HashMap<String, String> korbrand = new HashMap<String, String>();
-			HashMap<String, String> foreignbrand = new HashMap<String, String>();
-			Set<String> car_model = new HashSet<String>();
-			Set<String> store = new HashSet<String>();
-			for (BuyDTO i : alltag) {
-				type.add(i.getC_model());
-				if (i.getCb_domestic().equals("해외")) {
-					foreignbrand.put(i.getCb_brand(), i.getCb_photo());
-				} else {
-					korbrand.put(i.getCb_brand(), i.getCb_photo());
-				}
-
-				car_model.add(i.getCb_m_model());
-				store.add(i.getSt_name());
+		List<BuyDTO> alltag = service.allSelect();
+		Set<String> type = new HashSet<String>();
+		HashMap<String, String> korbrand = new HashMap<String, String>();
+		HashMap<String, String> foreignbrand = new HashMap<String, String>();
+		Set<String> car_model = new HashSet<String>();
+		Set<String> store = new HashSet<String>();
+		for (BuyDTO i : alltag) {
+			type.add(i.getC_model());
+			if (i.getCb_domestic().equals("해외")) {
+				foreignbrand.put(i.getCb_brand(), i.getCb_photo());
+			} else {
+				korbrand.put(i.getCb_brand(), i.getCb_photo());
 			}
-			model.addAttribute("type", type);
-			model.addAttribute("korbrand", korbrand);
-			model.addAttribute("foreignbrand", foreignbrand);
-			model.addAttribute("car_model", car_model);
-			model.addAttribute("store", store);
-			session.setAttribute("templist", "data");
+
+			car_model.add(i.getCb_m_model());
+			store.add(i.getSt_name());
 		}
+		model.addAttribute("type", type);
+		model.addAttribute("korbrand", korbrand);
+		model.addAttribute("foreignbrand", foreignbrand);
+		model.addAttribute("car_model", car_model);
+		model.addAttribute("store", store);
+
 		List<BuyDTO> list;
-		int count=0;
+		int count = 0;
 		if (session.getAttribute("morebuy") == null) {
 			list = service.searchAll();
 			count = service.searchAllCount();
@@ -68,20 +66,20 @@ public class BuyController {
 			model.addAttribute("totalPage", pageService);
 		} else {
 			list = (List<BuyDTO>) session.getAttribute("morebuy");
-			count=list.size();
+			count = list.size();
 			session.removeAttribute("morebuy");
 		}
+		
 		List<BuyDTO> listFore = service.searchAllFore();
 		model.addAttribute("totalCount", count);
 
 		int forecount = service.searchAllCountFore();
 
-		
 		String pageServiceFore = navi.totalPageFore(forecount);
 
 		model.addAttribute("list", list);
 		model.addAttribute("listFore", listFore);
-		
+
 		model.addAttribute("totalPageFore", pageServiceFore);
 
 		return "/buy/Mycarbuy";

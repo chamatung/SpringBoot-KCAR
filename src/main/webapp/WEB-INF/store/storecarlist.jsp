@@ -39,7 +39,7 @@
 			<div>
 				<div class="carListWrap mT20" id="sortchange">
 					<c:forEach var="car" items="${list}">
-						<div class="carListBox" style="cursor: pointer;">
+					<a href="/detail/carInfo?c_num=${car.c_num}"><div class="carListBox" style="cursor: pointer;">
 							<div class="carListImg" style="cursor: pointer;">
 								<div>
 									<img src="${car.c_photo }" alt="챠량이미지"
@@ -84,7 +84,7 @@
 
 								</ul>
 							</div>
-						</div>
+						</div></a>
 					</c:forEach>
 				</div>
 				<div>

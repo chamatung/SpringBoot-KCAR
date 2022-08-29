@@ -153,7 +153,7 @@
 					<form action="" method="post" id="f">
 					<input type="hidden" value="${viewList.n_no }" name="n_no"/>
 					<input type="hidden" value="${viewList.n_title }" name="n_title"/>
-					<input type="hidden" value="${viewList.n_content }" name="n_content"/>
+					<%-- <input type="hidden" value="${viewList.n_content }" name="n_content"/> --%>
 					<input type="hidden" value="notice" name="listViewno"/>
 						<div>
 							<div class="boardView">
@@ -173,7 +173,7 @@
 							
 							<div class="searchTrigger box Large maxW97 el-row">
 								<button class="button apply" onclick="listView()">목록</button>
-								<button class="button apply" formaction="noticeModifyForm">수정하기</button>
+							<!-- 	<button class="button apply" formaction="noticeModifyForm">수정하기</button> -->
 								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
 							</div>
 							

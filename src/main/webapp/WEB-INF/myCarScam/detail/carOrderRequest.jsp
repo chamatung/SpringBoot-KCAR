@@ -47,7 +47,13 @@
 				<div class="homeServiceWrap contWrap">
 					<div class="homeCont">
 					<form action="carOrderDetail" method="post" id="detailF">
-					<input type="hidden" value="${car.c_num }" name="c_num">
+						<input type="hidden" value="${car.c_num }" name="c_num">
+						<input type="hidden" name="memberAddress" id="memberAddress" value="${memberAddress }">
+						<input type="hidden" name="xAddress" id="xHidden" value>
+						<input type="hidden" name="yAddress" id="yHidden" value>
+						<input type="hidden" name="storeAddress" id="storeAddress" value="${stAddress }">
+						<input type="hidden" name="storeXAddress" id="storeXAddress" value>
+						<input type="hidden" name="storeYAddress" id=storeYAddress value>
 						<div class="contentsBox el-row">
 							<div>
 								<div class="contStage1">
@@ -416,6 +422,7 @@
 										</div>
 									</div>
 								</div>
+								
 								<div class="btmButton">
 									<div class="searchTrigger box el-row">
 										<button id="mkt_btnBuyer_100" type="button" class="button apply" onclick="orderRequest()">
@@ -526,9 +533,6 @@
 			</div>
 		</div>
 	</div>
-	<input type="hidden" id="xHidden" value>
-	<input type="hidden" id="yHidden" value>
-	
 <script src="/js/reviewModal.js"></script>
 <script src="/js/carOrderRequest.js"></script>
 <!-- 다음주소 -->
@@ -537,6 +541,8 @@
 <script>
 var xAddress = document.getElementById('xHidden');
 var yAddress = document.getElementById('yHidden');
+var storeXAddress = document.getElementById('storeXAddress');
+var storeYAddress = document.getElementById('storeYAddress');
 // 다음 주소입력
 var daumAddr = function(){
 	new daum.Postcode({
@@ -557,11 +563,32 @@ var daumAddr = function(){
 	}).open();
 }
 var x,y = "";
-var addressChk = function(address){
-	console.log(address)
+//페이지 로드시 좌표값 설정
+window.onload = function(){
+	addressChk();
+	storeAddressChk();
+}
+
+var storeAddressChk = function(){
+	var storeAddress = document.getElementById('storeAddress').value;
 	var geocoder = new daum.maps.services.Geocoder();
+	geocoder.addressSearch(storeAddress, function(result,status){
+		if(status == daum.maps.services.Status.OK){
+			var corders = new daum.maps.LatLng(result[0].y, result[0].x);
+			
+			y = result[0].x;
+			x = result[0].y;
+			storeXAddress.value = x;
+			storeYAddress.value = y;
+			console.log('storex : ' + x + 'storey : ' + y);
+		}
+	})
+}
 	
-	geocoder.addressSearch(address, function(result,status){
+var addressChk = function(){
+	var memberAddress = document.getElementById('memberAddress').value;
+	var geocoder = new daum.maps.services.Geocoder();
+	geocoder.addressSearch(memberAddress, function(result,status){
 		if(status == daum.maps.services.Status.OK){
 			var corders = new daum.maps.LatLng(result[0].y, result[0].x);
 			
@@ -569,38 +596,11 @@ var addressChk = function(address){
 			x = result[0].y;
 			xAddress.value = x;
 			yAddress.value = y;
-// 			addressSend();
+			console.log('x : ' + x + 'y : ' + y);
 		}
 	})
 }
 
-//script가 아닌 서버로 보내서 작업할 것
-// var req;
-// var addressSend(){
-// 	var x1 = xAddress.value;
-// 	var y1 = yAddress.value;
-// 	var curl = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.1058342,37.359708&goal="+x1+","+y1+"&option=trafast";
-// 	if(req == null){
-// 		req = new XMLHttpRequest();
-// 	}
-// 	req.onreadystatechange = addressResult;
-// 	req.open('GET',curl);
-	
-// 	req.setRequestHeader('X-NCP-APIGW-API-KEY-ID', "4rnpgkjox9");
-// 	req.setRequestHeader('X-NCP-APIGW-API-KEY', "MwsfHHuAfhVZynzi4HcoMKNnf1BW7MJYZM4OZqNI");
-	
-// 	req.send();
-// }
-// var addressResult = function(){
-// 	if (req.readyState == 4 & req.status == 200) {
-// 		console.log(messge)
-// 		console.log(code)
-// 	}
-// }
-//네이버 요청
-// curl "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=127.1058342,37.359708&goal=129.075986,35.179470&option=trafast"
-// -H "X-NCP-APIGW-API-KEY-ID: {애플리케이션 등록 시 발급받은 client id 값}" 
-// -H "X-NCP-APIGW-API-KEY: {애플리케이션 등록 시 발급받은 client secret값}" -v
 </script>
 
 </body>

@@ -1,6 +1,7 @@
 package com.one.kcar.service.buy;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Annotation;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.google.inject.Singleton;
 import com.one.kcar.dao.buy.ICarDetailDAO;
 import com.one.kcar.dao.member.IMemberDAO;
 import com.one.kcar.dto.buy.BuyReviewDTO;
@@ -179,24 +181,49 @@ public class detailService {
 		paymentVo.setCarPrice(carPrice * 10000);
 
 		MemberDTO member = memberDao.login(email);
+		StoreDTO stAddress = carDetailDao.store(car.getSt_name());
 		model.addAttribute("member", member);
+		model.addAttribute("memberAddress", member.getM_addr1());
+		model.addAttribute("stAddress", stAddress.getSt_addr());
 		model.addAttribute("car", car);
 		model.addAttribute("carPriceInfo", paymentVo);
 
 		return null;
 	}
 
-	public String carOrderDetail(MemberDTO member, String c_num, Model model) {
+	@Autowired
+	NaverService naverService;
+	
+	public String carOrderDetail(MemberDTO member, String c_num, String xAddress, String yAddress, String storeXAddress, String storeYAddress, Model model) {
 		String email = (String) session.getAttribute("id");
 		if (email == null || email.isEmpty())
 			return "로그인";
 		CarDTO car = carDetailDao.car(c_num);
-
+		
+		//naver api로 거리 계산
+		String distance = naverService.naverAddress(xAddress, yAddress,storeXAddress,storeYAddress);
+		int distanceInt = 0;
+		try {
+			distanceInt = Integer.parseInt(distance);
+		} catch (Exception e) {
+			System.out.println("x : " + xAddress+", y : " + yAddress);
+			System.out.println("네이버 api사용 결과실패");
+			System.out.println(distance);
+		}
+		System.out.println("x : " + xAddress+", y : " + yAddress);
+		System.out.println("네이버 api사용 결과");
+		System.out.println(distance);
 		PaymentVO paymentVo = new PaymentVO();
 
 		int carPrice = Integer.parseInt(car.getC_price());
 		paymentVo.setCarPrice(carPrice * 10000);
 
+		if(distanceInt > 200000) {
+			paymentVo.setDelivery(100000);
+		}else {
+			paymentVo.setDelivery(50000);
+		}
+		
 		model.addAttribute("member", member);
 		model.addAttribute("car", car);
 		model.addAttribute("carPriceInfo", paymentVo);
@@ -204,7 +231,8 @@ public class detailService {
 
 		return null;
 	}
-
+	
+	
 	// 결제했다치고 정보 입력 후 배송정보페이지로 이동
 	public String carPayment(MemberDTO member, String c_num, Model model) {
 		String email = (String) session.getAttribute("id");

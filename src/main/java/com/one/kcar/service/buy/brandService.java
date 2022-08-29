@@ -71,18 +71,18 @@ public class brandService {
 		ArrayList<CarDTO> brandCarAllList = brandDao.brandCarAllList(start,end,brand,brandModel,alignment);//해외브랜드차량 전체리스트
 		
 		//carTag정보
-		for (int i = 0; i < brandCarAllList.size(); i++) {
-			CarTagDTO carTag = new CarTagDTO();
-			carTag.setC_t_certified(brandCarAllList.get(i).getC_t_certified());
-			carTag.setC_t_distance(brandCarAllList.get(i).getC_t_distance());
-			carTag.setC_t_newCar(brandCarAllList.get(i).getC_t_newCar());
-			carTag.setC_t_fourWheel(brandCarAllList.get(i).getC_t_fourWheel());
-			carTag.setC_t_maintenance(brandCarAllList.get(i).getC_t_maintenance());
-			carTag.setC_t_oneOwner(brandCarAllList.get(i).getC_t_oneOwner());
-			carTag.setC_t_specialOption(brandCarAllList.get(i).getC_t_specialOption());
-			carTag.setC_t_rent(brandCarAllList.get(i).getC_t_rent());
-			brandCarAllList.get(i).setBrandCarInfoTag(carTag.getBrandCarInfoTag());
-		}
+//		for (int i = 0; i < brandCarAllList.size(); i++) {
+//			CarTagDTO carTag = new CarTagDTO();
+//			carTag.setC_t_certified(brandCarAllList.get(i).getC_t_certified());
+//			carTag.setC_t_distance(brandCarAllList.get(i).getC_t_distance());
+//			carTag.setC_t_newCar(brandCarAllList.get(i).getC_t_newCar());
+//			carTag.setC_t_fourWheel(brandCarAllList.get(i).getC_t_fourWheel());
+//			carTag.setC_t_maintenance(brandCarAllList.get(i).getC_t_maintenance());
+//			carTag.setC_t_oneOwner(brandCarAllList.get(i).getC_t_oneOwner());
+//			carTag.setC_t_specialOption(brandCarAllList.get(i).getC_t_specialOption());
+//			carTag.setC_t_rent(brandCarAllList.get(i).getC_t_rent());
+//			brandCarAllList.get(i).setBrandCarInfoTag(carTag.getBrandCarInfoTag());
+//		}
 		
 		//AJAX비동기통신으로 //해외브랜드차량 전체리스트 HTML 코드로 변경
 		if(data != null) {
@@ -205,13 +205,16 @@ public class brandService {
 				+ "			</p>\r\n"
 				+ "			</div>\r\n"
 				+ "			<ul class=\"infoTooltip\">\r\n";
-			for(int j=0;j<brandCarAllList.get(i).getBrandCarInfoTag().size();j++) {
-				data +=   "<li><button type=\"button\"\r\n"
-				+ "			class=\"el-button el-tooltip yellowLabel item el-button--default\"\r\n"
-				+ "			aria-describedby=\"el-tooltip-7966\" tabindex=\"0\">\r\n"
-				+ "			<span>"+ brandCarAllList.get(i).getBrandCarInfoTag().get(j) +"</span>\r\n"
-				+ "			</button></li>\r\n";
+			if(brandCarAllList.get(i).getBrandCarInfoTag() != null) {
+				for(int j=0;j<brandCarAllList.get(i).getBrandCarInfoTag().size();j++) {
+					data +=   "<li><button type=\"button\"\r\n"
+					+ "			class=\"el-button el-tooltip yellowLabel item el-button--default\"\r\n"
+					+ "			aria-describedby=\"el-tooltip-7966\" tabindex=\"0\">\r\n"
+					+ "			<span>"+ brandCarAllList.get(i).getBrandCarInfoTag().get(j) +"</span>\r\n"
+					+ "			</button></li>\r\n";
+				}
 			}
+			
 			data += "											</ul>\r\n"
 				+ "										</div>\r\n"
 				+ "									</div>\r\n";

@@ -154,7 +154,7 @@
 					<form action="" method="post" id="f">
 					<input type="hidden" value="${viewList.n_no }" name="n_no"/>
 					<input type="hidden" value="${viewList.n_title }" name="n_title"/>
-					<input type="hidden" value="${viewList.n_content }" name="n_content"/>
+					<%-- <input type="hidden" value="${viewList.n_content }" name="n_content"/> --%>
 					<input type="hidden" value="notice" name="listViewno"/>
 						<div>
 							<div class="boardView">

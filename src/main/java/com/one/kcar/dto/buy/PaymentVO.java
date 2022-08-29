@@ -27,6 +27,21 @@ public class PaymentVO {
 	
 	private int sum;//총 구매가격
 	
+	private int delivery;
+	
+	public int getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(int delivery) {
+		this.delivery = delivery;
+		this.sum = this.sum + delivery;
+	}
+
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+
 	public int getAdvancePayment2() {
 		return advancePayment2;
 	}

@@ -152,7 +152,7 @@
 					<form action="" method="post" id="f">
 					<input type="hidden" value="${eventviewList.e_no }" name="e_no"/>
 					<input type="hidden" value="${eventviewList.e_title }" name="e_title"/>
-					<input type="hidden" value="${eventviewList.e_content }" name="e_content"/>
+					<%-- <input type="hidden" value="${eventviewList.e_content }" name="e_content"/> --%>
 					<input type="hidden" value="${eventviewList.e_startDate }" name="e_startDate"/>
 					<input type="hidden" value="${eventviewList.e_endDate }" name="e_endDate"/>
 					<input type="hidden" value="event" name="listViewno"/>
@@ -173,7 +173,7 @@
 							</div>
 							<div class="searchTrigger box Large maxW97 el-row">
 								<button class="button apply" onclick="listView()">목록</button>
-								<button class="button apply" formaction="eventModifyForm">수정하기</button>
+								<!-- <button class="button apply" formaction="eventModifyForm">수정하기</button> -->
 								<button class="button apply" onclick="removeCheck()" id="submitButton">삭제하기</button>
 							</div>
 							

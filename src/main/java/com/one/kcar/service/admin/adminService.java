@@ -137,14 +137,18 @@ public class adminService{
 	public String rentUpdate(kcarCarRentDTO rent,kcarCarRentOptionDTO rentOption, MultipartHttpServletRequest multi) {
 		MultipartFile file = multi.getFile("file_name");
 		if(file.getSize() != 0) {
-			String fileName = file.getOriginalFilename();
-			File save = new File("C:\\Kraken\\SpringBoot-KCAR\\src\\main\\resources\\static\\images\\adminCar\\" + fileName);
-			try {
-				file.transferTo(save);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			rent.setCrpPhoto("/images/adminCar/" + fileName);
+			String fn = rent.getCrNumber()+".jpg";
+	         
+			System.out.println(fn);
+	         
+		    File save = new File("C:\\javaE\\spring4_workspace\\SpringBoot-KCAR\\src\\main\\resources\\static\\images\\adminCar\\" + fn);
+		    try {
+		       file.transferTo(save);
+		    } catch (Exception e) {
+		       e.printStackTrace();
+		    } 
+				
+			rent.setCrpPhoto("/images/adminCar/" + fn);
 			dao.insert_rentCar(rent);
 			dao.insert_rentCarOption(rentOption);
 		return "a";

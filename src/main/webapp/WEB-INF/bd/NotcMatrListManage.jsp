@@ -894,7 +894,14 @@
 			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_startDate + " ~ " + obj.eventList[i].e_endDate + "</div>";
 			        	  htmlString += "	</td>";
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_15   el-table__cell'>";
-			        	  htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";
+			        	  if(eventStatus == "마감"){ 
+				        	 	 htmlString += "		<div class='cell' id='eventStatus' style='color:red;'>" + eventStatus + "</div>";
+				        	  }else if(eventStatus == "진행 예정"){  
+				        	 	 htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>";  
+				        	  }else{
+				        	 	 htmlString += "		<div class='cell' id='eventStatus' style='color:green;'>" + eventStatus + "</div>"; 
+				        	  }
+			        	  /* htmlString += "		<div class='cell' id='eventStatus'>" + eventStatus + "</div>"; */
 			        	  htmlString += "	</td>";
 			        	  htmlString += "	<td rowspan='1' colspan='1' class='el-table_4_column_16   el-table__cell'>";
 			        	  htmlString += "		<div class='cell'>" + obj.eventList[i].e_date + "</div>";

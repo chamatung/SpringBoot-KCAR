@@ -15,7 +15,7 @@ import com.one.kcar.dto.cs.NoticeDTO;
 
 public interface ICsService {
 	
-	String FILE_LOCATION = "C:\\Users\\user\\Desktop\\kcar\\SpringBoot-KCAR\\src\\main\\resources\\static\\images\\cs";
+	String FILE_LOCATION = "C:\\javae\\spring4_workspace\\SpringBoot-KCAR\\src\\main\\resources\\static\\images\\cs";
 
 	String csProc(MultipartHttpServletRequest multi);
 

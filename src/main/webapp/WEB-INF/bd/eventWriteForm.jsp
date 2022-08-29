@@ -9,7 +9,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 	
@@ -108,9 +108,23 @@
 		
 	<script>
 		
+	let oEditors = []
+
+    smartEditor = function() {
+      console.log("Naver SmartEditor")
+      nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "content",
+        sSkinURI: "/smarteditor/SmartEditor2Skin.html",
+        fCreator: "createSEditor2"
+      })
+    }
+	
 		$("#submitButton").click(function(){
 			var title = $("#title").val();
-			var content = $("#content").val();
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			let content = document.getElementById("content").value;
+			/* var content = $("#content").val(); */
 			var startDate = $("#startDate").val();
 			var endDate = $("#endDate").val();
 			if(title == null || title == ""){
@@ -122,8 +136,9 @@
 			}else if(endDate = null || endDate == ""){
 				alert("이벤트 마지막날을 선택해주세요");
 				return false;
-			}else if(content = null || content == ""){
+			}else if(content == ""){
 				alert("내용을 입력해주세요");
+				oEditors.getById["content"].exec("FOCUS")
 				return false;
 			}else {
 				$("#submitButton").setAttribute('type', 'submit');
@@ -132,6 +147,9 @@
 			
 		
 		$(document).ready(function () {
+			
+			smartEditor();
+			
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#startDate" ).datepicker({
                  changeMonth: true, 

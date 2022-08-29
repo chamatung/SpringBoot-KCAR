@@ -186,8 +186,9 @@ public class MainContoroller {
 		return "myCarScam/detail/carOrderRequest";
 	}
 	@PostMapping(value="detail/carOrderDetail")
-	public String carOrderDetail(MemberDTO member,@RequestParam(required=false) String c_num,Model model) {
-		String msg = detailService.carOrderDetail(member,c_num,model);
+	public String carOrderDetail(MemberDTO member,@RequestParam(required=false) String c_num,String xAddress,String yAddress,String storeXAddress,String storeYAddress,Model model) {
+		String msg = detailService.carOrderDetail(member,c_num,xAddress,yAddress,storeXAddress,storeYAddress,model);
+		
 		if(msg != null) {
 			if(msg.equals("로그인")) return "redirect:/logins";//로그인 안했을때
 			if(msg.equals("차번호")) return "redirect:carInfo";//차번호 없을때

@@ -84,6 +84,8 @@
 <script charset="utf-8" src="/_nuxt/b57c028.js"></script>
 <script charset="utf-8" src="/_nuxt/b377c95.js"></script>
 <script charset="utf-8" src="/_nuxt/440eaa4.js"></script>
+
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 	<noscript data-n-head="ssr" data-hid="gtm-noscript" data-pbody="true">
@@ -212,16 +214,37 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
 		
-		$("#submitButton").click(function(){
+	  let oEditors = []
+
+	    smartEditor = function() {
+	      console.log("Naver SmartEditor")
+	      nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: oEditors,
+	        elPlaceHolder: "content",
+	        sSkinURI: "/smarteditor/SmartEditor2Skin.html",
+	        fCreator: "createSEditor2"
+	      })
+	    }
+
+	    $(document).ready(function() {
+	      smartEditor()
+	    });
+	    
+	    $("#submitButton").click(function(){
 			var title = $("#title").val();
-			var content = $("#content").val();
+			/* var content = $("#content").val(); */
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			let content = document.getElementById("content").value;
 			if(title == null || title == ""){
 				alert("제목을 입력해주세요");
 				return false;
-			}else if(content = null || content == ""){
+			}else if(content == ""){
 				alert("내용을 입력해주세요");
+				oEditors.getById["content"].exec("FOCUS")
 				return false;
 			}else {
+				
+				console.log(content);
 				$("#submitButton").setAttribute('type', 'submit');
 			}
 		});

@@ -96,12 +96,12 @@ public class CsController {
 		}
 		
 		//공지사항
-		@RequestMapping(value = "NotcMatrList")
-		public String NotcMatrList(Model model) {
-			service.noticeProc(model, 0, null, null);
-			return "bd/NotcMatrList";
-		}
-		
+//		@RequestMapping(value = "NotcMatrList")
+//		public String NotcMatrList(Model model) {
+//			service.noticeProc(model, 0, null, null);
+//			return "bd/NotcMatrList";
+//		}
+//		
 		
 		@ResponseBody
 		@RequestMapping(value = "GetEvent", produces = "application/json; charset=utf-8")

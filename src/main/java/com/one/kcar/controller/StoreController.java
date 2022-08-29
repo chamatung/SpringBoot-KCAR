@@ -111,14 +111,14 @@ public class StoreController {
 	@RequestMapping(value = "kakaoTalk", produces = "application/json; charset=UTF-8")
 	private String kakaoTalk(String code, HttpSession session) {
 		System.out.println(session.getAttribute("kst_name"));
-		
-		
-		 StoreDTO store=service.storelist("강남직영점"); StoreKakaoService kakaoService =
-		 new StoreKakaoService(); String accessToken=kakaoService.getAcces(code);
-		 kakaoService.messageInfo(accessToken,store);
-		  
-		 return "redirect:/db/drCntr";
-		 
+
+		StoreDTO store = service.storelist("강남직영점");
+		StoreKakaoService kakaoService = new StoreKakaoService();
+		String accessToken = kakaoService.getAcces(code);
+		kakaoService.messageInfo(accessToken, store);
+
+		return "redirect:/db/drCntr";
+
 	}
 
 }
